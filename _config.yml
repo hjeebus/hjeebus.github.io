@@ -6,10 +6,10 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: best website ever
+title: 'Broc Klein : Literary Agent'
 email: hjeebus@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  trying jekyll out
+  Representing the Best of the Best
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.hjeebus.com" # the base hostname & protocol for your site
 twitter_username: hjeebus
