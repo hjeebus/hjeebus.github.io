@@ -17,3 +17,6 @@ github_username: hjeebus
 
 # Build settings
 markdown: kramdown
+gems:
+  - bourbon
+  - neat

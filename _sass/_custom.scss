@@ -1,5 +1,37 @@
-img.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+$neat-grid: (
+  columns: 4,
+  gutter: 20px
+);
+
+$custom-grid: (
+  columns: 12,
+  media: 800px
+);
+
+.home {
+  @include grid-container;
+
+  .left {
+    @include grid-column(4);
+
+    @include grid-media($custom-grid) {
+      @include grid-column(6);
+    }
+
+    height: 500px;
+    background: url(/assets/images/hipster.jpg) no-repeat center center;
+  }
+
+  .right {
+    @include grid-column(4);
+
+    @include grid-media($custom-grid) {
+      @include grid-column(6);
+    }
+
+    a:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
 }
