@@ -2,26 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/only-chomps/models/ashley/</loc>
+    <loc>https://hjeeb.us/only-chomps/models/</loc>
     <lastmod>2025-02-01T13:01:31-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/only-chomps/models/charle/</loc>
-    <lastmod>2025-02-01T13:01:31-05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/only-chomps/models/kravis/</loc>
-    <lastmod>2025-02-01T13:01:31-05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/only-chomps/models/</loc>
-    <lastmod>2025-02-01T13:01:31-05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/only-chomps/about/</loc>
+    <loc>https://hjeeb.us/only-chomps/about/</loc>
     <lastmod>2024-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/only-chomps/</loc>
+    <loc>https://hjeeb.us/only-chomps/</loc>
     <lastmod>2024-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/only-chomps/categories/</loc>
+    <loc>https://hjeeb.us/only-chomps/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/only-chomps/tags/</loc>
+    <loc>https://hjeeb.us/only-chomps/tags/</loc>
   </url>
 </urlset>

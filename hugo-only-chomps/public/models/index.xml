@@ -2,32 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Models on Only Chomps</title>
-    <link>http://localhost:1313/only-chomps/models/</link>
+    <link>https://hjeeb.us/only-chomps/models/</link>
     <description>Recent content in Models on Only Chomps</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Feb 2025 13:01:31 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/only-chomps/models/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Ashley</title>
-      <link>http://localhost:1313/only-chomps/models/ashley/</link>
-      <pubDate>Sat, 01 Feb 2025 13:01:31 -0500</pubDate>
-      <guid>http://localhost:1313/only-chomps/models/ashley/</guid>
-      <description>&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;&#xA;&lt;p&gt;im a &lt;em&gt;baddd&lt;/em&gt; bitch&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Charle</title>
-      <link>http://localhost:1313/only-chomps/models/charle/</link>
-      <pubDate>Sat, 01 Feb 2025 13:01:31 -0500</pubDate>
-      <guid>http://localhost:1313/only-chomps/models/charle/</guid>
-      <description>&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;&#xA;&lt;p&gt;im a &lt;em&gt;saddd&lt;/em&gt; bitch&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Kravis</title>
-      <link>http://localhost:1313/only-chomps/models/kravis/</link>
-      <pubDate>Sat, 01 Feb 2025 13:01:31 -0500</pubDate>
-      <guid>http://localhost:1313/only-chomps/models/kravis/</guid>
-      <description>&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;&#xA;&lt;p&gt;im a &lt;em&gt;daddd&lt;/em&gt; bitch&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://hjeeb.us/only-chomps/models/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
