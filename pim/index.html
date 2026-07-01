@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Pim — the agentic PM assistant that does the boring stuff so you can shine</title>
+  <meta name="description" content="Pim is an agentic PM assistant. It devours the repetitive garbage work — status updates, ticket grooming, standup notes, roadmap wrangling — so product managers can do the work only they can do.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pim — the agentic PM assistant">
+  <meta property="og:description" content="Pim does the repetitive garbage work so PMs can shine. Relentlessly cheerful. Absurdly helpful.">
+  <meta property="og:url" content="https://hjeeb.us/pim/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Warm, friendly brand palette — pink + purple + sunshine */
+      --pink:       #f9a8e0;
+      --pink-deep:  #e878c8;
+      --pink-soft:  #ffe1f6;
+      --purple:     #6a4ff0;
+      --purple-deep:#4f34d6;
+      --grape:      #2c1b6b;
+      --buckle:     #ffe066;
+      --ink:        #241436;
+      --ink-soft:   #5b4d72;
+      --paper:      #fff7fc;
+      --card:       #ffffff;
+      --line:       #f0dcec;
+      --shadow:     0 18px 40px -18px rgba(44, 27, 107, .30);
+      --radius:     22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .display { font-family: 'Fredoka', 'Inter', sans-serif; }
+
+    .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    a { color: var(--purple); }
+
+    /* ---------- NAV ---------- */
+    nav.top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,247,252,.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-family: 'Fredoka'; font-weight: 700; font-size: 22px; color: var(--ink); text-decoration: none; }
+    .brand .mark {
+      width: 34px; height: 34px; border-radius: 11px;
+      background: linear-gradient(150deg, var(--pink), var(--purple));
+      display: grid; place-items: center; color:#fff; font-weight:700; font-size: 18px;
+      box-shadow: 0 6px 14px -6px rgba(79,52,214,.6);
+    }
+    .nav-links { display: flex; gap: 26px; align-items: center; }
+    .nav-links a:not(.btn) { color: var(--ink-soft); text-decoration: none; font-weight: 500; font-size: 15px; }
+    .nav-links a:not(.btn):hover { color: var(--purple); }
+    .btn {
+      display: inline-block; border: 0; cursor: pointer;
+      font-family: 'Fredoka'; font-weight: 600; font-size: 16px;
+      padding: 13px 26px; border-radius: 999px; text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(180deg, var(--purple), var(--purple-deep));
+      color: #fff !important; box-shadow: 0 10px 22px -8px rgba(79,52,214,.7);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 28px -10px rgba(79,52,214,.85); }
+    .btn-ghost { background: #fff; color: var(--purple) !important; border: 2px solid var(--line); }
+    .btn-ghost:hover { border-color: var(--pink-deep); transform: translateY(-2px); }
+    .nav-links .btn { padding: 10px 20px; font-size: 15px; }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative; overflow: hidden; text-align: center;
+      background:
+        radial-gradient(1000px 460px at 78% -10%, rgba(249,168,224,.4), transparent 60%),
+        radial-gradient(900px 460px at 12% 0%, rgba(106,79,240,.16), transparent 60%),
+        linear-gradient(180deg, #ffeef9 0%, #fff7fc 82%);
+      padding: 92px 0 96px;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; border: 1px solid var(--line); color: var(--ink-soft);
+      padding: 7px 15px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+    .pill .spark { color: var(--pink-deep); }
+    .hero h1 { font-size: clamp(40px, 7vw, 72px); line-height: 1.02; margin: 22px auto 20px; font-weight: 700; letter-spacing: -.5px; max-width: 860px; }
+    .hero h1 .hl {
+      background: linear-gradient(120deg, var(--purple), var(--pink-deep));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p.lead { font-size: 21px; color: var(--ink-soft); max-width: 620px; margin: 0 auto 32px; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: center; }
+    .hero-note { margin-top: 18px; font-size: 13.5px; color: var(--ink-soft); }
+
+    /* ---------- TRUST ---------- */
+    .trust { padding: 40px 0 6px; text-align: center; }
+    .trust p { color: var(--ink-soft); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; margin: 0 0 16px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 14px 34px; justify-content: center; align-items: center; opacity: .78; }
+    .trust-row span { font-family:'Fredoka'; font-weight: 600; font-size: 19px; color: var(--ink-soft); }
+
+    /* ---------- SECTION SHELL ---------- */
+    section.block { padding: 84px 0; }
+    .eyebrow { text-align: center; color: var(--purple); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: 13px; margin-bottom: 12px; }
+    .h2 { text-align: center; font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin: 0 auto 14px; max-width: 720px; line-height: 1.12; }
+    .sub { text-align: center; color: var(--ink-soft); font-size: 18px; max-width: 640px; margin: 0 auto 52px; }
+
+    /* ---------- PAIN vs SHINE ---------- */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .panel { border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); }
+    .panel.pain { background: #fff; border: 1px solid var(--line); }
+    .panel.shine { background: linear-gradient(165deg, var(--pink-soft), #ffffff); border: 1px solid #f6cceb; }
+    .panel h3 { margin: 0 0 6px; font-size: 22px; display:flex; align-items:center; gap:10px; }
+    .panel .tag { font-size: 13px; color: var(--ink-soft); margin: 0 0 18px; }
+    .panel ul { list-style: none; margin: 0; padding: 0; }
+    .panel li { display: flex; gap: 12px; padding: 9px 0; font-size: 16px; color: var(--ink-soft); align-items: flex-start; }
+    .panel li .ic { flex: none; width: 24px; height: 24px; border-radius: 50%; display:grid; place-items:center; font-size:13px; font-weight:700; margin-top:1px; }
+    .pain li .ic  { background: #ffe0ec; color: #d6457a; }
+    .shine li .ic { background: #e5defc; color: var(--purple-deep); }
+    .shine li { color: var(--ink); font-weight: 500; }
+
+    /* ---------- FEATURES ---------- */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .fcard {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 28px; box-shadow: var(--shadow); transition: transform .18s ease;
+    }
+    .fcard:hover { transform: translateY(-6px); }
+    .fcard .emoji {
+      width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center;
+      font-size: 26px; margin-bottom: 16px;
+      background: linear-gradient(160deg, var(--pink-soft), #efe9ff);
+    }
+    .fcard h3 { margin: 0 0 8px; font-size: 20px; }
+    .fcard p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+
+    /* ---------- HOW IT WORKS ---------- */
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 26px; counter-reset: step; }
+    .step { text-align: center; position: relative; }
+    .step .num {
+      counter-increment: step; width: 62px; height: 62px; margin: 0 auto 16px;
+      border-radius: 50%; display: grid; place-items: center;
+      font-family:'Fredoka'; font-weight: 700; font-size: 26px; color: #fff;
+      background: linear-gradient(180deg, var(--pink-deep), var(--purple));
+      box-shadow: 0 12px 22px -10px rgba(79,52,214,.75);
+    }
+    .step .num::before { content: counter(step); }
+    .step h3 { margin: 0 0 8px; font-size: 19px; }
+    .step p { margin: 0 auto; color: var(--ink-soft); font-size: 15px; max-width: 280px; }
+
+    /* ---------- PROMISE BANNER ---------- */
+    .promise {
+      background: linear-gradient(160deg, var(--grape), #4327a6);
+      color: #f3edff; border-radius: 28px; padding: 56px; position: relative; overflow: hidden;
+      box-shadow: var(--shadow); text-align: center;
+    }
+    .promise::after {
+      content:""; position:absolute; width: 340px; height: 340px; border-radius:50%;
+      background: radial-gradient(circle at 40% 40%, rgba(249,168,224,.5), transparent 65%);
+      top: -90px; right: -70px;
+    }
+    .promise .eyebrow { color: var(--buckle); }
+    .promise h2 { font-size: clamp(26px, 3.6vw, 38px); margin: 0 auto 16px; color:#fff; max-width: 760px; position: relative; }
+    .promise p { color: #d9cffb; font-size: 18px; margin: 0 auto; max-width: 620px; position: relative; }
+    .promise .quote { font-family:'Fredoka'; font-weight: 600; font-size: 22px; color: #fff; margin-top: 22px; position: relative; }
+
+    /* ---------- CTA ---------- */
+    .cta {
+      text-align: center;
+      background:
+        radial-gradient(800px 300px at 50% -20%, rgba(249,168,224,.5), transparent 60%),
+        linear-gradient(180deg, #ffeef9, #fff7fc);
+      border-top: 1px solid var(--line);
+      padding: 90px 0;
+    }
+    .cta h2 { font-size: clamp(30px, 5vw, 48px); margin: 0 0 14px; }
+    .cta p { color: var(--ink-soft); font-size: 19px; max-width: 520px; margin: 0 auto 30px; }
+    .cta form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; max-width: 480px; margin: 0 auto; }
+    .cta input {
+      flex: 1; min-width: 220px; padding: 14px 18px; border-radius: 999px;
+      border: 2px solid var(--line); font-size: 16px; font-family: inherit; outline: none;
+    }
+    .cta input:focus { border-color: var(--pink-deep); }
+
+    /* ---------- FOOTER ---------- */
+    footer.site { background: var(--grape); color: #c3b3ef; padding: 40px 0; }
+    footer.site .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
+    footer.site .brand { color: #fff; }
+    footer.site a { color: #ddd0ff; text-decoration: none; }
+    footer.site a:hover { color: #fff; }
+    footer.site .small { font-size: 13px; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .split, .cards, .steps { grid-template-columns: 1fr; }
+      .promise { padding: 36px 26px; }
+      .nav-links a:not(.btn) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="top">
+    <div class="wrap">
+      <a class="brand" href="#top"><span class="mark">P</span> Pim</a>
+      <div class="nav-links">
+        <a href="#pain">Why Pim</a>
+        <a href="#features">What it does</a>
+        <a href="#how">How it works</a>
+        <a href="#promise">The promise</a>
+        <a class="btn btn-primary" href="#cta">Get early access</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <span class="pill"><span class="spark">✦</span> The agentic PM assistant</span>
+      <h1>Pim does the <span class="hl">boring stuff</span>.<br>So you get to <span class="hl">shine</span>.</h1>
+      <p class="lead">
+        Status updates. Ticket grooming. Standup notes. Roadmap wrangling.
+        Pim happily devours the repetitive garbage work that eats your day —
+        so you can do the product thinking only <em>you</em> can do.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#cta">Get early access →</a>
+        <a class="btn btn-ghost" href="#features">See what Pim handles</a>
+      </div>
+      <p class="hero-note">🩷 No credit card. Pim just wants to help.</p>
+    </div>
+  </header>
+
+  <!-- TRUST -->
+  <div class="trust">
+    <div class="wrap">
+      <p>Built for product managers who are drowning in</p>
+      <div class="trust-row">
+        <span>Jira</span><span>Linear</span><span>Notion</span><span>Slack</span><span>Confluence</span><span>Figma</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAIN vs SHINE -->
+  <section class="block" id="pain">
+    <div class="wrap">
+      <p class="eyebrow">The PM tax</p>
+      <h2 class="h2">You didn't become a PM to copy-paste status updates</h2>
+      <p class="sub">Somewhere between the vision and the roadmap, your calendar filled up with busywork. Pim takes it back.</p>
+      <div class="split">
+        <div class="panel pain">
+          <h3>😮‍💨 Without Pim</h3>
+          <p class="tag">The garbage work that quietly eats your week</p>
+          <ul>
+            <li><span class="ic">✕</span> Chasing engineers for ticket statuses before every standup</li>
+            <li><span class="ic">✕</span> Rewriting the same update for Slack, the exec deck, and the wiki</li>
+            <li><span class="ic">✕</span> Grooming a backlog of half-written tickets at 6pm</li>
+            <li><span class="ic">✕</span> Turning messy call notes into structured requirements by hand</li>
+            <li><span class="ic">✕</span> Reconciling the roadmap after every reprioritization</li>
+          </ul>
+        </div>
+        <div class="panel shine">
+          <h3>✨ With Pim</h3>
+          <p class="tag">You focus on the work that actually moves the needle</p>
+          <ul>
+            <li><span class="ic">✓</span> Talking to customers and finding the real problem</li>
+            <li><span class="ic">✓</span> Making sharp prioritization calls with clear tradeoffs</li>
+            <li><span class="ic">✓</span> Aligning the team around a story worth building</li>
+            <li><span class="ic">✓</span> Shaping strategy instead of formatting it</li>
+            <li><span class="ic">✓</span> Actually logging off at a reasonable hour</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="block" id="features" style="background:#fdeff8;">
+    <div class="wrap">
+      <p class="eyebrow">What Pim handles</p>
+      <h2 class="h2">One cheerful agent. All the thankless tasks.</h2>
+      <p class="sub">Pim plugs into the tools you already live in, watches for the repetitive work, and just… does it. Then tells you it's done.</p>
+      <div class="cards">
+        <div class="fcard">
+          <div class="emoji">📝</div>
+          <h3>Standups & status</h3>
+          <p>Pim reads your tickets, PRs, and Slack, then drafts the standup summary and stakeholder update — in your voice, ready to send.</p>
+        </div>
+        <div class="fcard">
+          <div class="emoji">🎟️</div>
+          <h3>Ticket grooming</h3>
+          <p>Vague one-liners become well-formed tickets with acceptance criteria, links, and estimates queued for your review.</p>
+        </div>
+        <div class="fcard">
+          <div class="emoji">🎙️</div>
+          <h3>Notes → requirements</h3>
+          <p>Drop in a call recording or messy notes. Pim returns a clean PRD draft with user stories and open questions flagged.</p>
+        </div>
+        <div class="fcard">
+          <div class="emoji">🗺️</div>
+          <h3>Roadmap upkeep</h3>
+          <p>Priorities shifted again? Pim reconciles the roadmap, updates timelines, and drafts the "what changed and why" note.</p>
+        </div>
+        <div class="fcard">
+          <div class="emoji">🔎</div>
+          <h3>Feedback triage</h3>
+          <p>Pim clusters incoming feedback, tickets, and support threads into themes so you see what actually matters this week.</p>
+        </div>
+        <div class="fcard">
+          <div class="emoji">📊</div>
+          <h3>The exec update</h3>
+          <p>Metrics, milestones, and risks pulled together into a crisp update you'd be proud to paste into any leadership channel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="block" id="how">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2 class="h2">Point Pim at the mess. Get your afternoon back.</h2>
+      <p class="sub">No new process to learn. Pim adapts to how your team already works.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="num"></div>
+          <h3>Connect your tools</h3>
+          <p>Link Jira, Linear, Notion, Slack, and your docs. Pim learns your team's context and your writing voice.</p>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <h3>Pim gets to work</h3>
+          <p>It quietly handles the recurring grunt work in the background — drafting, grooming, summarizing, reconciling.</p>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <h3>You approve & shine</h3>
+          <p>Everything lands in a review queue. Skim, tweak, approve — and spend your energy on the work that counts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMISE -->
+  <section class="block" id="promise">
+    <div class="wrap">
+      <div class="promise">
+        <p class="eyebrow">The promise</p>
+        <h2>Relentlessly cheerful. Absurdly helpful.</h2>
+        <p>
+          Pim's whole reason for existing is to make your day better. It doesn't complain about
+          the boring tasks — it genuinely wants them. Earnest, optimistic, and tireless, it
+          takes the thankless work off your plate and hands it back done, so you're the one who
+          gets to shine.
+        </p>
+        <p class="quote">"You did great today. I got the rest." — Pim</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <div class="wrap">
+      <h2>Let Pim take the garbage work.</h2>
+      <p>Join the early access list. Be the PM everyone wonders how you stay so on top of everything.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.nextElementSibling.style.display='block';">
+        <input type="email" placeholder="you@yourteam.com" required aria-label="Work email">
+        <button class="btn btn-primary" type="submit">Get early access</button>
+      </form>
+      <p style="display:none; color:var(--purple-deep); font-weight:600; margin-top:16px;">🎉 You're on the list! Pim is thrilled to meet you.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <a class="brand" href="#top"><span class="mark">P</span> Pim</a>
+      <div class="small">The agentic PM assistant that does the boring stuff so you can shine.</div>
+      <div class="small">© <span id="yr"></span> Pim · <a href="/">hjeeb.us</a></div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

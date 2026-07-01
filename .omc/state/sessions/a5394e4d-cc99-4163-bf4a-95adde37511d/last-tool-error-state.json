@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cat /Users/broc/src/hjeebus.github.io/README.md 2>/dev/null; echo \\\"---CONFIG---\\\"; ls /Users/broc/src/hjeebus.github.io/*.toml /Users/broc/src/hjeebus.github.io/*.yaml /Users/broc/src/hje...",
+  "error": "Exit code 1\nFirst commit\n---CONFIG---\n(eval):1: no matches found: /Users/broc/src/hjeebus.github.io/*.toml",
+  "timestamp": "2026-07-01T16:24:14.112Z",
+  "retry_count": 1
+}
