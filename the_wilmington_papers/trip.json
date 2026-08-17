@@ -3,7 +3,7 @@
   "tagline": "Seven dinners in Wilmington, North Carolina. Transcribed without consent, catalogued without mercy. Nothing was resolved.",
   "footer": "field notes, Aug 2026",
   "notes_dir": "granola_notes",
-  "noindex": false,
+  "noindex": true,
   "facts": [
     {
       "n": 1,
