@@ -1,0 +1,90 @@
+{
+  "title": "The Wilmington Papers",
+  "tagline": "Seven dinners in Wilmington, North Carolina. Transcribed without consent, catalogued without mercy. Nothing was resolved.",
+  "footer": "field notes, Aug 2026",
+  "notes_dir": "granola_notes",
+  "noindex": false,
+  "facts": [
+    {
+      "n": 1,
+      "label": "unresolved slap"
+    }
+  ],
+  "closing_stat": {
+    "n": 0,
+    "label": "firm decisions"
+  },
+  "drop_sections": [
+    "undercurrent"
+  ],
+  "order": [
+    "sea_bird",
+    "nils",
+    "circa_1922",
+    "manna",
+    "dram_tree",
+    "banter",
+    "dram_yard"
+  ],
+  "venues": {
+    "sea_bird": {
+      "name": "Sea Bird",
+      "kind": "Outdoor bar"
+    },
+    "nils": {
+      "name": "Nil's",
+      "kind": "Greek, downtown"
+    },
+    "circa_1922": {
+      "name": "Circa 1922",
+      "kind": "American bistro"
+    },
+    "manna": {
+      "name": "Manna",
+      "kind": "Farm-to-table, Princess St"
+    },
+    "dram_tree": {
+      "name": "Dram Tree",
+      "kind": "Weekday beers"
+    },
+    "banter": {
+      "name": "Banter",
+      "kind": "English-style pub"
+    },
+    "dram_yard": {
+      "name": "Dram Yard",
+      "kind": "Late dinner, Market St"
+    }
+  },
+  "thread_min_sittings": 2,
+  "threads": {
+    "the slap": "wheelchair|slap",
+    "the brass rabbit": "brass rabbit|the rabbit",
+    "city tiers": "S-tier|A-tier|tier",
+    "the set list": "set ?list",
+    "bidets": "bidet",
+    "cymbals": "cymbal"
+  },
+  "sections": {
+    "cold_cases": {
+      "kicker": "Section I - unresolved",
+      "title": "Cold Cases",
+      "dek": "{questions} questions asked and never answered. {loops} loops left open. No one is working on any of this."
+    },
+    "record": {
+      "kicker": "Section II",
+      "title": "The Record",
+      "dek": "Seven sittings, chronological. Each one catalogued in full."
+    },
+    "canon": {
+      "kicker": "Section III - the record of claims",
+      "title": "Canon",
+      "dek": "{theories} assertions made at the table with total confidence and zero verification. Presented here as fact, because that is how they were said."
+    },
+    "quotable": {
+      "kicker": "Section IV",
+      "title": "Quotable",
+      "dek": "Every line worth preserving, served one at a time."
+    }
+  }
+}

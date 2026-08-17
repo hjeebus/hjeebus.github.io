@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quotable - The Wilmington Papers</title>
+<meta name="description" content="Seven dinners in Wilmington, North Carolina. Transcribed without consent, catalogued without mercy. Nothing was resolved.">
+<style>
+:root{
+  --paper:#f4f1e8; --ink:#1c1a17; --faded:#6b6459; --rule:#c9c2b2;
+  --stamp:#a63d2f; --accent:#2f4f4f; --card:#fbf9f3; --shadow:rgba(28,26,23,.09);
+}
+@media (prefers-color-scheme:dark){
+  :root{ --paper:#16151a; --ink:#e8e4da; --faded:#948c7e; --rule:#38343d;
+    --stamp:#e0705c; --accent:#7fb2a8; --card:#1e1d23; --shadow:rgba(0,0,0,.4); }
+}
+:root[data-theme="dark"]{
+  --paper:#16151a; --ink:#e8e4da; --faded:#948c7e; --rule:#38343d;
+  --stamp:#e0705c; --accent:#7fb2a8; --card:#1e1d23; --shadow:rgba(0,0,0,.4);
+}
+:root[data-theme="light"]{
+  --paper:#f4f1e8; --ink:#1c1a17; --faded:#6b6459; --rule:#c9c2b2;
+  --stamp:#a63d2f; --accent:#2f4f4f; --card:#fbf9f3; --shadow:rgba(28,26,23,.09);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px 90px}
+.mono{font-family:"SFMono-Regular",Menlo,Consolas,monospace}
+
+header.mast{border-bottom:2px solid var(--ink);margin-bottom:26px;padding-top:38px}
+.kicker{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--stamp);margin-bottom:12px;
+}
+h1.title{
+  font-size:clamp(2.1rem,7vw,3.5rem);line-height:1.02;margin:0 0 10px;
+  letter-spacing:-.02em;font-weight:600;
+}
+.dek{color:var(--faded);font-size:.95rem;margin:0 0 20px;font-style:italic}
+.mast-meta{
+  display:flex;flex-wrap:wrap;gap:6px 20px;padding:10px 0;
+  border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faded);
+}
+.mast-meta b{color:var(--ink);font-weight:600}
+
+nav.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px;align-items:center}
+nav.tabs a{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;padding:7px 13px;border:1px solid var(--rule);
+  border-radius:2px;color:var(--faded);background:var(--card);
+}
+nav.tabs a:hover{border-color:var(--ink);color:var(--ink)}
+nav.tabs a[aria-current="page"]{
+  background:var(--ink);color:var(--paper);border-color:var(--ink);
+}
+nav.tabs a.themer{margin-left:auto;border-style:dashed}
+
+h2.sec{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--stamp);margin:44px 0 4px;
+}
+h2.sec + .sec-note{color:var(--faded);font-size:.85rem;margin:0 0 18px;font-style:italic}
+.rule{height:1px;background:var(--rule);border:0;margin:0 0 20px}
+.quiet{color:var(--faded);font-style:italic}
+
+.exhibit{
+  background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--stamp);
+  padding:22px 24px;margin:0 0 16px;border-radius:2px;box-shadow:0 1px 2px var(--shadow);
+}
+.exhibit .q{font-size:1.28rem;line-height:1.44;margin:0 0 12px}
+.exhibit .src{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faded);
+}
+.exhibit .gloss{color:var(--faded);font-size:.86rem;font-style:italic;margin-top:6px}
+
+.docket{display:grid;gap:12px}
+.doc{
+  display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:baseline;
+  background:var(--card);border:1px solid var(--rule);border-radius:2px;
+  padding:16px 18px;text-decoration:none;transition:border-color .15s,transform .15s;
+}
+.doc:hover{border-color:var(--ink);transform:translateX(2px)}
+.doc .num{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.72rem;color:var(--stamp);letter-spacing:.06em;
+}
+.doc .v{font-size:1.16rem;font-weight:600;margin:0 0 2px}
+.doc .k{color:var(--faded);font-size:.82rem}
+.doc .d{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;color:var(--faded);letter-spacing:.08em;white-space:nowrap;
+}
+.doc .tally{
+  margin-top:8px;font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+  display:block;
+}
+@media(max-width:560px){
+  .doc{grid-template-columns:34px 1fr;gap:10px}
+  .doc .d{grid-column:2;margin-top:4px}
+}
+
+.thread{
+  border:1px solid var(--rule);border-radius:2px;background:var(--card);
+  padding:16px 18px;margin-bottom:12px;
+}
+.thread h3{
+  margin:0 0 6px;font-size:1.05rem;display:flex;justify-content:space-between;
+  align-items:baseline;gap:12px;flex-wrap:wrap;
+}
+.thread .count{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.62rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);
+}
+.thread .where{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.66rem;
+  color:var(--faded);letter-spacing:.06em;
+}
+
+ul.evid{list-style:none;padding:0;margin:0}
+ul.evid li{padding:12px 0 12px 30px;border-bottom:1px solid var(--rule);position:relative}
+ul.evid li:last-child{border-bottom:0}
+ul.evid li:before{
+  content:"?";position:absolute;left:0;top:12px;color:var(--stamp);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.8rem;font-weight:700;
+}
+ul.evid.loop li:before{content:"\21bb"}
+ul.evid.claim li:before{content:"\00a7";color:var(--accent)}
+ul.evid.quest li:before{content:"\2192";color:var(--accent)}
+ul.evid .src{
+  display:block;margin-top:5px;
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+}
+
+a.plink{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  text-decoration:none;color:var(--faded);opacity:0;
+  padding:0 4px;font-size:.85em;transition:opacity .12s;
+  white-space:nowrap;
+}
+li:hover > a.plink,a.plink:focus{opacity:1;color:var(--stamp)}
+@media (hover:none){ a.plink{opacity:.5} }
+
+/* Highlight without reflowing: the row keeps its 30px text indent and the
+   marker keeps its position, so only the background and rail change. */
+ul.evid li{border-left:3px solid transparent;padding-left:30px}
+ul.evid li:before{left:3px}
+ul.evid li:target{
+  background:var(--card);
+  border-left-color:var(--stamp);
+  padding-right:12px;
+}
+ul.evid li:target > a.plink{opacity:1;color:var(--stamp)}
+.exhibit .src a{color:var(--faded);text-decoration:underline}
+.exhibit .src a:hover{color:var(--stamp)}
+.exhibit:target{border-left-width:6px;background:var(--paper)}
+.exhibit:hover > .q > a.plink,.exhibit:target > .q > a.plink{opacity:1;color:var(--stamp)}
+:target{scroll-margin-top:24px}
+
+.dinner-head{border-bottom:2px solid var(--ink);padding-top:34px;margin-bottom:8px}
+.dinner-head .num{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.66rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--stamp);margin-bottom:10px;
+}
+.dinner-head h1{font-size:clamp(1.9rem,6vw,3rem);margin:0 0 8px;letter-spacing:-.02em}
+.dinner-head .sub{color:var(--faded);font-size:.9rem;margin:0 0 18px}
+.setting{font-size:1.02rem;margin:22px 0 0}
+.undercurrent{
+  border-left:3px solid var(--accent);background:var(--card);
+  padding:16px 20px;margin:8px 0 0;font-size:.98rem;
+}
+ul.plain{padding-left:20px;margin:0}
+ul.plain li{margin-bottom:9px}
+.pager{
+  display:flex;justify-content:space-between;gap:14px;margin-top:52px;
+  padding-top:18px;border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.68rem;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.pager a{color:var(--faded);text-decoration:none}
+.pager a:hover{color:var(--ink)}
+
+#slot{min-height:190px;display:flex;align-items:center}
+.btn{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:2px;padding:11px 20px;
+}
+.btn:hover{opacity:.86}
+footer.foot{
+  margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.64rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+}
+footer.foot a{color:var(--faded)}
+.stat-row{display:flex;flex-wrap:wrap;gap:26px;margin:26px 0 0}
+.stat b{
+  display:block;font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:1.7rem;color:var(--stamp);line-height:1;font-weight:600;
+}
+.stat span{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faded);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="tabs"><a href="index.html">The Case</a><a href="record.html">The Record</a><a href="cold-cases.html">Cold Cases</a><a href="canon.html">Canon</a><a href="quotable.html" aria-current="page">Quotable</a><a class="themer" href="#" id="themer" title="Toggle light and dark">&#9686;</a></nav>
+
+<header class="mast">
+  <div class="kicker">Section IV</div>
+  <h1 class="title">Quotable</h1>
+  <p class="dek">Every line worth preserving, served one at a time.</p>
+</header>
+<div id="slot"></div><button class="btn" id="again">Pull another line</button><h2 class="sec">The complete set</h2><hr class="rule"><ul class="evid quest"><li id="x-dbdd7262">&ldquo;You got away with it. You got away with it.&rdquo; <a class="plink" href="quotable.html#x-dbdd7262" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li><li id="x-3f7a1a94">&ldquo;I wore it this day. And they’d be like. And I’m not lying. I am not lying.&rdquo; <a class="plink" href="quotable.html#x-3f7a1a94" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li><li id="x-235f9339">&ldquo;The cops are already gone. They clock off at 7 here. It’s the wild, wild west until 6am. Budget cuts. The streets, you understand?&rdquo; <a class="plink" href="quotable.html#x-235f9339" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li><li id="x-fdc3c66e">&ldquo;The streets will protect them.&rdquo; <a class="plink" href="quotable.html#x-fdc3c66e" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li><li id="x-8713e36c">&ldquo;He kind of looked like a pedo, but I don’t think that’s enough for a slap.&rdquo; <a class="plink" href="quotable.html#x-8713e36c" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li><li id="x-8184fb87">&ldquo;Grail symbols.&rdquo; <a class="plink" href="quotable.html#x-8184fb87" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li><li id="x-c8203d99">&ldquo;Fluey and juicy.&rdquo; <a class="plink" href="quotable.html#x-c8203d99" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li><li id="x-e120cef6">&ldquo;Go ahead and get that TPS report.&rdquo; <a class="plink" href="quotable.html#x-e120cef6" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li><li id="x-395dd2fd">&ldquo;I am Greek for Greek.&rdquo; <a class="plink" href="quotable.html#x-395dd2fd" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li><li id="x-2fc384ad">&ldquo;Are you Greco or Roman?&rdquo; <em>(proposed as the definitive differentiator)</em> <a class="plink" href="quotable.html#x-2fc384ad" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li><li id="x-a4714925">&ldquo;I’m getting Roman hard.&rdquo; <a class="plink" href="quotable.html#x-a4714925" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li><li id="x-59705ff3">&ldquo;I’m ripped torn because I am ripped torn over that pino.&rdquo; <a class="plink" href="quotable.html#x-59705ff3" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li><li id="x-4d60c78c">&ldquo;I destroyed the evidence. The evidence still exists.&rdquo; <a class="plink" href="quotable.html#x-4d60c78c" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li><li id="x-950098e2">&ldquo;You Bogarten your own bread? That’s so uncool.&rdquo; <a class="plink" href="quotable.html#x-950098e2" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li><li id="x-9f58dcbc">&ldquo;Unless your name is A.S., it’s not happening.&rdquo; <a class="plink" href="quotable.html#x-9f58dcbc" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li><li id="x-9962a021">&ldquo;They provocated. They were the provocateurs.&rdquo; <a class="plink" href="quotable.html#x-9962a021" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li><li id="x-55cc719c">&ldquo;Kill this recording quick.&rdquo; <a class="plink" href="quotable.html#x-55cc719c" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li><li id="x-f344273a">&ldquo;I had to close all the windows so nobody could see me. I got in there with my hands.&rdquo; <em>(The server, on the mushroom burrata)</em> <a class="plink" href="quotable.html#x-f344273a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li><li id="x-c965b746">&ldquo;Every human being has something of value that they bring to the table. Especially Hitler.&rdquo; <a class="plink" href="quotable.html#x-c965b746" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li><li id="x-fa6574b0">&ldquo;Do you have more room in your body for liquids?&rdquo; <a class="plink" href="quotable.html#x-fa6574b0" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li><li id="x-50682668">&ldquo;I think you actually started this, which is why you saw it happen.&rdquo; <em>(the server, on the wheelchair slapping, gesturing cosmically)</em> <a class="plink" href="quotable.html#x-50682668" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li><li id="x-40033d74">&ldquo;T. admits to thinking about probing all dinner.&rdquo; <a class="plink" href="quotable.html#x-40033d74" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li><li id="x-ae8e3b97">&ldquo;I’m gonna need the dog to start wearing a condom.&rdquo; <a class="plink" href="quotable.html#x-ae8e3b97" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li><li id="x-65b0291f">&ldquo;Sparkles&rdquo; <em>(as the running word for sparkling water)</em> <a class="plink" href="quotable.html#x-65b0291f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li><li id="x-2fe2c600">&ldquo;the server’s name being guessed as Landon, Land Death, Ter, and S. before being confirmed as the server&rdquo; <a class="plink" href="quotable.html#x-2fe2c600" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li><li id="x-687d79fe">&ldquo;She’s barking.&rdquo; <em>(Used first about the other waitress, then repurposed for the blue cheese)</em> <a class="plink" href="quotable.html#x-687d79fe" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li><li id="x-d4072ea3">&ldquo;Risk it for the biscuit, brother&rdquo; <em>(B., after Speaker B worried about grapefruit and his meds)</em> <a class="plink" href="quotable.html#x-d4072ea3" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-6474e5df">&ldquo;Let’s not get too crazy&rdquo; <em>(the server, unprompted)</em> <a class="plink" href="quotable.html#x-6474e5df" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-a5b6cab2">&ldquo;Duck confit sounds fucking fire&rdquo; <a class="plink" href="quotable.html#x-a5b6cab2" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-c19312d0">&ldquo;I’m a sucker for a pork chop&rdquo; <em>(said twice, on different nights)</em> <a class="plink" href="quotable.html#x-c19312d0" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-c3c5c480">&ldquo;Parsley is the collapse of what a good time&rdquo; <a class="plink" href="quotable.html#x-c3c5c480" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-5983a6e4">&ldquo;I’m gonna ride with that. Pre-felony.&rdquo; <a class="plink" href="quotable.html#x-5983a6e4" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-8043ff8d">&ldquo;I don’t even want to know your name. I’m only going to call you your roster number.&rdquo; <a class="plink" href="quotable.html#x-8043ff8d" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-2aa01771">&ldquo;Stays cracking fools 9 to 5&rdquo; <em>(on the chiropractor’s schedule)</em> <a class="plink" href="quotable.html#x-2aa01771" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-5e7ea7c2">&ldquo;What a great job.&rdquo; <em>(on the chiropractor working noon to 5, four days a week)</em> <a class="plink" href="quotable.html#x-5e7ea7c2" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-c72cadcb">&ldquo;We can’t reject the null.&rdquo; <em>(on whether Wilmington is actually fancy)</em> <a class="plink" href="quotable.html#x-c72cadcb" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-60a1d8e2">&ldquo;I think the sound man is playing his own playlist to get people to leave.&rdquo; <a class="plink" href="quotable.html#x-60a1d8e2" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li><li id="x-edec95db">&ldquo;I don’t think I’ve ever met a KISS fan who’s like, oh, I get down.&rdquo; <a class="plink" href="quotable.html#x-edec95db" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-3d535d2d">&ldquo;That’s a red flag.&rdquo; <em>(re: the KISS-loving high school teacher)</em> <a class="plink" href="quotable.html#x-3d535d2d" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-adf35ef3">&ldquo;Jungles Run Deep, bro.&rdquo; <em>(said about ICP, with full confidence)</em> <a class="plink" href="quotable.html#x-adf35ef3" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-b2e123fd">&ldquo;We were the jugglers at Walmart.&rdquo; <a class="plink" href="quotable.html#x-b2e123fd" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-f7f9855a">&ldquo;The files are in the computer.&rdquo; <em>(said while scrolling Discord)</em> <a class="plink" href="quotable.html#x-f7f9855a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-352d985a">&ldquo;I’m starting to sound like Uncle Wade. Oh my God. This is my arc.&rdquo; <a class="plink" href="quotable.html#x-352d985a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-f7f9ffd0">&ldquo;Look at us. We’re having beers on a weekday after going to the thrift store.&rdquo; <a class="plink" href="quotable.html#x-f7f9ffd0" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-629d7222">&ldquo;Who would order eight mini corn dogs?&rdquo; <em>(recurring joke between two people)</em> <a class="plink" href="quotable.html#x-629d7222" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-9777375f">&ldquo;Are you saying that. Is your phone listening to us right now?&rdquo; <em>(after someone said the word communism)</em> <a class="plink" href="quotable.html#x-9777375f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-a09869b8">&ldquo;Chase it, chase it. Skibidi.&rdquo; <a class="plink" href="quotable.html#x-a09869b8" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-ac0ad93e">&ldquo;Teachers should be allowed to do cocaine.&rdquo; <a class="plink" href="quotable.html#x-ac0ad93e" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li><li id="x-0721288f">&ldquo;You need to stop concerning yourself with my well-being.&rdquo; <a class="plink" href="quotable.html#x-0721288f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li><li id="x-b66dd834">&ldquo;I may now violate several laws. See what’s what.&rdquo; <a class="plink" href="quotable.html#x-b66dd834" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li><li id="x-cd97af75">&ldquo;Chemo banter. That’s not.&rdquo; <a class="plink" href="quotable.html#x-cd97af75" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li><li id="x-6fb767cc">&ldquo;What kind of concrete box we put this beach in?&rdquo; <em>(on funeral banter)</em> <a class="plink" href="quotable.html#x-6fb767cc" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li><li id="x-8eef76d8">&ldquo;Some call him the Rizzler.&rdquo; <a class="plink" href="quotable.html#x-8eef76d8" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li><li id="x-16474d54">&ldquo;I’ve never found it. So therefore it doesn’t exist. And by S.’s logic.&rdquo; <a class="plink" href="quotable.html#x-16474d54" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li><li id="x-4fe7db61">&ldquo;I hate this place.&rdquo; <em>(said warmly, immediately after “I love this place” energy)</em> <a class="plink" href="quotable.html#x-4fe7db61" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li><li id="x-5c24229a">&ldquo;Did you have it rolling? I would have given you better content.&rdquo; <em>(closing line, aware the whole time)</em> <a class="plink" href="quotable.html#x-5c24229a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li><li id="x-bb069542">&ldquo;All input is welcome, just not correct.&rdquo; <em>(A., via text, about the setlist)</em> <a class="plink" href="quotable.html#x-bb069542" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li><li id="x-19ee7cc7">&ldquo;My pronouns are cake talk.&rdquo; <a class="plink" href="quotable.html#x-19ee7cc7" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li><li id="x-049375a8">&ldquo;Lobster. Too flavorful.&rdquo; <em>(recurring complaint about abundance of good things)</em> <a class="plink" href="quotable.html#x-049375a8" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li><li id="x-1b4bfe22">&ldquo;Rent free going away.&rdquo; <em>(about someone still living in someone’s head)</em> <a class="plink" href="quotable.html#x-1b4bfe22" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li><li id="x-911f3cea">&ldquo;We shan’t.&rdquo; <em>(escalating through “we shouldn’t, we could, we may, we shan’t”)</em> <a class="plink" href="quotable.html#x-911f3cea" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li><li id="x-907d7ba5">&ldquo;I’m edging myself as we speak.&rdquo; <em>(re: anticipation for the upcoming show)</em> <a class="plink" href="quotable.html#x-907d7ba5" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li><li id="x-31dc9b4a">&ldquo;Splendid ordering. We’re just living our truths.&rdquo; <a class="plink" href="quotable.html#x-31dc9b4a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li><li id="x-f251e9e4">&ldquo;She boofed us in the back corner and then she rattled my brain.&rdquo; <a class="plink" href="quotable.html#x-f251e9e4" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li><li id="x-6bca8b27">&ldquo;Cool them jets. I’m at a five. You’re not.&rdquo; <a class="plink" href="quotable.html#x-6bca8b27" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li><li id="x-17e57143">&ldquo;It’s like making a playlist. That’s the only thing I can liken it to.&rdquo; <em>(on ordering adventurously)</em> <a class="plink" href="quotable.html#x-17e57143" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li></ul>
+<script>
+var Q = [{"t": "You got away with it. You got away with it.", "a": "", "v": "Sea Bird", "d": "9 AUG 2026", "s": "sea_bird", "id": "x-dbdd7262"}, {"t": "I wore it this day. And they’d be like. And I’m not lying. I am not lying.", "a": "", "v": "Sea Bird", "d": "9 AUG 2026", "s": "sea_bird", "id": "x-3f7a1a94"}, {"t": "The cops are already gone. They clock off at 7 here. It’s the wild, wild west until 6am. Budget cuts. The streets, you understand?", "a": "", "v": "Sea Bird", "d": "9 AUG 2026", "s": "sea_bird", "id": "x-235f9339"}, {"t": "The streets will protect them.", "a": "", "v": "Sea Bird", "d": "9 AUG 2026", "s": "sea_bird", "id": "x-fdc3c66e"}, {"t": "He kind of looked like a pedo, but I don’t think that’s enough for a slap.", "a": "", "v": "Sea Bird", "d": "9 AUG 2026", "s": "sea_bird", "id": "x-8713e36c"}, {"t": "Grail symbols.", "a": "", "v": "Sea Bird", "d": "9 AUG 2026", "s": "sea_bird", "id": "x-8184fb87"}, {"t": "Fluey and juicy.", "a": "", "v": "Sea Bird", "d": "9 AUG 2026", "s": "sea_bird", "id": "x-c8203d99"}, {"t": "Go ahead and get that TPS report.", "a": "", "v": "Sea Bird", "d": "9 AUG 2026", "s": "sea_bird", "id": "x-e120cef6"}, {"t": "I am Greek for Greek.", "a": "", "v": "Nil's", "d": "9 AUG 2026", "s": "nils", "id": "x-395dd2fd"}, {"t": "Are you Greco or Roman?", "a": "proposed as the definitive differentiator", "v": "Nil's", "d": "9 AUG 2026", "s": "nils", "id": "x-2fc384ad"}, {"t": "I’m getting Roman hard.", "a": "", "v": "Nil's", "d": "9 AUG 2026", "s": "nils", "id": "x-a4714925"}, {"t": "I’m ripped torn because I am ripped torn over that pino.", "a": "", "v": "Nil's", "d": "9 AUG 2026", "s": "nils", "id": "x-59705ff3"}, {"t": "I destroyed the evidence. The evidence still exists.", "a": "", "v": "Nil's", "d": "9 AUG 2026", "s": "nils", "id": "x-4d60c78c"}, {"t": "You Bogarten your own bread? That’s so uncool.", "a": "", "v": "Nil's", "d": "9 AUG 2026", "s": "nils", "id": "x-950098e2"}, {"t": "Unless your name is A.S., it’s not happening.", "a": "", "v": "Nil's", "d": "9 AUG 2026", "s": "nils", "id": "x-9f58dcbc"}, {"t": "They provocated. They were the provocateurs.", "a": "", "v": "Nil's", "d": "9 AUG 2026", "s": "nils", "id": "x-9962a021"}, {"t": "Kill this recording quick.", "a": "", "v": "Nil's", "d": "9 AUG 2026", "s": "nils", "id": "x-55cc719c"}, {"t": "I had to close all the windows so nobody could see me. I got in there with my hands.", "a": "The server, on the mushroom burrata", "v": "Nil's", "d": "9 AUG 2026", "s": "nils", "id": "x-f344273a"}, {"t": "Every human being has something of value that they bring to the table. Especially Hitler.", "a": "", "v": "Circa 1922", "d": "10 AUG 2026", "s": "circa_1922", "id": "x-c965b746"}, {"t": "Do you have more room in your body for liquids?", "a": "", "v": "Circa 1922", "d": "10 AUG 2026", "s": "circa_1922", "id": "x-fa6574b0"}, {"t": "I think you actually started this, which is why you saw it happen.", "a": "the server, on the wheelchair slapping, gesturing cosmically", "v": "Circa 1922", "d": "10 AUG 2026", "s": "circa_1922", "id": "x-50682668"}, {"t": "T. admits to thinking about probing all dinner.", "a": "", "v": "Circa 1922", "d": "10 AUG 2026", "s": "circa_1922", "id": "x-40033d74"}, {"t": "I’m gonna need the dog to start wearing a condom.", "a": "", "v": "Circa 1922", "d": "10 AUG 2026", "s": "circa_1922", "id": "x-ae8e3b97"}, {"t": "Sparkles", "a": "as the running word for sparkling water", "v": "Circa 1922", "d": "10 AUG 2026", "s": "circa_1922", "id": "x-65b0291f"}, {"t": "the server’s name being guessed as Landon, Land Death, Ter, and S. before being confirmed as the server", "a": "", "v": "Circa 1922", "d": "10 AUG 2026", "s": "circa_1922", "id": "x-2fe2c600"}, {"t": "She’s barking.", "a": "Used first about the other waitress, then repurposed for the blue cheese", "v": "Circa 1922", "d": "10 AUG 2026", "s": "circa_1922", "id": "x-687d79fe"}, {"t": "Risk it for the biscuit, brother", "a": "B., after Speaker B worried about grapefruit and his meds", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-d4072ea3"}, {"t": "Let’s not get too crazy", "a": "the server, unprompted", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-6474e5df"}, {"t": "Duck confit sounds fucking fire", "a": "", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-a5b6cab2"}, {"t": "I’m a sucker for a pork chop", "a": "said twice, on different nights", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-c19312d0"}, {"t": "Parsley is the collapse of what a good time", "a": "", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-c3c5c480"}, {"t": "I’m gonna ride with that. Pre-felony.", "a": "", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-5983a6e4"}, {"t": "I don’t even want to know your name. I’m only going to call you your roster number.", "a": "", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-8043ff8d"}, {"t": "Stays cracking fools 9 to 5", "a": "on the chiropractor’s schedule", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-2aa01771"}, {"t": "What a great job.", "a": "on the chiropractor working noon to 5, four days a week", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-5e7ea7c2"}, {"t": "We can’t reject the null.", "a": "on whether Wilmington is actually fancy", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-c72cadcb"}, {"t": "I think the sound man is playing his own playlist to get people to leave.", "a": "", "v": "Manna", "d": "12 AUG 2026", "s": "manna", "id": "x-60a1d8e2"}, {"t": "I don’t think I’ve ever met a KISS fan who’s like, oh, I get down.", "a": "", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-edec95db"}, {"t": "That’s a red flag.", "a": "re: the KISS-loving high school teacher", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-3d535d2d"}, {"t": "Jungles Run Deep, bro.", "a": "said about ICP, with full confidence", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-adf35ef3"}, {"t": "We were the jugglers at Walmart.", "a": "", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-b2e123fd"}, {"t": "The files are in the computer.", "a": "said while scrolling Discord", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-f7f9855a"}, {"t": "I’m starting to sound like Uncle Wade. Oh my God. This is my arc.", "a": "", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-352d985a"}, {"t": "Look at us. We’re having beers on a weekday after going to the thrift store.", "a": "", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-f7f9ffd0"}, {"t": "Who would order eight mini corn dogs?", "a": "recurring joke between two people", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-629d7222"}, {"t": "Are you saying that. Is your phone listening to us right now?", "a": "after someone said the word communism", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-9777375f"}, {"t": "Chase it, chase it. Skibidi.", "a": "", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-a09869b8"}, {"t": "Teachers should be allowed to do cocaine.", "a": "", "v": "Dram Tree", "d": "13 AUG 2026", "s": "dram_tree", "id": "x-ac0ad93e"}, {"t": "You need to stop concerning yourself with my well-being.", "a": "", "v": "Banter", "d": "13 AUG 2026", "s": "banter", "id": "x-0721288f"}, {"t": "I may now violate several laws. See what’s what.", "a": "", "v": "Banter", "d": "13 AUG 2026", "s": "banter", "id": "x-b66dd834"}, {"t": "Chemo banter. That’s not.", "a": "", "v": "Banter", "d": "13 AUG 2026", "s": "banter", "id": "x-cd97af75"}, {"t": "What kind of concrete box we put this beach in?", "a": "on funeral banter", "v": "Banter", "d": "13 AUG 2026", "s": "banter", "id": "x-6fb767cc"}, {"t": "Some call him the Rizzler.", "a": "", "v": "Banter", "d": "13 AUG 2026", "s": "banter", "id": "x-8eef76d8"}, {"t": "I’ve never found it. So therefore it doesn’t exist. And by S.’s logic.", "a": "", "v": "Banter", "d": "13 AUG 2026", "s": "banter", "id": "x-16474d54"}, {"t": "I hate this place.", "a": "said warmly, immediately after “I love this place” energy", "v": "Banter", "d": "13 AUG 2026", "s": "banter", "id": "x-4fe7db61"}, {"t": "Did you have it rolling? I would have given you better content.", "a": "closing line, aware the whole time", "v": "Banter", "d": "13 AUG 2026", "s": "banter", "id": "x-5c24229a"}, {"t": "All input is welcome, just not correct.", "a": "A., via text, about the setlist", "v": "Dram Yard", "d": "13 AUG 2026", "s": "dram_yard", "id": "x-bb069542"}, {"t": "My pronouns are cake talk.", "a": "", "v": "Dram Yard", "d": "13 AUG 2026", "s": "dram_yard", "id": "x-19ee7cc7"}, {"t": "Lobster. Too flavorful.", "a": "recurring complaint about abundance of good things", "v": "Dram Yard", "d": "13 AUG 2026", "s": "dram_yard", "id": "x-049375a8"}, {"t": "Rent free going away.", "a": "about someone still living in someone’s head", "v": "Dram Yard", "d": "13 AUG 2026", "s": "dram_yard", "id": "x-1b4bfe22"}, {"t": "We shan’t.", "a": "escalating through “we shouldn’t, we could, we may, we shan’t”", "v": "Dram Yard", "d": "13 AUG 2026", "s": "dram_yard", "id": "x-911f3cea"}, {"t": "I’m edging myself as we speak.", "a": "re: anticipation for the upcoming show", "v": "Dram Yard", "d": "13 AUG 2026", "s": "dram_yard", "id": "x-907d7ba5"}, {"t": "Splendid ordering. We’re just living our truths.", "a": "", "v": "Dram Yard", "d": "13 AUG 2026", "s": "dram_yard", "id": "x-31dc9b4a"}, {"t": "She boofed us in the back corner and then she rattled my brain.", "a": "", "v": "Dram Yard", "d": "13 AUG 2026", "s": "dram_yard", "id": "x-f251e9e4"}, {"t": "Cool them jets. I’m at a five. You’re not.", "a": "", "v": "Dram Yard", "d": "13 AUG 2026", "s": "dram_yard", "id": "x-6bca8b27"}, {"t": "It’s like making a playlist. That’s the only thing I can liken it to.", "a": "on ordering adventurously", "v": "Dram Yard", "d": "13 AUG 2026", "s": "dram_yard", "id": "x-17e57143"}], last = -1, syncing = false;
+
+function show(i, setHash){
+  last = i;
+  var q = Q[i], slot = document.getElementById('slot');
+  slot.textContent = '';
+  var card = document.createElement('div');
+  card.className = 'exhibit';
+  card.style.width = '100%';
+  var p = document.createElement('p');
+  p.className = 'q';
+  p.textContent = '\u201c' + q.t + '\u201d';
+  card.appendChild(p);
+  if (q.a) {
+    var g = document.createElement('div');
+    g.className = 'gloss'; g.textContent = q.a; card.appendChild(g);
+  }
+  var s = document.createElement('div');
+  s.className = 'src';
+  s.textContent = q.v + ' \u00b7 ' + q.d + ' \u00b7 ';
+  var link = document.createElement('a');
+  link.href = '#' + q.id;
+  link.textContent = 'link to this line';
+  s.appendChild(link);
+  card.appendChild(s);
+  slot.appendChild(card);
+  // Assigning location.hash (not replaceState) so :target follows the card and
+  // the previously linked row stops being highlighted. The scroll position is
+  // restored because the shuffle button is what the reader is looking at.
+  if (setHash && location.hash !== '#' + q.id) {
+    var x = window.pageXOffset, y = window.pageYOffset;
+    syncing = true;
+    location.hash = q.id;
+    window.scrollTo(x, y);
+  }
+}
+
+function pull(){
+  var i = Math.floor(Math.random()*Q.length);
+  if (Q.length > 1) { while (i === last) i = Math.floor(Math.random()*Q.length); }
+  show(i, true);
+}
+
+function fromHash(){
+  var h = location.hash.replace(/^#/, '');
+  if (!h) return -1;
+  for (var i = 0; i < Q.length; i++) { if (Q[i].id === h) return i; }
+  return -1;
+}
+
+document.getElementById('again').addEventListener('click', pull);
+
+var start = fromHash();
+show(start >= 0 ? start : Math.floor(Math.random()*Q.length), false);
+
+window.addEventListener('hashchange', function(){
+  if (syncing) { syncing = false; return; }
+  var i = fromHash();
+  if (i >= 0) show(i, false);
+});
+</script>
+
+<footer class="foot">
+  The Wilmington Papers &middot; field notes, Aug 2026 &middot; <a href="index.html">return to file</a>
+</footer>
+</div>
+<script>
+(function(){
+  var r=document.documentElement, k="papers-theme", b=document.getElementById("themer");
+  try{ var s=localStorage.getItem(k); if(s) r.setAttribute("data-theme",s); }catch(e){}
+  if(!b) return;
+  b.addEventListener("click",function(ev){
+    ev.preventDefault();
+    var cur=r.getAttribute("data-theme");
+    if(!cur) cur=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
+    var next=cur==="dark"?"light":"dark";
+    r.setAttribute("data-theme",next);
+    try{ localStorage.setItem(k,next); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>

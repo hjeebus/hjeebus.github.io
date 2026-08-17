@@ -20,3 +20,10 @@ markdown: kramdown
 gems:
   - bourbon
   - neat
+
+# Raw dinner notes and the parsed data they produce are private source material.
+# Only the generated pages are published.
+exclude:
+  - "**/granola_notes"
+  - "**/_data"
+  - _tools

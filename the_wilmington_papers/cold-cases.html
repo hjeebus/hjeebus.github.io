@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cold Cases - The Wilmington Papers</title>
+<meta name="description" content="Seven dinners in Wilmington, North Carolina. Transcribed without consent, catalogued without mercy. Nothing was resolved.">
+<style>
+:root{
+  --paper:#f4f1e8; --ink:#1c1a17; --faded:#6b6459; --rule:#c9c2b2;
+  --stamp:#a63d2f; --accent:#2f4f4f; --card:#fbf9f3; --shadow:rgba(28,26,23,.09);
+}
+@media (prefers-color-scheme:dark){
+  :root{ --paper:#16151a; --ink:#e8e4da; --faded:#948c7e; --rule:#38343d;
+    --stamp:#e0705c; --accent:#7fb2a8; --card:#1e1d23; --shadow:rgba(0,0,0,.4); }
+}
+:root[data-theme="dark"]{
+  --paper:#16151a; --ink:#e8e4da; --faded:#948c7e; --rule:#38343d;
+  --stamp:#e0705c; --accent:#7fb2a8; --card:#1e1d23; --shadow:rgba(0,0,0,.4);
+}
+:root[data-theme="light"]{
+  --paper:#f4f1e8; --ink:#1c1a17; --faded:#6b6459; --rule:#c9c2b2;
+  --stamp:#a63d2f; --accent:#2f4f4f; --card:#fbf9f3; --shadow:rgba(28,26,23,.09);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px 90px}
+.mono{font-family:"SFMono-Regular",Menlo,Consolas,monospace}
+
+header.mast{border-bottom:2px solid var(--ink);margin-bottom:26px;padding-top:38px}
+.kicker{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--stamp);margin-bottom:12px;
+}
+h1.title{
+  font-size:clamp(2.1rem,7vw,3.5rem);line-height:1.02;margin:0 0 10px;
+  letter-spacing:-.02em;font-weight:600;
+}
+.dek{color:var(--faded);font-size:.95rem;margin:0 0 20px;font-style:italic}
+.mast-meta{
+  display:flex;flex-wrap:wrap;gap:6px 20px;padding:10px 0;
+  border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faded);
+}
+.mast-meta b{color:var(--ink);font-weight:600}
+
+nav.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px;align-items:center}
+nav.tabs a{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;padding:7px 13px;border:1px solid var(--rule);
+  border-radius:2px;color:var(--faded);background:var(--card);
+}
+nav.tabs a:hover{border-color:var(--ink);color:var(--ink)}
+nav.tabs a[aria-current="page"]{
+  background:var(--ink);color:var(--paper);border-color:var(--ink);
+}
+nav.tabs a.themer{margin-left:auto;border-style:dashed}
+
+h2.sec{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--stamp);margin:44px 0 4px;
+}
+h2.sec + .sec-note{color:var(--faded);font-size:.85rem;margin:0 0 18px;font-style:italic}
+.rule{height:1px;background:var(--rule);border:0;margin:0 0 20px}
+.quiet{color:var(--faded);font-style:italic}
+
+.exhibit{
+  background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--stamp);
+  padding:22px 24px;margin:0 0 16px;border-radius:2px;box-shadow:0 1px 2px var(--shadow);
+}
+.exhibit .q{font-size:1.28rem;line-height:1.44;margin:0 0 12px}
+.exhibit .src{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faded);
+}
+.exhibit .gloss{color:var(--faded);font-size:.86rem;font-style:italic;margin-top:6px}
+
+.docket{display:grid;gap:12px}
+.doc{
+  display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:baseline;
+  background:var(--card);border:1px solid var(--rule);border-radius:2px;
+  padding:16px 18px;text-decoration:none;transition:border-color .15s,transform .15s;
+}
+.doc:hover{border-color:var(--ink);transform:translateX(2px)}
+.doc .num{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.72rem;color:var(--stamp);letter-spacing:.06em;
+}
+.doc .v{font-size:1.16rem;font-weight:600;margin:0 0 2px}
+.doc .k{color:var(--faded);font-size:.82rem}
+.doc .d{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;color:var(--faded);letter-spacing:.08em;white-space:nowrap;
+}
+.doc .tally{
+  margin-top:8px;font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+  display:block;
+}
+@media(max-width:560px){
+  .doc{grid-template-columns:34px 1fr;gap:10px}
+  .doc .d{grid-column:2;margin-top:4px}
+}
+
+.thread{
+  border:1px solid var(--rule);border-radius:2px;background:var(--card);
+  padding:16px 18px;margin-bottom:12px;
+}
+.thread h3{
+  margin:0 0 6px;font-size:1.05rem;display:flex;justify-content:space-between;
+  align-items:baseline;gap:12px;flex-wrap:wrap;
+}
+.thread .count{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.62rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);
+}
+.thread .where{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.66rem;
+  color:var(--faded);letter-spacing:.06em;
+}
+
+ul.evid{list-style:none;padding:0;margin:0}
+ul.evid li{padding:12px 0 12px 30px;border-bottom:1px solid var(--rule);position:relative}
+ul.evid li:last-child{border-bottom:0}
+ul.evid li:before{
+  content:"?";position:absolute;left:0;top:12px;color:var(--stamp);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.8rem;font-weight:700;
+}
+ul.evid.loop li:before{content:"\21bb"}
+ul.evid.claim li:before{content:"\00a7";color:var(--accent)}
+ul.evid.quest li:before{content:"\2192";color:var(--accent)}
+ul.evid .src{
+  display:block;margin-top:5px;
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+}
+
+a.plink{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  text-decoration:none;color:var(--faded);opacity:0;
+  padding:0 4px;font-size:.85em;transition:opacity .12s;
+  white-space:nowrap;
+}
+li:hover > a.plink,a.plink:focus{opacity:1;color:var(--stamp)}
+@media (hover:none){ a.plink{opacity:.5} }
+
+/* Highlight without reflowing: the row keeps its 30px text indent and the
+   marker keeps its position, so only the background and rail change. */
+ul.evid li{border-left:3px solid transparent;padding-left:30px}
+ul.evid li:before{left:3px}
+ul.evid li:target{
+  background:var(--card);
+  border-left-color:var(--stamp);
+  padding-right:12px;
+}
+ul.evid li:target > a.plink{opacity:1;color:var(--stamp)}
+.exhibit .src a{color:var(--faded);text-decoration:underline}
+.exhibit .src a:hover{color:var(--stamp)}
+.exhibit:target{border-left-width:6px;background:var(--paper)}
+.exhibit:hover > .q > a.plink,.exhibit:target > .q > a.plink{opacity:1;color:var(--stamp)}
+:target{scroll-margin-top:24px}
+
+.dinner-head{border-bottom:2px solid var(--ink);padding-top:34px;margin-bottom:8px}
+.dinner-head .num{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.66rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--stamp);margin-bottom:10px;
+}
+.dinner-head h1{font-size:clamp(1.9rem,6vw,3rem);margin:0 0 8px;letter-spacing:-.02em}
+.dinner-head .sub{color:var(--faded);font-size:.9rem;margin:0 0 18px}
+.setting{font-size:1.02rem;margin:22px 0 0}
+.undercurrent{
+  border-left:3px solid var(--accent);background:var(--card);
+  padding:16px 20px;margin:8px 0 0;font-size:.98rem;
+}
+ul.plain{padding-left:20px;margin:0}
+ul.plain li{margin-bottom:9px}
+.pager{
+  display:flex;justify-content:space-between;gap:14px;margin-top:52px;
+  padding-top:18px;border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.68rem;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.pager a{color:var(--faded);text-decoration:none}
+.pager a:hover{color:var(--ink)}
+
+#slot{min-height:190px;display:flex;align-items:center}
+.btn{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:2px;padding:11px 20px;
+}
+.btn:hover{opacity:.86}
+footer.foot{
+  margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.64rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+}
+footer.foot a{color:var(--faded)}
+.stat-row{display:flex;flex-wrap:wrap;gap:26px;margin:26px 0 0}
+.stat b{
+  display:block;font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:1.7rem;color:var(--stamp);line-height:1;font-weight:600;
+}
+.stat span{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faded);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="tabs"><a href="index.html">The Case</a><a href="record.html">The Record</a><a href="cold-cases.html" aria-current="page">Cold Cases</a><a href="canon.html">Canon</a><a href="quotable.html">Quotable</a><a class="themer" href="#" id="themer" title="Toggle light and dark">&#9686;</a></nav>
+
+<header class="mast">
+  <div class="kicker">Section I - unresolved</div>
+  <h1 class="title">Cold Cases</h1>
+  <p class="dek">44 questions asked and never answered. 31 loops left open. No one is working on any of this.</p>
+</header>
+<h2 class="sec">Unanswered questions</h2><p class="sec-note">Raised at the table. Never resolved.</p><hr class="rule"><ul class="evid ">
+  <li id="q-36664868">What is the specific Italian-American trades term for scrap building materials? B. said “that’s gonna haunt me now.” <a class="plink" href="cold-cases.html#q-36664868" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-9600f6eb">What actually preceded the wheelchair slap? “That’s what we all want to know.” <a class="plink" href="cold-cases.html#q-9600f6eb" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-4016af71">Which Law and Order episode is “Confession” exactly, and was the cop dirty or just grieving? <a class="plink" href="cold-cases.html#q-4016af71" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-ff9e04b7">What was the name of the bartender or attendee someone was trying to remember? Landed on “A.M.” but with low confidence. <a class="plink" href="cold-cases.html#q-ff9e04b7" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-ea06b205">Can you be Greek for Greek? (Resolved: yes, in all permutations.) <a class="plink" href="cold-cases.html#q-ea06b205" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-74f73472">Is “Greco” the giver or the receiver? (Unresolved. The Greeks preceded the Romans chronologically, which was considered relevant but not decisive.) <a class="plink" href="cold-cases.html#q-74f73472" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-8b979874">Who was the OnlyFans birthday girl? <a class="plink" href="cold-cases.html#q-8b979874" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-cc8683f6">Was there actually a wheelchair? B. second-guessed his own memory. <a class="plink" href="cold-cases.html#q-cc8683f6" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-c791e5fc">Is “Nona” Polish or Italian? <a class="plink" href="cold-cases.html#q-c791e5fc" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-78d9404f">What actually started the fight outside? <a class="plink" href="cold-cases.html#q-78d9404f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-7d4bd61b">What year did Step Brothers come out? (Someone said 2006. Unverified.) <a class="plink" href="cold-cases.html#q-7d4bd61b" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="q-1df83769">What exactly is the server’s deal? <a class="plink" href="cold-cases.html#q-1df83769" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="q-20dcb252">Was the valedictorian actually Jewish, or just quoting Kanye at Jews? <a class="plink" href="cold-cases.html#q-20dcb252" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="q-3c7be083">Did the wheelchair slapping make it onto social media? <a class="plink" href="cold-cases.html#q-3c7be083" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="q-b3304d22">Which lake is Chicago actually on, Michigan or Superior? <a class="plink" href="cold-cases.html#q-b3304d22" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="q-506707dd">Who were the formally dressed people at the nearby table and what was the occasion? <a class="plink" href="cold-cases.html#q-506707dd" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="q-b5ea12c8">Is the dodgeball quote a real callback or did someone just independently say it? <a class="plink" href="cold-cases.html#q-b5ea12c8" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="q-8fa73399">What was the fourth ingredient in the homemade cocktail before the creamer reveal? <a class="plink" href="cold-cases.html#q-8fa73399" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="q-d404614a">What does the arrow symbol on the menu actually indicate for the oysters specifically? <a class="plink" href="cold-cases.html#q-d404614a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="q-ba3daa57">What was the bell pepper in the dish, really? Shishito? Stuffed pepper? Something else? <a class="plink" href="cold-cases.html#q-ba3daa57" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="q-db6935d9">Is the woman outside upset or just wearing a wrap dress? <a class="plink" href="cold-cases.html#q-db6935d9" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="q-81f4eea9">What is the actual success rate of the escape rooms downtown? <a class="plink" href="cold-cases.html#q-81f4eea9" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="q-cf7e76fa">Which Steely Dan song came before “Reeling in the Years”? <a class="plink" href="cold-cases.html#q-cf7e76fa" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="q-26b5b659">Does silk actually breathe or not? <a class="plink" href="cold-cases.html#q-26b5b659" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="q-0bee31b6">Who is the man in the all-white suit and where was he going? <a class="plink" href="cold-cases.html#q-0bee31b6" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="q-a1af8696">What was playing at the Thalian Theater, if anything? <a class="plink" href="cold-cases.html#q-a1af8696" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="q-034452c6">Is ICP from the Midwest, West Virginia, or LA? Someone refused to look it up. <a class="plink" href="cold-cases.html#q-034452c6" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-ed00916f">Did ICP actually chart? What was the song? <a class="plink" href="cold-cases.html#q-ed00916f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-d0e6b0bf">What is “automaticity” and is it a real word? <a class="plink" href="cold-cases.html#q-d0e6b0bf" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-034608ef">Who got rid of the Black Crowes one? Was it stolen? <a class="plink" href="cold-cases.html#q-034608ef" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-c4b77fd2">Where exactly did the speaker stop on his last drive up north? <a class="plink" href="cold-cases.html#q-c4b77fd2" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-ead32042">Why do they call it a brown bag meeting? (Answered in conversation, but debated.) <a class="plink" href="cold-cases.html#q-ead32042" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-c1dfe88e">Where exactly is the brass rabbit hidden? <a class="plink" href="cold-cases.html#q-c1dfe88e" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-e6a5f2af">What is the actual connection between Kurt Vile and the War on Drugs? <a class="plink" href="cold-cases.html#q-e6a5f2af" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-feaaecef">Is Kurt Vile from Philly or Detroit? <a class="plink" href="cold-cases.html#q-feaaecef" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-bb8654b5">Which EPL team should they pick? <a class="plink" href="cold-cases.html#q-bb8654b5" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-7e0e1cfb">Are the two open seats at the birthday restaurant the counter seats in front of the kitchen? <a class="plink" href="cold-cases.html#q-7e0e1cfb" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-7eea99db">Did anyone actually find the rabbit, or was that a different thing they were looking for? <a class="plink" href="cold-cases.html#q-7eea99db" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-2ba6747a">What is the barber video actually called, and where does it live that isn’t Facebook or Instagram? <a class="plink" href="cold-cases.html#q-2ba6747a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-63022820">Did T.D. stop in Virginia on purpose to see Staunton, or did he just run out of road? <a class="plink" href="cold-cases.html#q-63022820" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-f031913b">What did Nils actually serve? Nobody could remember anything except the bidet bathroom. <a class="plink" href="cold-cases.html#q-f031913b" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-91ccba4f">Who was the server at the Greek spot (Nils)? “Fun princess” mentioned but no name confirmed. <a class="plink" href="cold-cases.html#q-91ccba4f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-9ed02a00">Does the cook in the Oliveira hat work there, or did he just leave on good terms? <a class="plink" href="cold-cases.html#q-9ed02a00" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="q-51639293">What is the “glue box” that ties the whole show setup together? <a class="plink" href="cold-cases.html#q-51639293" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+</ul><h2 class="sec">Open loops</h2><p class="sec-note">Still spinning. Possibly forever.</p><hr class="rule"><ul class="evid loop">
+  <li id="l-ab409276">The cymbal swap: B. wants one more but hasn’t pulled the trigger <a class="plink" href="cold-cases.html#l-ab409276" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="l-37796eba">The watch is in a box. T. is now “a collecting one” apparently <a class="plink" href="cold-cases.html#l-37796eba" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="l-5b734246">The wheelchair slap: unresolved, cops already gone, no answers expected <a class="plink" href="cold-cases.html#l-5b734246" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="l-e7873369">Someone nearby had a sailboat they inherited, described as “tortured, right? Tortured, yeah. Suffering artist, John Mayer type. Always looks sad.” Never elaborated on. <a class="plink" href="cold-cases.html#l-e7873369" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="l-95c2cdf7">The Greco/Roman framework needs a final ruling on who is which. <a class="plink" href="cold-cases.html#l-95c2cdf7" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="l-021d8f85">The relationship conversation felt unfinished. More dinners probably needed. <a class="plink" href="cold-cases.html#l-021d8f85" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="l-1d0978d2">The street fight will likely never be reported. B. noted it as “downtown dust up number three.” <a class="plink" href="cold-cases.html#l-1d0978d2" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="l-ee14ad2e">T. has not seen Step Brothers and probably never will unless he gets “a really cool older boyfriend, at least 15 years older, questionably older.” <a class="plink" href="cold-cases.html#l-ee14ad2e" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="l-f8dc03ee">The S-tier city list was never finalized, especially the international bracket <a class="plink" href="cold-cases.html#l-f8dc03ee" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="l-041754fa">The THC cocktail concept was described as “being developed in real time” with no conclusion <a class="plink" href="cold-cases.html#l-041754fa" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="l-099de36b">Whether to invite the server for a beer was raised and immediately dropped <a class="plink" href="cold-cases.html#l-099de36b" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="l-86864143">The Oliveira panna cotta comparison was mentioned but they had been too full to try it at a previous dinner <a class="plink" href="cold-cases.html#l-86864143" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="l-ce0ac57a">Foxes: B. has still never been; Speaker B wants to take him on a jazz Tuesday <a class="plink" href="cold-cases.html#l-ce0ac57a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="l-0a72bf4e">The album release party: Speaker B is considering wearing a vest despite the heat; floated the idea of going viral by collapsing onstage and needing a banana bag <a class="plink" href="cold-cases.html#l-0a72bf4e" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="l-9a859ff7">Chiropractic school: B. looked into it once, dropped it at “four years and no nearby schools,” never got to cost <a class="plink" href="cold-cases.html#l-9a859ff7" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="l-2d402ee8">The podcast or livestream they apparently do: discussed whether live format gives cover for rambling; no decision on format <a class="plink" href="cold-cases.html#l-2d402ee8" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="l-1be3ff42">Ice cream after dinner: mentioned but not confirmed <a class="plink" href="cold-cases.html#l-1be3ff42" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="l-a642bec5">T.D. is still in transit on I-80. Arrival time unknown. <a class="plink" href="cold-cases.html#l-a642bec5" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-f92b1124">L.A.’s travel situation mentioned briefly, unresolved. <a class="plink" href="cold-cases.html#l-f92b1124" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-b6be955a">The gig app idea: “vibe code a gig app right now.” Probably not happening but floated sincerely. <a class="plink" href="cold-cases.html#l-b6be955a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-ec1c3dac">The Excel sheet with files exists somewhere in Discord. G. may be involved. <a class="plink" href="cold-cases.html#l-ec1c3dac" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-89bd3c9b">The set list situation is genuinely unresolved. <a class="plink" href="cold-cases.html#l-89bd3c9b" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-d6c79330">EPL team selection: still undecided, Nottingham Forest and Newcastle both floated seriously <a class="plink" href="cold-cases.html#l-d6c79330" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-0d2ff1fd">The church-bar coup plan: fully abandoned mid-sentence <a class="plink" href="cold-cases.html#l-0d2ff1fd" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-5278054f">The birthday dinner logistics: restaurant confirmed good, date and guest list still being assembled <a class="plink" href="cold-cases.html#l-5278054f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-a53cd9f1">Whether the brass rabbit has ever actually been found by either of them <a class="plink" href="cold-cases.html#l-a53cd9f1" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-9970be4c">The rabbit: one person theoretically wanted to find it, “would have liked for it to happen naturally,” never went looking. No follow-up. <a class="plink" href="cold-cases.html#l-9970be4c" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-29f274f6">No Go Topics for the upcoming show: “we didn’t iron these out” <a class="plink" href="cold-cases.html#l-29f274f6" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-daa4ed00">A.’s suggestion to change the Blue Room setlist: shot down, already printed, G. has scissors if needed <a class="plink" href="cold-cases.html#l-daa4ed00" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-98df6d90">D.’s mood at the show: expected to be “wound tight,” someone suggested putting something in his drink <a class="plink" href="cold-cases.html#l-98df6d90" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="l-45e17342">The popcorn ceiling at someone’s dad’s place: dad recently died, ceiling has black mold, the son is a multi-millionaire and should just spend the $14k <a class="plink" href="cold-cases.html#l-45e17342" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+</ul><h2 class="sec">Promised, pending</h2><p class="sec-note">Things people said they would send.</p><hr class="rule"><ul class="evid quest">
+  <li id="p-98844f30">B. said he would find the Italian-American trades term. No timeline given. <a class="plink" href="cold-cases.html#p-98844f30" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="p-62a6885f">Look up the Hoggard valedictorian story (it’s on the New York Post and Yahoo) <a class="plink" href="cold-cases.html#p-62a6885f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="p-cf79b8b9">Check social media for the wheelchair slapping incident <a class="plink" href="cold-cases.html#p-cf79b8b9" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="p-91014883">Speaker B: will show B. his two silk shirts so B. can feel the difference in thickness <a class="plink" href="cold-cases.html#p-91014883" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="p-f55f4b61">The set list needs to go into the Discord. Responsibility unclear but it came up twice. <a class="plink" href="cold-cases.html#p-f55f4b61" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="p-dff51abc">Someone needs to add a thread or channel for the upcoming gig or album. <a class="plink" href="cold-cases.html#p-dff51abc" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="p-829a67a5">S.N.: already sent a film on Signal to a small group chat, not the IG or group platform <a class="plink" href="cold-cases.html#p-829a67a5" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="p-6d420d79">Someone: going to Total Wine tomorrow to grab champagne for G., as a symbolic gesture for the show <a class="plink" href="cold-cases.html#p-6d420d79" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="p-c0c6e26d">The barber video: someone was going to find it and play it at the bar. Outcome unknown. <a class="plink" href="cold-cases.html#p-c0c6e26d" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+</ul>
+<footer class="foot">
+  The Wilmington Papers &middot; field notes, Aug 2026 &middot; <a href="index.html">return to file</a>
+</footer>
+</div>
+<script>
+(function(){
+  var r=document.documentElement, k="papers-theme", b=document.getElementById("themer");
+  try{ var s=localStorage.getItem(k); if(s) r.setAttribute("data-theme",s); }catch(e){}
+  if(!b) return;
+  b.addEventListener("click",function(ev){
+    ev.preventDefault();
+    var cur=r.getAttribute("data-theme");
+    if(!cur) cur=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
+    var next=cur==="dark"?"light":"dark";
+    r.setAttribute("data-theme",next);
+    try{ localStorage.setItem(k,next); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
