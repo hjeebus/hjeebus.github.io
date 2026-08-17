@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dram Yard - The Wilmington Papers</title>
+<meta name="description" content="Seven dinners in Wilmington, North Carolina. Transcribed without consent, catalogued without mercy. Nothing was resolved.">
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{
+  --paper:#f4f1e8; --ink:#1c1a17; --faded:#6b6459; --rule:#c9c2b2;
+  --stamp:#a63d2f; --accent:#2f4f4f; --card:#fbf9f3; --shadow:rgba(28,26,23,.09);
+}
+@media (prefers-color-scheme:dark){
+  :root{ --paper:#16151a; --ink:#e8e4da; --faded:#948c7e; --rule:#38343d;
+    --stamp:#e0705c; --accent:#7fb2a8; --card:#1e1d23; --shadow:rgba(0,0,0,.4); }
+}
+:root[data-theme="dark"]{
+  --paper:#16151a; --ink:#e8e4da; --faded:#948c7e; --rule:#38343d;
+  --stamp:#e0705c; --accent:#7fb2a8; --card:#1e1d23; --shadow:rgba(0,0,0,.4);
+}
+:root[data-theme="light"]{
+  --paper:#f4f1e8; --ink:#1c1a17; --faded:#6b6459; --rule:#c9c2b2;
+  --stamp:#a63d2f; --accent:#2f4f4f; --card:#fbf9f3; --shadow:rgba(28,26,23,.09);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px 90px}
+.mono{font-family:"SFMono-Regular",Menlo,Consolas,monospace}
+
+header.mast{border-bottom:2px solid var(--ink);margin-bottom:26px;padding-top:38px}
+.kicker{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--stamp);margin-bottom:12px;
+}
+h1.title{
+  font-size:clamp(2.1rem,7vw,3.5rem);line-height:1.02;margin:0 0 10px;
+  letter-spacing:-.02em;font-weight:600;
+}
+.dek{color:var(--faded);font-size:.95rem;margin:0 0 20px;font-style:italic}
+.mast-meta{
+  display:flex;flex-wrap:wrap;gap:6px 20px;padding:10px 0;
+  border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faded);
+}
+.mast-meta b{color:var(--ink);font-weight:600}
+
+nav.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px;align-items:center}
+nav.tabs a{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;padding:7px 13px;border:1px solid var(--rule);
+  border-radius:2px;color:var(--faded);background:var(--card);
+}
+nav.tabs a:hover{border-color:var(--ink);color:var(--ink)}
+nav.tabs a[aria-current="page"]{
+  background:var(--ink);color:var(--paper);border-color:var(--ink);
+}
+nav.tabs a.themer{margin-left:auto;border-style:dashed}
+
+h2.sec{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--stamp);margin:44px 0 4px;
+}
+h2.sec + .sec-note{color:var(--faded);font-size:.85rem;margin:0 0 18px;font-style:italic}
+.rule{height:1px;background:var(--rule);border:0;margin:0 0 20px}
+.quiet{color:var(--faded);font-style:italic}
+
+.exhibit{
+  background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--stamp);
+  padding:22px 24px;margin:0 0 16px;border-radius:2px;box-shadow:0 1px 2px var(--shadow);
+}
+.exhibit .q{font-size:1.28rem;line-height:1.44;margin:0 0 12px}
+.exhibit .src{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faded);
+}
+.exhibit .gloss{color:var(--faded);font-size:.86rem;font-style:italic;margin-top:6px}
+
+.docket{display:grid;gap:12px}
+.doc{
+  display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:baseline;
+  background:var(--card);border:1px solid var(--rule);border-radius:2px;
+  padding:16px 18px;text-decoration:none;transition:border-color .15s,transform .15s;
+}
+.doc:hover{border-color:var(--ink);transform:translateX(2px)}
+.doc .num{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.72rem;color:var(--stamp);letter-spacing:.06em;
+}
+.doc .v{font-size:1.16rem;font-weight:600;margin:0 0 2px}
+.doc .k{color:var(--faded);font-size:.82rem}
+.doc .d{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;color:var(--faded);letter-spacing:.08em;white-space:nowrap;
+}
+.doc .tally{
+  margin-top:8px;font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+  display:block;
+}
+@media(max-width:560px){
+  .doc{grid-template-columns:34px 1fr;gap:10px}
+  .doc .d{grid-column:2;margin-top:4px}
+}
+
+.thread{
+  border:1px solid var(--rule);border-radius:2px;background:var(--card);
+  padding:16px 18px;margin-bottom:12px;
+}
+.thread h3{
+  margin:0 0 6px;font-size:1.05rem;display:flex;justify-content:space-between;
+  align-items:baseline;gap:12px;flex-wrap:wrap;
+}
+.thread .count{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.62rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);
+}
+.thread .where{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.66rem;
+  color:var(--faded);letter-spacing:.06em;
+}
+
+ul.evid{list-style:none;padding:0;margin:0}
+ul.evid li{padding:12px 0 12px 30px;border-bottom:1px solid var(--rule);position:relative}
+ul.evid li:last-child{border-bottom:0}
+ul.evid li:before{
+  content:"?";position:absolute;left:0;top:12px;color:var(--stamp);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.8rem;font-weight:700;
+}
+ul.evid.loop li:before{content:"\21bb"}
+ul.evid.claim li:before{content:"\00a7";color:var(--accent)}
+ul.evid.quest li:before{content:"\2192";color:var(--accent)}
+ul.evid .src{
+  display:block;margin-top:5px;
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+}
+
+a.plink{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  text-decoration:none;color:var(--faded);opacity:0;
+  padding:0 4px;font-size:.85em;transition:opacity .12s;
+  white-space:nowrap;
+}
+li:hover > a.plink,a.plink:focus{opacity:1;color:var(--stamp)}
+@media (hover:none){ a.plink{opacity:.5} }
+
+/* Highlight without reflowing: the row keeps its 30px text indent and the
+   marker keeps its position, so only the background and rail change. */
+ul.evid li{border-left:3px solid transparent;padding-left:30px}
+ul.evid li:before{left:3px}
+ul.evid li:target{
+  background:var(--card);
+  border-left-color:var(--stamp);
+  padding-right:12px;
+}
+ul.evid li:target > a.plink{opacity:1;color:var(--stamp)}
+.exhibit .src a{color:var(--faded);text-decoration:underline}
+.exhibit .src a:hover{color:var(--stamp)}
+.exhibit:target{border-left-width:6px;background:var(--paper)}
+.exhibit:hover > .q > a.plink,.exhibit:target > .q > a.plink{opacity:1;color:var(--stamp)}
+:target{scroll-margin-top:24px}
+
+.dinner-head{border-bottom:2px solid var(--ink);padding-top:34px;margin-bottom:8px}
+.dinner-head .num{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.66rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--stamp);margin-bottom:10px;
+}
+.dinner-head h1{font-size:clamp(1.9rem,6vw,3rem);margin:0 0 8px;letter-spacing:-.02em}
+.dinner-head .sub{color:var(--faded);font-size:.9rem;margin:0 0 18px}
+.setting{font-size:1.02rem;margin:22px 0 0}
+.undercurrent{
+  border-left:3px solid var(--accent);background:var(--card);
+  padding:16px 20px;margin:8px 0 0;font-size:.98rem;
+}
+ul.plain{padding-left:20px;margin:0}
+ul.plain li{margin-bottom:9px}
+.pager{
+  display:flex;justify-content:space-between;gap:14px;margin-top:52px;
+  padding-top:18px;border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.68rem;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.pager a{color:var(--faded);text-decoration:none}
+.pager a:hover{color:var(--ink)}
+
+#slot{min-height:190px;display:flex;align-items:center}
+.btn{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:2px;padding:11px 20px;
+}
+.btn:hover{opacity:.86}
+footer.foot{
+  margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.64rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+}
+footer.foot a{color:var(--faded)}
+.stat-row{display:flex;flex-wrap:wrap;gap:26px;margin:26px 0 0}
+.stat b{
+  display:block;font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:1.7rem;color:var(--stamp);line-height:1;font-weight:600;
+}
+.stat span{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faded);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="tabs"><a href="../index.html">The Case</a><a href="../record.html" aria-current="page">The Record</a><a href="../cold-cases.html">Cold Cases</a><a href="../canon.html">Canon</a><a href="../quotable.html">Quotable</a><a class="themer" href="#" id="themer" title="Toggle light and dark">&#9686;</a></nav>
+
+<header class="dinner-head">
+  <div class="num">Sitting VII of 7</div>
+  <h1>Dram Yard</h1>
+  <p class="sub">Late dinner, Market St &middot; 13 AUG 2026 &middot; with T.</p>
+</header>
+<div class="mast-meta">
+  <span><b>10</b> lines</span><span><b>6</b> unanswered</span>
+  <span><b>7</b> claims</span><span><b>5</b> open loops</span>
+</div>
+<h2 class="sec">Setting and vibe</h2><hr class="rule"><p class="setting">Late dinner at a restaurant in Wilmington, NC, likely called Dram Yard or nearby on Market Street. Corner bar seating. Sparkling water from Mamaroneck, NY opened the night. The mood was loose, well-fed, and philosophically wandering. This was the last or second-to-last dinner of what appears to have been a multi-day trip. Everyone was full, slightly buzzed, and in no hurry.</p><h2 class="sec">Exhibits</h2><p class="sec-note">Lines entered into the record.</p><hr class="rule"><div class="exhibit" id="x-bb069542"><p class="q">&ldquo;All input is welcome, just not correct.&rdquo;<a class="plink" href="#x-bb069542" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">A., via text, about the setlist</div></div><div class="exhibit" id="x-19ee7cc7"><p class="q">&ldquo;My pronouns are cake talk.&rdquo;<a class="plink" href="#x-19ee7cc7" aria-label="Link to this line" title="Link to this line">#</a></p></div><div class="exhibit" id="x-049375a8"><p class="q">&ldquo;Lobster. Too flavorful.&rdquo;<a class="plink" href="#x-049375a8" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">recurring complaint about abundance of good things</div></div><div class="exhibit" id="x-1b4bfe22"><p class="q">&ldquo;Rent free going away.&rdquo;<a class="plink" href="#x-1b4bfe22" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">about someone still living in someone’s head</div></div><div class="exhibit" id="x-911f3cea"><p class="q">&ldquo;We shan’t.&rdquo;<a class="plink" href="#x-911f3cea" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">escalating through “we shouldn’t, we could, we may, we shan’t”</div></div><div class="exhibit" id="x-907d7ba5"><p class="q">&ldquo;I’m edging myself as we speak.&rdquo;<a class="plink" href="#x-907d7ba5" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">re: anticipation for the upcoming show</div></div><div class="exhibit" id="x-31dc9b4a"><p class="q">&ldquo;Splendid ordering. We’re just living our truths.&rdquo;<a class="plink" href="#x-31dc9b4a" aria-label="Link to this line" title="Link to this line">#</a></p></div><div class="exhibit" id="x-f251e9e4"><p class="q">&ldquo;She boofed us in the back corner and then she rattled my brain.&rdquo;<a class="plink" href="#x-f251e9e4" aria-label="Link to this line" title="Link to this line">#</a></p></div><div class="exhibit" id="x-6bca8b27"><p class="q">&ldquo;Cool them jets. I’m at a five. You’re not.&rdquo;<a class="plink" href="#x-6bca8b27" aria-label="Link to this line" title="Link to this line">#</a></p></div><div class="exhibit" id="x-17e57143"><p class="q">&ldquo;It’s like making a playlist. That’s the only thing I can liken it to.&rdquo;<a class="plink" href="#x-17e57143" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">on ordering adventurously</div></div><h2 class="sec">Main conversation threads</h2><hr class="rule"><ul class="plain"><li>Tasting menu vs. ordering off menu: debated briefly, landed on ordering what they actually wanted</li><li>Reconstructing the full trip itinerary night by night: Oliveira (Saturday), grocery store and cocktails (Saturday night), Saores brunch (Sunday), Nils (Sunday night), fast food at the apartment (Monday/Tuesday, disputed), Circa (Tuesday), Mano (Wednesday), Dram Yard (Thursday)</li><li>Whether to get dessert here or walk to Hillwinds ice cream after</li><li>Tattoos: who has them, where to get one, what to get, placement philosophy</li><li>Women ordering at restaurants and the impossible position it puts servers in</li><li>T.D. driving from Pennsylvania and stopping in Virginia, possibly to check out Staunton</li><li>A friend named S.N. sending a film on Signal, dropping it in the wrong chat, “going back to his old ways”</li><li>Stock talk: W. sold too early, TSLL down 36%, S.’s picks under scrutiny</li></ul><h2 class="sec">Stories started</h2><hr class="rule"><ul class="plain"><li>The barber video: someone remembered a line from a video involving a barber and a customer rant, tried to find it on Instagram, played it at low volume like a boomer, never fully landed the clip. Story unresolved.</li><li>C. the Greek barber: had a baby, lived in Riva, referenced as an example of people who actually want to be kids. Story trailed off.</li><li>The Nils bathroom: went down half a flight of stairs, had bidets, that’s basically all anyone remembered. The food itself was a blank.</li><li>Wheelchair pizza night: involved two beers, cocktails, gummies, and “all the excitement of the fight.” Details murky by design.</li></ul><h2 class="sec">Theories and claims</h2><hr class="rule"><ul class="evid claim"><li>Non-point source pollution theory applied to bad people: small bad actors outnumber big bad ones, so on aggregate there are more baddies</li><li>“On aggregate” debated at length; concluded it means “in total, all things considered,” not averaging</li><li>Popcorn ceilings with black mold cannot be rectified, must come out entirely</li><li>Truly old people have more tattoos because they were young when tattoos were a thing</li><li>Military labs working on artificial viruses, possibly to get ahead of immunology threats, “but it’s gonna get out and we’re all gonna die from a super virus”</li><li>The pizza delivery metric in D.C. as a predictor of imminent military action: “we’re about to bomb someone, there’s a lot of pizza”</li><li>Certified forklift operators (CFOs) are a distinct and elite class</li></ul><h2 class="sec">Side quests</h2><hr class="rule"><ul class="evid quest"><li>Calculating max occupancy of the restaurant: 12 at tables, 12 at bar, 20 standing behind bar, arrived at roughly 44 to 80 depending on methodology. Became its own math exercise.</li><li>The sparkling water bottle origin: debated between Long Island, Hudson Valley, Catskills, and Mamaroneck. “Those are microscopic bubbles that almost hurt.”</li><li>The gun safe: attempted to crack it by feel, got to the third click, explained the full mechanism in detail. No success confirmed.</li><li>The camera moment: a nearby couple stared at the camera, one person thought they were being engaged, the other realized they were just looking past them at water bottles. Resolved awkwardly.</li><li>Forklift operator competitions on German television: witnessed in person, involved filling a glass with microscopic precision. Certified.</li></ul><h2 class="sec">Unanswered questions</h2><hr class="rule"><ul class="evid "><li>What is the barber video actually called, and where does it live that isn’t Facebook or Instagram?</li><li>Did T.D. stop in Virginia on purpose to see Staunton, or did he just run out of road?</li><li>What did Nils actually serve? Nobody could remember anything except the bidet bathroom.</li><li>Who was the server at the Greek spot (Nils)? “Fun princess” mentioned but no name confirmed.</li><li>Does the cook in the Oliveira hat work there, or did he just leave on good terms?</li><li>What is the “glue box” that ties the whole show setup together?</li></ul><h2 class="sec">Promised to send</h2><hr class="rule"><ul class="evid quest"><li>S.N.: already sent a film on Signal to a small group chat, not the IG or group platform</li><li>Someone: going to Total Wine tomorrow to grab champagne for G., as a symbolic gesture for the show</li><li>The barber video: someone was going to find it and play it at the bar. Outcome unknown.</li></ul><h2 class="sec">Open loops</h2><hr class="rule"><ul class="evid loop"><li>The rabbit: one person theoretically wanted to find it, “would have liked for it to happen naturally,” never went looking. No follow-up.</li><li>No Go Topics for the upcoming show: “we didn’t iron these out”</li><li>A.’s suggestion to change the Blue Room setlist: shot down, already printed, G. has scissors if needed</li><li>D.’s mood at the show: expected to be “wound tight,” someone suggested putting something in his drink</li><li>The popcorn ceiling at someone’s dad’s place: dad recently died, ceiling has black mold, the son is a multi-millionaire and should just spend the $14k</li></ul><h2 class="sec">Decisions or plans</h2><hr class="rule"><ul class="plain"><li>Ordered: oysters (half dozen), tuna tostada, duck lumpia, both salads, market fish (tilefish), roast duck breast</li><li>Skipped wine pairing: “definitely be drunk, shouldn’t try drunk”</li><li>Dessert: splitting the popcorn creme brulee, then walking to Hillwinds for ice cream</li><li>Tomorrow: leave around noon, drop dogs off, check into hotel (after 3pm), grab a drink, get to the venue for sound check</li><li>Champagne from Total Wine for G.</li></ul><h2 class="sec">Next dinner</h2><hr class="rule"><ul class="plain"><li>Saturday night still technically available in Wilmington</li><li>One suggestion: a Greek spot toward Wrightsville Beach, described as having “really nice items” but a 25-minute drive</li><li>General consensus: they hit the good spots, no strong push for a specific new place</li></ul><p style="margin-top:34px"><a class="mono" style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded)" href="https://notes.granola.ai/t/b162fb15-6ed6-462b-a894-a9657ab2902d-00demib2">Full transcript &rarr;</a></p><div class="pager"><a href="banter.html">&larr; Banter</a><a href="../cold-cases.html">Cold Cases &rarr;</a></div>
+<footer class="foot">
+  The Wilmington Papers &middot; field notes, Aug 2026 &middot; <a href="../index.html">return to file</a>
+</footer>
+</div>
+<script>
+(function(){
+  var r=document.documentElement, k="papers-theme", b=document.getElementById("themer");
+  try{ var s=localStorage.getItem(k); if(s) r.setAttribute("data-theme",s); }catch(e){}
+  if(!b) return;
+  b.addEventListener("click",function(ev){
+    ev.preventDefault();
+    var cur=r.getAttribute("data-theme");
+    if(!cur) cur=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
+    var next=cur==="dark"?"light":"dark";
+    r.setAttribute("data-theme",next);
+    try{ localStorage.setItem(k,next); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>

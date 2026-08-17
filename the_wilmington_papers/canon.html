@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canon - The Wilmington Papers</title>
+<meta name="description" content="Seven dinners in Wilmington, North Carolina. Transcribed without consent, catalogued without mercy. Nothing was resolved.">
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{
+  --paper:#f4f1e8; --ink:#1c1a17; --faded:#6b6459; --rule:#c9c2b2;
+  --stamp:#a63d2f; --accent:#2f4f4f; --card:#fbf9f3; --shadow:rgba(28,26,23,.09);
+}
+@media (prefers-color-scheme:dark){
+  :root{ --paper:#16151a; --ink:#e8e4da; --faded:#948c7e; --rule:#38343d;
+    --stamp:#e0705c; --accent:#7fb2a8; --card:#1e1d23; --shadow:rgba(0,0,0,.4); }
+}
+:root[data-theme="dark"]{
+  --paper:#16151a; --ink:#e8e4da; --faded:#948c7e; --rule:#38343d;
+  --stamp:#e0705c; --accent:#7fb2a8; --card:#1e1d23; --shadow:rgba(0,0,0,.4);
+}
+:root[data-theme="light"]{
+  --paper:#f4f1e8; --ink:#1c1a17; --faded:#6b6459; --rule:#c9c2b2;
+  --stamp:#a63d2f; --accent:#2f4f4f; --card:#fbf9f3; --shadow:rgba(28,26,23,.09);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px 90px}
+.mono{font-family:"SFMono-Regular",Menlo,Consolas,monospace}
+
+header.mast{border-bottom:2px solid var(--ink);margin-bottom:26px;padding-top:38px}
+.kicker{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--stamp);margin-bottom:12px;
+}
+h1.title{
+  font-size:clamp(2.1rem,7vw,3.5rem);line-height:1.02;margin:0 0 10px;
+  letter-spacing:-.02em;font-weight:600;
+}
+.dek{color:var(--faded);font-size:.95rem;margin:0 0 20px;font-style:italic}
+.mast-meta{
+  display:flex;flex-wrap:wrap;gap:6px 20px;padding:10px 0;
+  border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faded);
+}
+.mast-meta b{color:var(--ink);font-weight:600}
+
+nav.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px;align-items:center}
+nav.tabs a{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;padding:7px 13px;border:1px solid var(--rule);
+  border-radius:2px;color:var(--faded);background:var(--card);
+}
+nav.tabs a:hover{border-color:var(--ink);color:var(--ink)}
+nav.tabs a[aria-current="page"]{
+  background:var(--ink);color:var(--paper);border-color:var(--ink);
+}
+nav.tabs a.themer{margin-left:auto;border-style:dashed}
+
+h2.sec{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--stamp);margin:44px 0 4px;
+}
+h2.sec + .sec-note{color:var(--faded);font-size:.85rem;margin:0 0 18px;font-style:italic}
+.rule{height:1px;background:var(--rule);border:0;margin:0 0 20px}
+.quiet{color:var(--faded);font-style:italic}
+
+.exhibit{
+  background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--stamp);
+  padding:22px 24px;margin:0 0 16px;border-radius:2px;box-shadow:0 1px 2px var(--shadow);
+}
+.exhibit .q{font-size:1.28rem;line-height:1.44;margin:0 0 12px}
+.exhibit .src{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faded);
+}
+.exhibit .gloss{color:var(--faded);font-size:.86rem;font-style:italic;margin-top:6px}
+
+.docket{display:grid;gap:12px}
+.doc{
+  display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:baseline;
+  background:var(--card);border:1px solid var(--rule);border-radius:2px;
+  padding:16px 18px;text-decoration:none;transition:border-color .15s,transform .15s;
+}
+.doc:hover{border-color:var(--ink);transform:translateX(2px)}
+.doc .num{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.72rem;color:var(--stamp);letter-spacing:.06em;
+}
+.doc .v{font-size:1.16rem;font-weight:600;margin:0 0 2px}
+.doc .k{color:var(--faded);font-size:.82rem}
+.doc .d{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;color:var(--faded);letter-spacing:.08em;white-space:nowrap;
+}
+.doc .tally{
+  margin-top:8px;font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+  display:block;
+}
+@media(max-width:560px){
+  .doc{grid-template-columns:34px 1fr;gap:10px}
+  .doc .d{grid-column:2;margin-top:4px}
+}
+
+.thread{
+  border:1px solid var(--rule);border-radius:2px;background:var(--card);
+  padding:16px 18px;margin-bottom:12px;
+}
+.thread h3{
+  margin:0 0 6px;font-size:1.05rem;display:flex;justify-content:space-between;
+  align-items:baseline;gap:12px;flex-wrap:wrap;
+}
+.thread .count{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.62rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);
+}
+.thread .where{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.66rem;
+  color:var(--faded);letter-spacing:.06em;
+}
+
+ul.evid{list-style:none;padding:0;margin:0}
+ul.evid li{padding:12px 0 12px 30px;border-bottom:1px solid var(--rule);position:relative}
+ul.evid li:last-child{border-bottom:0}
+ul.evid li:before{
+  content:"?";position:absolute;left:0;top:12px;color:var(--stamp);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.8rem;font-weight:700;
+}
+ul.evid.loop li:before{content:"\21bb"}
+ul.evid.claim li:before{content:"\00a7";color:var(--accent)}
+ul.evid.quest li:before{content:"\2192";color:var(--accent)}
+ul.evid .src{
+  display:block;margin-top:5px;
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+}
+
+a.plink{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  text-decoration:none;color:var(--faded);opacity:0;
+  padding:0 4px;font-size:.85em;transition:opacity .12s;
+  white-space:nowrap;
+}
+li:hover > a.plink,a.plink:focus{opacity:1;color:var(--stamp)}
+@media (hover:none){ a.plink{opacity:.5} }
+
+/* Highlight without reflowing: the row keeps its 30px text indent and the
+   marker keeps its position, so only the background and rail change. */
+ul.evid li{border-left:3px solid transparent;padding-left:30px}
+ul.evid li:before{left:3px}
+ul.evid li:target{
+  background:var(--card);
+  border-left-color:var(--stamp);
+  padding-right:12px;
+}
+ul.evid li:target > a.plink{opacity:1;color:var(--stamp)}
+.exhibit .src a{color:var(--faded);text-decoration:underline}
+.exhibit .src a:hover{color:var(--stamp)}
+.exhibit:target{border-left-width:6px;background:var(--paper)}
+.exhibit:hover > .q > a.plink,.exhibit:target > .q > a.plink{opacity:1;color:var(--stamp)}
+:target{scroll-margin-top:24px}
+
+.dinner-head{border-bottom:2px solid var(--ink);padding-top:34px;margin-bottom:8px}
+.dinner-head .num{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.66rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--stamp);margin-bottom:10px;
+}
+.dinner-head h1{font-size:clamp(1.9rem,6vw,3rem);margin:0 0 8px;letter-spacing:-.02em}
+.dinner-head .sub{color:var(--faded);font-size:.9rem;margin:0 0 18px}
+.setting{font-size:1.02rem;margin:22px 0 0}
+.undercurrent{
+  border-left:3px solid var(--accent);background:var(--card);
+  padding:16px 20px;margin:8px 0 0;font-size:.98rem;
+}
+ul.plain{padding-left:20px;margin:0}
+ul.plain li{margin-bottom:9px}
+.pager{
+  display:flex;justify-content:space-between;gap:14px;margin-top:52px;
+  padding-top:18px;border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.68rem;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.pager a{color:var(--faded);text-decoration:none}
+.pager a:hover{color:var(--ink)}
+
+#slot{min-height:190px;display:flex;align-items:center}
+.btn{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:2px;padding:11px 20px;
+}
+.btn:hover{opacity:.86}
+footer.foot{
+  margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.64rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+}
+footer.foot a{color:var(--faded)}
+.stat-row{display:flex;flex-wrap:wrap;gap:26px;margin:26px 0 0}
+.stat b{
+  display:block;font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:1.7rem;color:var(--stamp);line-height:1;font-weight:600;
+}
+.stat span{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faded);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="tabs"><a href="index.html">The Case</a><a href="record.html">The Record</a><a href="cold-cases.html">Cold Cases</a><a href="canon.html" aria-current="page">Canon</a><a href="quotable.html">Quotable</a><a class="themer" href="#" id="themer" title="Toggle light and dark">&#9686;</a></nav>
+
+<header class="mast">
+  <div class="kicker">Section III - the record of claims</div>
+  <h1 class="title">Canon</h1>
+  <p class="dek">56 assertions made at the table with total confidence and zero verification. Presented here as fact, because that is how they were said.</p>
+</header>
+<h2 class="sec">Entered into evidence</h2><hr class="rule"><ul class="evid claim">
+  <li id="c-b25df5ec">Terrazzo originated in 15th century Venice, workers pressed marble scraps into clay and sealed the surface with goat’s milk <a class="plink" href="canon.html#c-b25df5ec" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-4e47edb8">There is a specific Italian-American trades term for leftover building materials, possibly with mob connections, that B. could not retrieve <a class="plink" href="canon.html#c-4e47edb8" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-c224f0f5">The wheelchair slap would only be justifiable if someone made a cruel joke about a very recently deceased person close to the slapper <a class="plink" href="canon.html#c-c224f0f5" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-ef6f64c0">Istanbul cymbals are currently more coveted than Zildjian, Paiste, and Sabian <a class="plink" href="canon.html#c-ef6f64c0" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-07ea7e51">Hand hammering gives each cymbal a unique character and is part of what makes them worth buying <a class="plink" href="canon.html#c-07ea7e51" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-262a102a">Turkey is still the gold standard for cymbal manufacturing <a class="plink" href="canon.html#c-262a102a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-9eb14945">The reservation-only policy is a gatekeeper move, not a capacity issue. The restaurant had many empty tables. <a class="plink" href="canon.html#c-9eb14945" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-99464df3">The wheelchair woman may have provoked the slapper. “They should have known the hit rate on a wheelchair person.” <a class="plink" href="canon.html#c-99464df3" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-72f09be5">The bidet in a public Wilmington restaurant represents a genuine cultural leap. B. has been in public restrooms on multiple continents and has never seen one offered. <a class="plink" href="canon.html#c-72f09be5" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-723c5997">Greek music is more Eastern and Byzantine than Italian. “A little more poly.” Confident but unverified. <a class="plink" href="canon.html#c-723c5997" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-74740578">The OnlyFans birthday drop strategy is marketing genius. The legal technicality around photo timing was raised and then abandoned. <a class="plink" href="canon.html#c-74740578" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-9d850b62">“Nona” might be Polish, not Italian. Disputed. Unresolved. <a class="plink" href="canon.html#c-9d850b62" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="c-cfbf9d7f">New York and LA are the only true S-tier US cities; everything else is A-tier at best <a class="plink" href="canon.html#c-cfbf9d7f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="c-5c7cdf6f">Chicago earns S-tier partly because of the Bean, the Bulls 90s lore, two baseball teams, Northwestern, and Lake Michigan <a class="plink" href="canon.html#c-5c7cdf6f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="c-63403dfa">Lake Michigan is the lake Chicago sits on (stated with some uncertainty) <a class="plink" href="canon.html#c-63403dfa" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="c-52c1390e">Mexico City might be S-tier within its own regional context but unclear on the world scale <a class="plink" href="canon.html#c-52c1390e" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="c-07f8c8af">New Zealand is a continent called Oceana, so it has no S-tier cities by default <a class="plink" href="canon.html#c-07f8c8af" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="c-b8ee345d">The Hoggard valedictorian gamed the system by avoiding the IB program <a class="plink" href="canon.html#c-b8ee345d" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="c-4bd687c7">Fancy restaurants give small portions so you don’t tire of the flavor before the next course <a class="plink" href="canon.html#c-4bd687c7" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="c-79ea2152">THC cocktails are a real and underdeveloped market opportunity, especially while the regulatory window is open <a class="plink" href="canon.html#c-79ea2152" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="c-3d81f2d8">Chobani makes oat milk, which is why the homemade cocktail got so frothy <a class="plink" href="canon.html#c-3d81f2d8" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="c-fdc6335e">Grapefruit interacts badly with certain medications by affecting a “very specific mechanism”; Speaker B risked it anyway <a class="plink" href="canon.html#c-fdc6335e" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="c-b13bed3b">The well-dressed people walking by were probably going to a show at the Thalian Theater; confirmed nothing was actually playing that night <a class="plink" href="canon.html#c-b13bed3b" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="c-89707e79">Silk does not breathe, which makes the scarf the woman outside was wearing inexplicable <a class="plink" href="canon.html#c-89707e79" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="c-eeee9658">Chiropractors make great money: cash pay, no co-pays, multiple concurrent patients, plus an acupuncturist on staff <a class="plink" href="canon.html#c-eeee9658" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="c-8eed2c76">The Steely Dan name comes from a dildo reference; Speaker B claims he told B. this earlier that same day <a class="plink" href="canon.html#c-8eed2c76" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="c-48fa7094">Steely Dan only really toured on their first album <a class="plink" href="canon.html#c-48fa7094" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="c-87cfe0dc">The “70s Soft Rock Bottoms” Spotify playlist is responsible for three Steely Dan songs and an Atlanta Rhythm Section track in one sitting <a class="plink" href="canon.html#c-87cfe0dc" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="c-78c06484">Parsley either cleanses the palate before eating or freshens breath after; nobody knew which, and it fades fast anyway <a class="plink" href="canon.html#c-78c06484" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="c-7e48058d">What they thought was parsley on the pork chop was actually cilantro <a class="plink" href="canon.html#c-7e48058d" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="c-4560c135">ICP is from the Midwest but gives off West Virginia vibes. Someone insisted this tracks culturally even though it makes no geographic sense. <a class="plink" href="canon.html#c-4560c135" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-705a4c6f">Georgetown, D.C. has no subway stop because wealthy residents did not want it. Classist, not racist, per the speaker. <a class="plink" href="canon.html#c-705a4c6f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-2264ad6a">Cambridge probably has a parallel situation to Georgetown. <a class="plink" href="canon.html#c-2264ad6a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-53694e71">Autonomous vehicles will eventually turn roads into de facto train systems, making rail infrastructure redundant. <a class="plink" href="canon.html#c-53694e71" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-8a686f77">I-95 through the Baltimore corridor is always a disaster unless you roll through at 3am. <a class="plink" href="canon.html#c-8a686f77" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-a98fbebe">The World Cup “made a market from nothing” by banning cars and forcing everyone onto 10x-priced trains. <a class="plink" href="canon.html#c-a98fbebe" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-cd6c70a9">The government has been inept at infrastructure for 100 years and cannot catch up now. <a class="plink" href="canon.html#c-cd6c70a9" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-49857edd">If Tesla goes under and “Enrons us,” there is nothing to show for the investment. <a class="plink" href="canon.html#c-49857edd" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-879e85c9">Eminent domain is now commonly used to favor affluent private developers over communities, not for schools or fire stations. <a class="plink" href="canon.html#c-879e85c9" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-5ab0c5fb">The conversation ended with someone suggesting their shared politics amounted to advocating for a “classless, stateless experiment,” i.e., communism. <a class="plink" href="canon.html#c-5ab0c5fb" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-6f139577">A nonprofit bar structured as a church could avoid taxes, but getting IRS recognition upfront is a lot of work <a class="plink" href="canon.html#c-6f139577" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-851cd079">Easier to just infiltrate an existing struggling Lutheran church and flip the pews to face each other <a class="plink" href="canon.html#c-851cd079" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-ffbfaf2d">A dive bar making $1 per beer, 2 beers per hour per person, 10 customers: that’s $20/hour, barely minimum wage for one person <a class="plink" href="canon.html#c-ffbfaf2d" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-95bedb9f">You need at least 4 to 5 staff to run a place like Banter <a class="plink" href="canon.html#c-95bedb9f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-8280b9ef">Hotel restaurants are either great or “a saltwater Applebee’s” <a class="plink" href="canon.html#c-8280b9ef" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-ea363a15">The ideal EPL team to support should be northern, rugged, and not one of the big London clubs <a class="plink" href="canon.html#c-ea363a15" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-e381c97d">Liverpool is probably the fisherman’s town equivalent, the “New England of England” <a class="plink" href="canon.html#c-e381c97d" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-955ae7b9">Kurt Vile and the War on Drugs are both from Philly (someone was not sure, Detroit came up as a counter) <a class="plink" href="canon.html#c-955ae7b9" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-8ab548a2">Jack White is from Detroit. Detroit Rock City confirmed. <a class="plink" href="canon.html#c-8ab548a2" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-49ea78f2">Non-point source pollution theory applied to bad people: small bad actors outnumber big bad ones, so on aggregate there are more baddies <a class="plink" href="canon.html#c-49ea78f2" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-24942251">“On aggregate” debated at length; concluded it means “in total, all things considered,” not averaging <a class="plink" href="canon.html#c-24942251" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-49a1ffdf">Popcorn ceilings with black mold cannot be rectified, must come out entirely <a class="plink" href="canon.html#c-49a1ffdf" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-81cdc59f">Truly old people have more tattoos because they were young when tattoos were a thing <a class="plink" href="canon.html#c-81cdc59f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-6ca9fd68">Military labs working on artificial viruses, possibly to get ahead of immunology threats, “but it’s gonna get out and we’re all gonna die from a super virus” <a class="plink" href="canon.html#c-6ca9fd68" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-59fb676c">The pizza delivery metric in D.C. as a predictor of imminent military action: “we’re about to bomb someone, there’s a lot of pizza” <a class="plink" href="canon.html#c-59fb676c" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="c-ccc0e0f9">Certified forklift operators (CFOs) are a distinct and elite class <a class="plink" href="canon.html#c-ccc0e0f9" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+</ul><h2 class="sec">Side quests</h2><p class="sec-note">31 digressions that took over the table.</p><hr class="rule"><ul class="evid quest">
+  <li id="s-c72a3fdb">CW&amp;T, a Brooklyn design house: came up because T.’s folding scissors are from there, and apparently so is B.’s brass pen that S. gave him <a class="plink" href="canon.html#s-c72a3fdb" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="s-1e7754af">The nearby dancer with the tequila in a plastic cup who was “twirling” and described as chiseled but slim: “We were observed. He had questions.” <a class="plink" href="canon.html#s-1e7754af" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="s-6895618e">T. almost brought folding scissors through TSA and was prepared to be very frustrated if they got confiscated <a class="plink" href="canon.html#s-6895618e" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/sea_bird.html">Sea Bird</a> &middot; 9 AUG 2026</span></li>
+  <li id="s-97acd56c">The bidet: discovered in the bathroom mid-meal, became a recurring symbol of Wilmington’s unexpected cultural ambition. <a class="plink" href="canon.html#s-97acd56c" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="s-1ad7cf95">The retired cop at 4 o’clock: a man at a nearby table had been watching the whole time. Identified as probably Irish, probably a retired cop, definitely noticing things. <a class="plink" href="canon.html#s-1ad7cf95" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="s-ff77ce76">The olive incident: B. launched an olive across the floor. A nearby diner witnessed the entire arc. Evidence was destroyed but the witness remained. <a class="plink" href="canon.html#s-ff77ce76" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="s-0f00f79f">The music: went from electronic to Latin to what sounded like an 80s brass section. Neither could identify it as definitively Greek. <a class="plink" href="canon.html#s-0f00f79f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="s-ed8eecc4">Binder clips: B. has been into binder clips lately. T. noticed. Neither wanted to make it a thing. It became a thing briefly anyway. <a class="plink" href="canon.html#s-ed8eecc4" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/nils.html">Nil&#x27;s</a> &middot; 9 AUG 2026</span></li>
+  <li id="s-bfd261e8">Long digression on whether the community pool can legally order members out during lightning; the answer at this pool was no, only “advise” <a class="plink" href="canon.html#s-bfd261e8" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="s-528cdbce">Debate about whether a 3-second or 10-second lightning rule is correct <a class="plink" href="canon.html#s-528cdbce" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="s-74acc1a0">Granola being banned in 30-something states due to age verification requirements <a class="plink" href="canon.html#s-74acc1a0" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="s-10a1ff06">Dodgeball (the movie) may or may not have been watched once or twice or three times the night before <a class="plink" href="canon.html#s-10a1ff06" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="s-4f5995e0">The mysterious family group at a nearby table: two girls, two boys, one woman without an apparent partner, formal dresses on a Monday <a class="plink" href="canon.html#s-4f5995e0" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="s-7ad3d8e8">Bench seat complaint: B.’s feet don’t touch the floor <a class="plink" href="canon.html#s-7ad3d8e8" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/circa_1922.html">Circa 1922</a> &middot; 10 AUG 2026</span></li>
+  <li id="s-04e3d7e5">Arrow symbols on the menu: turned out to indicate wine pairing options, not sourcing info <a class="plink" href="canon.html#s-04e3d7e5" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="s-cdb433b0">The bell pepper in a dish: debated whether it was a shishito; Speaker B realized mid-conversation he was reading last night’s menu <a class="plink" href="canon.html#s-cdb433b0" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="s-a3f6e998">Numbering students instead of learning their names: Speaker B considered piloting it in one class, then talked himself out of it <a class="plink" href="canon.html#s-a3f6e998" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="s-9f616240">The man in the all-white suit crossing the street: briefly became a Truman Show conspiracy, then a paranoia tangent <a class="plink" href="canon.html#s-9f616240" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="s-3e22db9c">Whether the woman outside was upset or just wearing a dress with a tie: unresolved <a class="plink" href="canon.html#s-3e22db9c" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/manna.html">Manna</a> &middot; 12 AUG 2026</span></li>
+  <li id="s-bb86fa56">“Automaticity” or “automatissim”: one person kept trying to use this word, the other refused to accept it as real. Eventually resolved as “autonomy.” <a class="plink" href="canon.html#s-bb86fa56" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-82fa1753">Brown bag meeting explainer: someone had to leave for a work “brown bag.” The other person did not know what that meant. Full etymology provided. Concluded: it means bring your lunch, it signals informality. <a class="plink" href="canon.html#s-82fa1753" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-7279520f">The severance analogy for the teaching workday: eat lunch fast, take a piss, dissociate for four more hours, go home. <a class="plink" href="canon.html#s-7279520f" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_tree.html">Dram Tree</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-cf609a9a">Deep dive into whether “banter” requires playfulness or just means casual back-and-forth, including whether it works as a literary device <a class="plink" href="canon.html#s-cf609a9a" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-d2bf6c5b">Attempting to locate the hidden brass rabbit by deduction: not in the bathroom, not behind the bar, not under cushions, visible in plain sight, brass/golden/bronzy, about 10 inches, beard on it <a class="plink" href="canon.html#s-d2bf6c5b" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-8283934c">Someone ordered what they thought would be a flowery pink drink called a White Wedding and got something very different. Accepted it without complaint. <a class="plink" href="canon.html#s-8283934c" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-68a9e369">Brief detour into a YouTube ad that asked “would you hire a convicted sex offender?” which played immediately on TV at someone’s house <a class="plink" href="canon.html#s-68a9e369" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/banter.html">Banter</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-1c2643af">Calculating max occupancy of the restaurant: 12 at tables, 12 at bar, 20 standing behind bar, arrived at roughly 44 to 80 depending on methodology. Became its own math exercise. <a class="plink" href="canon.html#s-1c2643af" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-470350ea">The sparkling water bottle origin: debated between Long Island, Hudson Valley, Catskills, and Mamaroneck. “Those are microscopic bubbles that almost hurt.” <a class="plink" href="canon.html#s-470350ea" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-66ec2bcc">The gun safe: attempted to crack it by feel, got to the third click, explained the full mechanism in detail. No success confirmed. <a class="plink" href="canon.html#s-66ec2bcc" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-ed4c5e15">The camera moment: a nearby couple stared at the camera, one person thought they were being engaged, the other realized they were just looking past them at water bottles. Resolved awkwardly. <a class="plink" href="canon.html#s-ed4c5e15" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+  <li id="s-7d8b9f2d">Forklift operator competitions on German television: witnessed in person, involved filling a glass with microscopic precision. Certified. <a class="plink" href="canon.html#s-7d8b9f2d" aria-label="Link to this item" title="Link to this item">#</a><span class="src"><a href="dinners/dram_yard.html">Dram Yard</a> &middot; 13 AUG 2026</span></li>
+</ul>
+<footer class="foot">
+  The Wilmington Papers &middot; field notes, Aug 2026 &middot; <a href="index.html">return to file</a>
+</footer>
+</div>
+<script>
+(function(){
+  var r=document.documentElement, k="papers-theme", b=document.getElementById("themer");
+  try{ var s=localStorage.getItem(k); if(s) r.setAttribute("data-theme",s); }catch(e){}
+  if(!b) return;
+  b.addEventListener("click",function(ev){
+    ev.preventDefault();
+    var cur=r.getAttribute("data-theme");
+    if(!cur) cur=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
+    var next=cur==="dark"?"light":"dark";
+    r.setAttribute("data-theme",next);
+    try{ localStorage.setItem(k,next); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>

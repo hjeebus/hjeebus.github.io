@@ -4,3 +4,17 @@ _site
 .DS_STORE
 
 .omc/
+
+__pycache__/
+*.pyc
+
+# Raw dinner notes are the private source; only generated pages are published.
+the_wilmington_papers/granola_notes/
+*/granola_notes/
+
+# Parsed note data is derived; regenerate with _tools/papers/build.py
+*/_data/
+
+# Real names / suppression patterns are a decoder ring for redacted output.
+trip.private.json
+**/trip.private.json

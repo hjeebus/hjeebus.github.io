@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Manna - The Wilmington Papers</title>
+<meta name="description" content="Seven dinners in Wilmington, North Carolina. Transcribed without consent, catalogued without mercy. Nothing was resolved.">
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{
+  --paper:#f4f1e8; --ink:#1c1a17; --faded:#6b6459; --rule:#c9c2b2;
+  --stamp:#a63d2f; --accent:#2f4f4f; --card:#fbf9f3; --shadow:rgba(28,26,23,.09);
+}
+@media (prefers-color-scheme:dark){
+  :root{ --paper:#16151a; --ink:#e8e4da; --faded:#948c7e; --rule:#38343d;
+    --stamp:#e0705c; --accent:#7fb2a8; --card:#1e1d23; --shadow:rgba(0,0,0,.4); }
+}
+:root[data-theme="dark"]{
+  --paper:#16151a; --ink:#e8e4da; --faded:#948c7e; --rule:#38343d;
+  --stamp:#e0705c; --accent:#7fb2a8; --card:#1e1d23; --shadow:rgba(0,0,0,.4);
+}
+:root[data-theme="light"]{
+  --paper:#f4f1e8; --ink:#1c1a17; --faded:#6b6459; --rule:#c9c2b2;
+  --stamp:#a63d2f; --accent:#2f4f4f; --card:#fbf9f3; --shadow:rgba(28,26,23,.09);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px 90px}
+.mono{font-family:"SFMono-Regular",Menlo,Consolas,monospace}
+
+header.mast{border-bottom:2px solid var(--ink);margin-bottom:26px;padding-top:38px}
+.kicker{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--stamp);margin-bottom:12px;
+}
+h1.title{
+  font-size:clamp(2.1rem,7vw,3.5rem);line-height:1.02;margin:0 0 10px;
+  letter-spacing:-.02em;font-weight:600;
+}
+.dek{color:var(--faded);font-size:.95rem;margin:0 0 20px;font-style:italic}
+.mast-meta{
+  display:flex;flex-wrap:wrap;gap:6px 20px;padding:10px 0;
+  border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faded);
+}
+.mast-meta b{color:var(--ink);font-weight:600}
+
+nav.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 34px;align-items:center}
+nav.tabs a{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;padding:7px 13px;border:1px solid var(--rule);
+  border-radius:2px;color:var(--faded);background:var(--card);
+}
+nav.tabs a:hover{border-color:var(--ink);color:var(--ink)}
+nav.tabs a[aria-current="page"]{
+  background:var(--ink);color:var(--paper);border-color:var(--ink);
+}
+nav.tabs a.themer{margin-left:auto;border-style:dashed}
+
+h2.sec{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--stamp);margin:44px 0 4px;
+}
+h2.sec + .sec-note{color:var(--faded);font-size:.85rem;margin:0 0 18px;font-style:italic}
+.rule{height:1px;background:var(--rule);border:0;margin:0 0 20px}
+.quiet{color:var(--faded);font-style:italic}
+
+.exhibit{
+  background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--stamp);
+  padding:22px 24px;margin:0 0 16px;border-radius:2px;box-shadow:0 1px 2px var(--shadow);
+}
+.exhibit .q{font-size:1.28rem;line-height:1.44;margin:0 0 12px}
+.exhibit .src{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faded);
+}
+.exhibit .gloss{color:var(--faded);font-size:.86rem;font-style:italic;margin-top:6px}
+
+.docket{display:grid;gap:12px}
+.doc{
+  display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:baseline;
+  background:var(--card);border:1px solid var(--rule);border-radius:2px;
+  padding:16px 18px;text-decoration:none;transition:border-color .15s,transform .15s;
+}
+.doc:hover{border-color:var(--ink);transform:translateX(2px)}
+.doc .num{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.72rem;color:var(--stamp);letter-spacing:.06em;
+}
+.doc .v{font-size:1.16rem;font-weight:600;margin:0 0 2px}
+.doc .k{color:var(--faded);font-size:.82rem}
+.doc .d{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;color:var(--faded);letter-spacing:.08em;white-space:nowrap;
+}
+.doc .tally{
+  margin-top:8px;font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+  display:block;
+}
+@media(max-width:560px){
+  .doc{grid-template-columns:34px 1fr;gap:10px}
+  .doc .d{grid-column:2;margin-top:4px}
+}
+
+.thread{
+  border:1px solid var(--rule);border-radius:2px;background:var(--card);
+  padding:16px 18px;margin-bottom:12px;
+}
+.thread h3{
+  margin:0 0 6px;font-size:1.05rem;display:flex;justify-content:space-between;
+  align-items:baseline;gap:12px;flex-wrap:wrap;
+}
+.thread .count{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.62rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--stamp);
+}
+.thread .where{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.66rem;
+  color:var(--faded);letter-spacing:.06em;
+}
+
+ul.evid{list-style:none;padding:0;margin:0}
+ul.evid li{padding:12px 0 12px 30px;border-bottom:1px solid var(--rule);position:relative}
+ul.evid li:last-child{border-bottom:0}
+ul.evid li:before{
+  content:"?";position:absolute;left:0;top:12px;color:var(--stamp);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.8rem;font-weight:700;
+}
+ul.evid.loop li:before{content:"\21bb"}
+ul.evid.claim li:before{content:"\00a7";color:var(--accent)}
+ul.evid.quest li:before{content:"\2192";color:var(--accent)}
+ul.evid .src{
+  display:block;margin-top:5px;
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+}
+
+a.plink{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  text-decoration:none;color:var(--faded);opacity:0;
+  padding:0 4px;font-size:.85em;transition:opacity .12s;
+  white-space:nowrap;
+}
+li:hover > a.plink,a.plink:focus{opacity:1;color:var(--stamp)}
+@media (hover:none){ a.plink{opacity:.5} }
+
+/* Highlight without reflowing: the row keeps its 30px text indent and the
+   marker keeps its position, so only the background and rail change. */
+ul.evid li{border-left:3px solid transparent;padding-left:30px}
+ul.evid li:before{left:3px}
+ul.evid li:target{
+  background:var(--card);
+  border-left-color:var(--stamp);
+  padding-right:12px;
+}
+ul.evid li:target > a.plink{opacity:1;color:var(--stamp)}
+.exhibit .src a{color:var(--faded);text-decoration:underline}
+.exhibit .src a:hover{color:var(--stamp)}
+.exhibit:target{border-left-width:6px;background:var(--paper)}
+.exhibit:hover > .q > a.plink,.exhibit:target > .q > a.plink{opacity:1;color:var(--stamp)}
+:target{scroll-margin-top:24px}
+
+.dinner-head{border-bottom:2px solid var(--ink);padding-top:34px;margin-bottom:8px}
+.dinner-head .num{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.66rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--stamp);margin-bottom:10px;
+}
+.dinner-head h1{font-size:clamp(1.9rem,6vw,3rem);margin:0 0 8px;letter-spacing:-.02em}
+.dinner-head .sub{color:var(--faded);font-size:.9rem;margin:0 0 18px}
+.setting{font-size:1.02rem;margin:22px 0 0}
+.undercurrent{
+  border-left:3px solid var(--accent);background:var(--card);
+  padding:16px 20px;margin:8px 0 0;font-size:.98rem;
+}
+ul.plain{padding-left:20px;margin:0}
+ul.plain li{margin-bottom:9px}
+.pager{
+  display:flex;justify-content:space-between;gap:14px;margin-top:52px;
+  padding-top:18px;border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.68rem;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.pager a{color:var(--faded);text-decoration:none}
+.pager a:hover{color:var(--ink)}
+
+#slot{min-height:190px;display:flex;align-items:center}
+.btn{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:2px;padding:11px 20px;
+}
+.btn:hover{opacity:.86}
+footer.foot{
+  margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.64rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faded);
+}
+footer.foot a{color:var(--faded)}
+.stat-row{display:flex;flex-wrap:wrap;gap:26px;margin:26px 0 0}
+.stat b{
+  display:block;font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:1.7rem;color:var(--stamp);line-height:1;font-weight:600;
+}
+.stat span{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faded);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="tabs"><a href="../index.html">The Case</a><a href="../record.html" aria-current="page">The Record</a><a href="../cold-cases.html">Cold Cases</a><a href="../canon.html">Canon</a><a href="../quotable.html">Quotable</a><a class="themer" href="#" id="themer" title="Toggle light and dark">&#9686;</a></nav>
+
+<header class="dinner-head">
+  <div class="num">Sitting IV of 7</div>
+  <h1>Manna</h1>
+  <p class="sub">Farm-to-table, Princess St &middot; 12 AUG 2026 &middot; with T.</p>
+</header>
+<div class="mast-meta">
+  <span><b>11</b> lines</span><span><b>8</b> unanswered</span>
+  <span><b>9</b> claims</span><span><b>5</b> open loops</span>
+</div>
+<h2 class="sec">Setting and vibe</h2><hr class="rule"><p class="setting">Manna, a farm-to-table restaurant on Princess Street in Wilmington, NC. Wednesday night, around 7:30pm. Menu changes daily, extremely seasonal. The place was busier than expected for a Wednesday, with a lot of overdressed people walking by outside. The decor was described as disjointed and vaguely unsettling. The music was a Spotify playlist called “70s Soft Rock Bottoms,” which switched over at 8pm. The vibe was loose, full, and wandering.</p><p class="setting">They ordered oysters (six, local), smoked fish, crab cakes, melon, grouper (which had bones), and a pork chop that took 30 minutes to rest. Drinks included a Cooler Spritz and a Stiegl grapefruit radler. Passed on dessert. Possibly heading to get ice cream after.</p><h2 class="sec">Exhibits</h2><p class="sec-note">Lines entered into the record.</p><hr class="rule"><div class="exhibit" id="x-d4072ea3"><p class="q">&ldquo;Risk it for the biscuit, brother&rdquo;<a class="plink" href="#x-d4072ea3" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">B., after Speaker B worried about grapefruit and his meds</div></div><div class="exhibit" id="x-6474e5df"><p class="q">&ldquo;Let’s not get too crazy&rdquo;<a class="plink" href="#x-6474e5df" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">the server, unprompted</div></div><div class="exhibit" id="x-a5b6cab2"><p class="q">&ldquo;Duck confit sounds fucking fire&rdquo;<a class="plink" href="#x-a5b6cab2" aria-label="Link to this line" title="Link to this line">#</a></p></div><div class="exhibit" id="x-c19312d0"><p class="q">&ldquo;I’m a sucker for a pork chop&rdquo;<a class="plink" href="#x-c19312d0" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">said twice, on different nights</div></div><div class="exhibit" id="x-c3c5c480"><p class="q">&ldquo;Parsley is the collapse of what a good time&rdquo;<a class="plink" href="#x-c3c5c480" aria-label="Link to this line" title="Link to this line">#</a></p></div><div class="exhibit" id="x-5983a6e4"><p class="q">&ldquo;I’m gonna ride with that. Pre-felony.&rdquo;<a class="plink" href="#x-5983a6e4" aria-label="Link to this line" title="Link to this line">#</a></p></div><div class="exhibit" id="x-8043ff8d"><p class="q">&ldquo;I don’t even want to know your name. I’m only going to call you your roster number.&rdquo;<a class="plink" href="#x-8043ff8d" aria-label="Link to this line" title="Link to this line">#</a></p></div><div class="exhibit" id="x-2aa01771"><p class="q">&ldquo;Stays cracking fools 9 to 5&rdquo;<a class="plink" href="#x-2aa01771" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">on the chiropractor’s schedule</div></div><div class="exhibit" id="x-5e7ea7c2"><p class="q">&ldquo;What a great job.&rdquo;<a class="plink" href="#x-5e7ea7c2" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">on the chiropractor working noon to 5, four days a week</div></div><div class="exhibit" id="x-c72cadcb"><p class="q">&ldquo;We can’t reject the null.&rdquo;<a class="plink" href="#x-c72cadcb" aria-label="Link to this line" title="Link to this line">#</a></p><div class="gloss">on whether Wilmington is actually fancy</div></div><div class="exhibit" id="x-60a1d8e2"><p class="q">&ldquo;I think the sound man is playing his own playlist to get people to leave.&rdquo;<a class="plink" href="#x-60a1d8e2" aria-label="Link to this line" title="Link to this line">#</a></p></div><h2 class="sec">Main conversation threads</h2><hr class="rule"><ul class="plain"><li>Foxes bar: a late-night sandwich spot Speaker B discovered after jazz nights on Tuesdays, never properly relayed to B.</li><li>Chiropractors: B. goes every week or so for maintenance after BJ’s class cranks his neck; includes stretching, STEM machine, and traction</li><li>Chiropractic school: B. actually looked into it; four years, no nearby schools, dropped the idea fast</li><li>Escape rooms: too many in downtown Wilmington, at least three, possibly more</li><li>Steely Dan lore: they barely toured, their name is a nickname for a dildo, and the restaurant played three of their songs back to back</li><li>Paranoia and perception of reality: started as a Truman Show joke, went somewhere more interesting</li></ul><h2 class="sec">Stories started</h2><hr class="rule"><ul class="plain"><li>Speaker B at the pool: a mom (K.) and her daughter (K.L., maybe) swam over to him while he was checking chemicals, introduced themselves, mom was attractive; story ended there, no resolution</li><li>M. at the pool: a different woman approached Speaker B at 6:30pm while he was closing out and complimented his appearance; he was into it</li><li>Speaker B going to Foxes after jazz: decompressed, showered, went out hungry, got a sandwich on Texas toast with fries instead of fast food; presented as a personal win</li></ul><h2 class="sec">Theories and claims</h2><hr class="rule"><ul class="evid claim"><li>Grapefruit interacts badly with certain medications by affecting a “very specific mechanism”; Speaker B risked it anyway</li><li>The well-dressed people walking by were probably going to a show at the Thalian Theater; confirmed nothing was actually playing that night</li><li>Silk does not breathe, which makes the scarf the woman outside was wearing inexplicable</li><li>Chiropractors make great money: cash pay, no co-pays, multiple concurrent patients, plus an acupuncturist on staff</li><li>The Steely Dan name comes from a dildo reference; Speaker B claims he told B. this earlier that same day</li><li>Steely Dan only really toured on their first album</li><li>The “70s Soft Rock Bottoms” Spotify playlist is responsible for three Steely Dan songs and an Atlanta Rhythm Section track in one sitting</li><li>Parsley either cleanses the palate before eating or freshens breath after; nobody knew which, and it fades fast anyway</li><li>What they thought was parsley on the pork chop was actually cilantro</li></ul><h2 class="sec">Side quests</h2><hr class="rule"><ul class="evid quest"><li>Arrow symbols on the menu: turned out to indicate wine pairing options, not sourcing info</li><li>The bell pepper in a dish: debated whether it was a shishito; Speaker B realized mid-conversation he was reading last night’s menu</li><li>Numbering students instead of learning their names: Speaker B considered piloting it in one class, then talked himself out of it</li><li>The man in the all-white suit crossing the street: briefly became a Truman Show conspiracy, then a paranoia tangent</li><li>Whether the woman outside was upset or just wearing a dress with a tie: unresolved</li></ul><h2 class="sec">Unanswered questions</h2><hr class="rule"><ul class="evid "><li>What does the arrow symbol on the menu actually indicate for the oysters specifically?</li><li>What was the bell pepper in the dish, really? Shishito? Stuffed pepper? Something else?</li><li>Is the woman outside upset or just wearing a wrap dress?</li><li>What is the actual success rate of the escape rooms downtown?</li><li>Which Steely Dan song came before “Reeling in the Years”?</li><li>Does silk actually breathe or not?</li><li>Who is the man in the all-white suit and where was he going?</li><li>What was playing at the Thalian Theater, if anything?</li></ul><h2 class="sec">Promised to send</h2><hr class="rule"><ul class="evid quest"><li>Speaker B: will show B. his two silk shirts so B. can feel the difference in thickness</li></ul><h2 class="sec">Open loops</h2><hr class="rule"><ul class="evid loop"><li>Foxes: B. has still never been; Speaker B wants to take him on a jazz Tuesday</li><li>The album release party: Speaker B is considering wearing a vest despite the heat; floated the idea of going viral by collapsing onstage and needing a banana bag</li><li>Chiropractic school: B. looked into it once, dropped it at “four years and no nearby schools,” never got to cost</li><li>The podcast or livestream they apparently do: discussed whether live format gives cover for rambling; no decision on format</li><li>Ice cream after dinner: mentioned but not confirmed</li></ul><h2 class="sec">Decisions or plans</h2><hr class="rule"><p class="quiet">No firm decisions.</p><h2 class="sec">Next dinner</h2><hr class="rule"><p class="quiet">No next dinner discussed. Foxes on a jazz Tuesday was loosely floated as a future outing.</p><p style="margin-top:34px"><a class="mono" style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faded)" href="https://notes.granola.ai/t/a3d68547-cadf-4294-9d5e-4784564f1cd1-00demib2">Full transcript &rarr;</a></p><div class="pager"><a href="circa_1922.html">&larr; Circa 1922</a><a href="dram_tree.html">Dram Tree &rarr;</a></div>
+<footer class="foot">
+  The Wilmington Papers &middot; field notes, Aug 2026 &middot; <a href="../index.html">return to file</a>
+</footer>
+</div>
+<script>
+(function(){
+  var r=document.documentElement, k="papers-theme", b=document.getElementById("themer");
+  try{ var s=localStorage.getItem(k); if(s) r.setAttribute("data-theme",s); }catch(e){}
+  if(!b) return;
+  b.addEventListener("click",function(ev){
+    ev.preventDefault();
+    var cur=r.getAttribute("data-theme");
+    if(!cur) cur=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
+    var next=cur==="dark"?"light":"dark";
+    r.setAttribute("data-theme",next);
+    try{ localStorage.setItem(k,next); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
