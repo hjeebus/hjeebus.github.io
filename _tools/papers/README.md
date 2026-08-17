@@ -12,42 +12,58 @@ here is specific to that trip. A new trip is a folder and a `trip.json`.
 ```
 mkdir -p the_reno_papers/granola_notes
 # drop one .md per dinner into granola_notes/
-# write the_reno_papers/trip.json  (see below)
+# write the_reno_papers/trip.json          (public config, see below)
+# write the_reno_papers/trip.private.json  (names to redact, gitignored)
 
 python3 _tools/papers/build.py the_reno_papers --check   # parse, report, write nothing
 python3 _tools/papers/build.py the_reno_papers           # write the pages
+
+git ls-files the_reno_papers | xargs grep -il "<a real name>"   # expect no output
 ```
+
+Run that last line before every push. It is the check that catches a name
+reaching a tracked file, and it is cheap compared to un-publishing one.
 
 Output lands in the trip folder: `index.html`, `record.html`,
 `cold-cases.html`, `canon.html`, `quotable.html`, and `dinners/<slug>.html`.
 Jekyll passes these through untouched, so the folder is live at
-`hjeebus.com/<trip>/` once pushed. Re-running is safe and idempotent — it
+`www.hjeeb.us/<trip>/` once pushed. Re-running is safe and idempotent — it
 overwrites its own output and never edits the notes.
 
 `_data/dinners.json` is also written: the parsed notes as structured data, handy
-for grepping or feeding something else.
+for grepping or feeding something else. It stays out of git along with the notes.
 
 ## trip.json
 
 Every reader-visible string comes from here. All keys are optional except that
 you'll want a `title`.
 
-| key | what it does |
-| --- | --- |
-| `title` | Site title, `<title>` suffix, footer |
-| `tagline` | Home-page dek and meta description |
-| `footer` | Second footer segment, e.g. `field notes, Aug 2026` |
-| `notes_dir` | Notes subfolder (default `granola_notes`) |
-| `noindex` | `true` adds `<meta name="robots" content="noindex,nofollow">` |
-| `order` | Slugs in reading order; omit to sort by date |
-| `venues` | Per-slug `{name, kind, date}` overrides |
-| `hero_quote` | Prefix of the line to feature as Exhibit A |
-| `facts` | Extra masthead counts: `[{n, label}]` |
-| `closing_stat` | Fourth home stat `{n, label}`; omit for a computed one |
-| `threads` | `{label: regex}` — recurring subjects to track |
-| `thread_min_sittings` | Sittings a thread needs to appear (default 2) |
-| `companion_aliases` | `{"Real Name": ["variant", ...]}` spelling fixes |
-| `sections` | Per-page `kicker` / `title` / `dek` overrides |
+Anything holding a real name or a verbatim quote belongs in
+`trip.private.json`, which is gitignored and merged over this file at build
+time. The `file` column says where each key goes.
+
+| key | file | what it does |
+| --- | --- | --- |
+| `title` | public | Site title, `<title>` suffix, footer |
+| `tagline` | public | Home-page dek and meta description |
+| `footer` | public | Second footer segment, e.g. `field notes, Aug 2026` |
+| `notes_dir` | public | Notes subfolder (default `granola_notes`) |
+| `noindex` | public | `true` adds `<meta name="robots" content="noindex,nofollow">` |
+| `order` | public | Slugs in reading order; omit to sort by date |
+| `venues` | public | Per-slug `{name, kind, date}` overrides |
+| `facts` | public | Extra masthead counts: `[{n, label}]` |
+| `closing_stat` | public | Fourth home stat `{n, label}`; omit for a computed one |
+| `threads` | public | `{label: regex}` — recurring subjects to track |
+| `thread_min_sittings` | public | Sittings a thread needs to appear (default 2) |
+| `sections` | public | Per-page `kicker` / `title` / `dek` overrides |
+| `drop_sections` | public | Section field names to omit entirely |
+| `hero_quote` | **private** | Prefix of the line to feature as Exhibit A |
+| `companion_aliases` | **private** | `{"Real Name": ["variant", ...]}` spelling fixes |
+| `redact_names` | **private** | `{"Real Name": "stand-in"}` replacements |
+| `suppress` | **private** | Patterns whose matching entries are withheld |
+
+`drop_sections` is public because a field name reveals nothing; `suppress`
+patterns are private because they quote the text they are withholding.
 
 `dek` strings may reference `{questions}`, `{loops}`, `{theories}`,
 `{quotes}`, and `{dinners}`.
@@ -94,8 +110,43 @@ After changing any of this, audit what would actually ship:
 git ls-files <trip> | xargs grep -il "<a real name>"
 ```
 
-Expect no matches. Note that redaction only affects generated output — it cannot
-retract anything already pushed, so decide before the first push.
+Expect no matches.
+
+### Redact before the first push
+
+Redaction only shapes generated output. It cannot retract anything already
+pushed, and checking the current working tree is not enough — **every past
+commit is still readable.** Pages generated before a redaction rule existed keep
+the un-redacted text in their history, so a repo whose tip is clean can still
+serve the original wording from an earlier commit.
+
+To audit history rather than just the tip:
+
+```
+git log --remotes --oneline -S "<a real name>"   # what is actually published
+git log --all --oneline -S "<a real name>"       # includes local-only commits
+```
+
+Use `--remotes` to answer "is this public?". Prefer `--all` only when you also
+want local commits — after a squash and force-push the replaced commits linger in
+your own reflog until git collects them, so `--all` reports names that are no
+longer reachable from anywhere on the remote.
+
+Any output from the `--remotes` form means the name is still published. On an
+unmerged branch the fix is to squash to a single commit built from redacted
+output and force-push; on shared history it is far more disruptive. Either way,
+assume anything briefly public may have been fetched, forked, or cached.
+
+Also note that a public repo serves the notes two ways: through the repo itself,
+and through Jekyll, which renders `.md` files as pages. The gitignore entries
+handle the first and the `exclude:` list in `_config.yml` handles the second.
+Both are needed.
+
+`noindex: true` in a trip's config adds `<meta name="robots" content="noindex,
+nofollow">` to every page of that trip. Useful when the notes cover events that
+are searchable in their own right — anonymizing the guests does nothing about
+the incidents around them. It keeps the pages live and link-shareable while
+keeping them out of results, and it is reversible with a rebuild.
 
 ## Deep links
 
