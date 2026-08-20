@@ -1,6 +1,6 @@
 {
   "title": "The Wilmington Papers",
-  "tagline": "Seven dinners in Wilmington, North Carolina. Transcribed without consent, catalogued without mercy. Nothing was resolved.",
+  "tagline": "Eight dinners in Wilmington, North Carolina. Transcribed without consent, catalogued without mercy. Nothing was resolved.",
   "footer": "field notes, Aug 2026",
   "notes_dir": "granola_notes",
   "noindex": true,
@@ -24,7 +24,8 @@
     "manna",
     "dram_tree",
     "banter",
-    "dram_yard"
+    "dram_yard",
+    "kipos"
   ],
   "venues": {
     "sea_bird": {
@@ -54,6 +55,10 @@
     "dram_yard": {
       "name": "Dram Yard",
       "kind": "Late dinner, Market St"
+    },
+    "kipos": {
+      "name": "Kipos",
+      "kind": "Greek, Saturday night"
     }
   },
   "thread_min_sittings": 2,
@@ -74,7 +79,7 @@
     "record": {
       "kicker": "Section II",
       "title": "The Record",
-      "dek": "Seven sittings, chronological. Each one catalogued in full."
+      "dek": "Eight sittings, chronological. Each one catalogued in full."
     },
     "canon": {
       "kicker": "Section III - the record of claims",
