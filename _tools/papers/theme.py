@@ -3,6 +3,12 @@
 `CSS` is emitted inline so a generated trip folder is fully self-contained and
 needs no asset paths. Palettes respond to `prefers-color-scheme` and to an
 explicit `data-theme` attribute, which the footer toggle persists.
+
+`GATE_CSS` and `GATE_JS` render the optional passphrase splash. The gate is a
+doorway, not a lock: it compares a SHA-256 digest so the passphrase itself is
+absent from the source, but the page body ships to the browser either way and is
+readable through view-source, devtools, or a direct fetch. Treat it as a way to
+set a tone and turn away casual arrivals, never as protection for the contents.
 """
 
 CSS = """
@@ -214,6 +220,88 @@ footer.foot a{color:var(--faded)}
   font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.6rem;
   letter-spacing:.14em;text-transform:uppercase;color:var(--faded);
 }
+"""
+
+GATE_CSS = """
+html.gated body > .wrap{display:none}
+html.gated{background:var(--paper)}
+#gate{
+  position:fixed;inset:0;z-index:9999;background:var(--paper);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;padding:28px;
+}
+#gate .box{max-width:440px;width:100%}
+#gate .kicker{
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--stamp);margin-bottom:14px;
+}
+#gate h1{
+  font-size:clamp(1.7rem,5vw,2.4rem);line-height:1.08;margin:0 0 10px;
+  letter-spacing:-.02em;font-weight:600;
+}
+#gate .dek{color:var(--faded);font-size:.92rem;font-style:italic;margin:0 0 24px}
+#gate form{display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:20px}
+#gate input{
+  flex:1 1 200px;background:var(--card);color:var(--ink);
+  border:1px solid var(--rule);border-radius:2px;padding:11px 13px;
+  font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:.82rem;
+}
+#gate input:focus{outline:0;border-color:var(--ink)}
+#gate .err{
+  color:var(--stamp);font-family:"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+  margin:14px 0 0;min-height:1em;
+}
+#gate .hint{color:var(--faded);font-size:.8rem;font-style:italic;margin:18px 0 0}
+"""
+
+GATE_JS = """
+(function(){
+  var DIGEST="%%DIGEST%%", KEY="papers-gate", r=document.documentElement;
+  function norm(s){ return s.toLowerCase().trim(); }
+  function hex(buf){
+    var out="", v=new Uint8Array(buf);
+    for(var i=0;i<v.length;i++) out += v[i].toString(16).padStart(2,"0");
+    return out;
+  }
+  function drop(){
+    var g=document.getElementById("gate");
+    if(g) g.parentNode.removeChild(g);
+  }
+  // This runs in <head>, so the overlay may not exist yet; unhide immediately
+  // and defer the node removal to whenever the document is ready.
+  function open_(){
+    r.classList.remove("gated");
+    if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",drop);
+    else drop();
+  }
+  try{ if(sessionStorage.getItem(KEY)===DIGEST){ open_(); return; } }catch(e){}
+
+  // No SubtleCrypto (file:// or an old browser) leaves nothing to compare
+  // against, and a gate that cannot be opened is worse than no gate.
+  var subtle = window.crypto && window.crypto.subtle;
+  if(!subtle){ open_(); return; }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    var f=document.getElementById("gate-form");
+    if(!f) return;
+    f.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      var input=document.getElementById("gate-input");
+      var err=document.getElementById("gate-err");
+      subtle.digest("SHA-256", new TextEncoder().encode(norm(input.value)))
+        .then(function(buf){
+          if(hex(buf)===DIGEST){
+            try{ sessionStorage.setItem(KEY,DIGEST); }catch(e){}
+            open_();
+          }else{
+            err.textContent="Not the phrase. Try again.";
+            input.value=""; input.focus();
+          }
+        });
+    });
+  });
+})();
 """
 
 THEME_JS = """

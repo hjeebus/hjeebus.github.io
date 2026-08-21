@@ -4,6 +4,12 @@
   "footer": "field notes, Aug 2026",
   "notes_dir": "granola_notes",
   "noindex": true,
+  "gate": {
+    "kicker": "Sealed · not for circulation",
+    "dek": "The file is closed to the general public. State the phrase.",
+    "placeholder": "the phrase",
+    "hint": "A palindrome. Asked of waterfowl."
+  },
   "facts": [
     {
       "n": 1,
