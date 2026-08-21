@@ -57,6 +57,7 @@ time. The `file` column says where each key goes.
 | `thread_min_sittings` | public | Sittings a thread needs to appear (default 2) |
 | `sections` | public | Per-page `kicker` / `title` / `dek` overrides |
 | `drop_sections` | public | Section field names to omit entirely |
+| `gate` | both | Passphrase splash; `passphrase` is **private**, display strings public |
 | `hero_quote` | **private** | Prefix of the line to feature as Exhibit A |
 | `companion_aliases` | **private** | `{"Real Name": ["variant", ...]}` spelling fixes |
 | `redact_names` | **private** | `{"Real Name": "stand-in"}` replacements |
@@ -147,6 +148,60 @@ nofollow">` to every page of that trip. Useful when the notes cover events that
 are searchable in their own right — anonymizing the guests does nothing about
 the incidents around them. It keeps the pages live and link-shareable while
 keeping them out of results, and it is reversible with a rebuild.
+
+## The passphrase gate
+
+A trip can put a splash screen in front of every one of its pages:
+
+```json
+"gate": {
+  "kicker": "Sealed - not for circulation",
+  "dek": "The file is closed to the general public. State the phrase.",
+  "placeholder": "the phrase",
+  "hint": "A palindrome. Asked of waterfowl."
+}
+```
+
+with the phrase itself in `trip.private.json`:
+
+```json
+"gate": { "passphrase": "<the phrase>" }
+```
+
+Only the SHA-256 digest reaches the generated pages, so the passphrase is not
+recoverable by reading the source. Comparison happens in the browser via
+`crypto.subtle`. Input is lowercased and trimmed before hashing, so casing and
+stray surrounding space do not matter, but **punctuation is significant** — a
+phrase ending in `?` has to be typed with the `?`. A correct entry is remembered
+in `sessionStorage`, so moving between pages does not re-prompt, and closing the
+tab re-seals the file.
+
+The phrase is deliberately absent from this README: an example here would be
+committed, and a committed passphrase is a published one.
+
+The passphrase belongs in the private file for the same reason the name map
+does: committing it to a public repo publishes it. Omit the `gate` key entirely
+and pages build ungated.
+
+### What the gate is not
+
+**It is a doorway, not a lock, and it protects nothing.** GitHub Pages serves
+static files with no server to check anything, so the gate can only hide content
+the browser has already been given. Every gated page ships its full text and
+stays readable through view-source, devtools, or `curl` of the page URL. The
+digest resists casual source-reading, but a recognizable phrase falls to a
+wordlist regardless.
+
+So use it to set a tone and turn away casual arrivals. Do not use it to publish
+anything that would be a problem to read — for that, the controls that actually
+work are `suppress`, `redact_names`, `drop_sections`, and not committing the
+material at all. `noindex` remains the thing that keeps pages out of search
+results; the gate does not help there and is not a substitute.
+
+If a trip ever genuinely needs closed contents on this host, the shape that
+works is encrypting the page bodies with the passphrase and decrypting on
+submit, so ciphertext is all that ships. That trades away the deep links below
+and is deliberately not built.
 
 ## Deep links
 

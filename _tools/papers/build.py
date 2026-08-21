@@ -22,7 +22,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from parse import load_trip
-from theme import CSS, TABS, THEME_JS
+from theme import CSS, GATE_CSS, GATE_JS, TABS, THEME_JS
 
 ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII",
          "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"]
@@ -34,6 +34,7 @@ DEFAULTS = {
     "tagline": "Dinners, transcribed and entered into evidence.",
     "footer": "field notes",
     "noindex": False,
+    "gate": None,
     "sections": {
         "cold_cases": {
             "kicker": "Section I - unresolved",
@@ -61,6 +62,51 @@ DEFAULTS = {
 
 def e(s):
     return html.escape(str(s), quote=True)
+
+
+def gate_norm(s):
+    """Normalize a passphrase before hashing: casing and surrounding space only.
+
+    Punctuation is significant, so a phrase ending in `?` must be typed with it.
+    Applied identically here and in GATE_JS, so a digest built at generation
+    time matches what the browser computes from what the reader types.
+    """
+    return str(s).lower().strip()
+
+
+def gate_digest(cfg):
+    """SHA-256 of the configured passphrase, or "" when no gate is configured.
+
+    Hashing keeps the passphrase itself out of the generated pages. It does not
+    protect the pages: the body ships alongside the gate and stays readable via
+    view-source, devtools, or a direct fetch of any page URL.
+    """
+    g = cfg.get("gate") or {}
+    phrase = g.get("passphrase") or ""
+    if not phrase:
+        return ""
+    return hashlib.sha256(gate_norm(phrase).encode("utf-8")).hexdigest()
+
+
+def gate_markup(cfg, digest):
+    """Splash overlay plus the script that removes it, or "" when ungated."""
+    if not digest:
+        return "", ""
+    g = cfg.get("gate") or {}
+    overlay = (
+        '<div id="gate"><div class="box">'
+        '<div class="kicker">' + e(g.get("kicker", "Restricted · not for circulation")) + "</div>"
+        "<h1>" + e(g.get("title") or cfg["title"]) + "</h1>"
+        '<p class="dek">' + e(g.get("dek", "This file is closed. State the phrase.")) + "</p>"
+        '<form id="gate-form"><input id="gate-input" type="text" '
+        'autocomplete="off" autocapitalize="none" spellcheck="false" '
+        'aria-label="Passphrase" placeholder="' + e(g.get("placeholder", "passphrase")) + '">'
+        '<button class="btn" type="submit">Enter</button></form>'
+        '<p class="err" id="gate-err" role="status" aria-live="polite"></p>'
+        + ('<p class="hint">' + e(g["hint"]) + "</p>" if g.get("hint") else "")
+        + "</div></div>"
+    )
+    return overlay, GATE_JS.replace("%%DIGEST%%", digest)
 
 
 def merge(base, over):
@@ -126,17 +172,24 @@ def page(cfg, title, body, current, depth=0):
     tabs += '<a class="themer" href="#" id="themer" title="Toggle light and dark">&#9686;</a>'
     robots = ('\n<meta name="robots" content="noindex,nofollow">'
               if cfg.get("noindex") else "")
+    digest = gate_digest(cfg)
+    overlay, gate_js = gate_markup(cfg, digest)
+    # The class is inline on <html> rather than set by script so a gated page
+    # never paints its contents before the gate is evaluated.
+    html_attrs = ' class="gated"' if digest else ""
+    css = CSS + (GATE_CSS if digest else "")
     return """<!doctype html>
-<html lang="en">
+<html lang="en"%s>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>%s</title>
 <meta name="description" content="%s">%s
 <style>%s</style>
+<script>%s</script>
 </head>
 <body>
-<div class="wrap">
+%s<div class="wrap">
 <nav class="tabs">%s</nav>
 %s
 <footer class="foot">
@@ -146,8 +199,8 @@ def page(cfg, title, body, current, depth=0):
 <script>%s</script>
 </body>
 </html>
-""" % (e(title), e(cfg["tagline"][:150]), robots, CSS, tabs, body,
-       e(cfg["title"]), e(cfg["footer"]), up, THEME_JS)
+""" % (html_attrs, e(title), e(cfg["tagline"][:150]), robots, css, gate_js,
+       overlay, tabs, body, e(cfg["title"]), e(cfg["footer"]), up, THEME_JS)
 
 
 def suffix(cfg):
