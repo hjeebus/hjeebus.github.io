@@ -248,6 +248,10 @@ code{
 <header class="masthead">
   <h1>Broc Klein</h1>
   <p class="tagline">Senior Software Engineer &middot; AI Agent Platforms &middot; Evaluation Infrastructure</p>
+  <p class="contact">
+    <span>Bloomfield, NJ</span>
+    <a href="mailto:broc.klein@gmail.com">broc.klein@gmail.com</a>
+  </p>
 </header>
 
 <section>
@@ -261,7 +265,7 @@ code{
     <div class="skill-row">
       <div class="skill-label">Languages &amp; Frameworks</div>
       <div class="skill-list">
-        <span>TypeScript</span><span>React</span><span>Next.js</span><span>Ruby on Rails</span><span>Python</span><span>Rust</span><span>SQL</span><span>PostgreSQL</span>
+        <span>TypeScript</span><span>React</span><span>Next.js</span><span>Ruby on Rails</span><span>Python</span><span>SQL</span><span>PostgreSQL</span>
       </div>
     </div>
     <div class="skill-row">
@@ -296,10 +300,10 @@ code{
       <li><strong>Designed conversational-AI guardrail evaluation practices</strong> &mdash; decomposed monolithic guardrail checks into focused judges, built production test scenarios and simulation seeds, and authored/reviewed judge prompts.</li>
       <li><strong>Built CI simulation smoke tests</strong> that fire agent test portfolios against production on every deploy, catching agent regressions before release rather than after a customer found them.</li>
       <li><strong>Shipped contextual <code>@node</code> / <code>@step</code> tagging for the AI Sidekick</strong>, letting users reference specific graph nodes from chat with duplicate-name disambiguation &mdash; removing the main source of ambiguity in multi-node plan edits.</li>
-      <li><strong>Architected MCP and OAuth infrastructure</strong> to expose Woflow skills as callable tools for external agents, including dynamic skill-loading endpoints, token handling, and rate limiting. Published a public agent-chat SDK to npm with OIDC trusted publishing.</li>
+      <li><strong>Architected MCP and OAuth infrastructure</strong> to expose Woflow skills as callable tools for external agents &mdash; JWKS-verified OAuth with scope enforcement, dynamic client registration for self-serve onboarding, row-level security as defense in depth, a single-host MCP gateway, and an immutable per-action credit ledger for usage and cost control. Published a public agent-chat SDK to npm with OIDC trusted publishing.</li>
       <li><strong>Led source-readiness and SOP conflict-validation engine work</strong> &mdash; judgment-shaped evaluation funnel, rejection-ledger persistence, cross-ledger conflict detection, and a repository layer over the analysis schema.</li>
       <li><strong>Improved security and compliance posture</strong> &mdash; Doppler secrets rollout, AWS KMS encryption for PHI-bearing evaluation data, fail-closed encryption chokepoints, PII-conscious logging and log redaction, and org-scoped access controls on agent conversation streams.</li>
-      <li><strong>Migrated Walmart catalog export to normalized tables</strong>, eliminating race conditions and write failures while adding auditability through an event-sourced export actions ledger.</li>
+      <li><strong>Migrated Walmart catalog export from a nested-JSONB graph to normalized tables</strong> after diagnosing an O(n&sup2;) change-detection path that hung large catalog imports past timeout. Shipped behind a per-store feature flag with a formatter parity test and an explicit export-lifecycle state machine, making per-item export status a queryable fact instead of a reconstructed DAG diff.</li>
       <li><strong>Partnered with product, design, and operations</strong> on sprint planning, demos, ground-truth curation, and client-facing quality workflows for customers including DoorDash, Shopify, Uber, Grubhub, and Clipboard Health.</li>
     </ul>
   </div>
