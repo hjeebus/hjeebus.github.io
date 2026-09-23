@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/modernist-0b3a225d-1ad3-4528-b991-f5d2e9b33d8c/styles.css">
+<script src="_ds/modernist-0b3a225d-1ad3-4528-b991-f5d2e9b33d8c/_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--color-neutral-300);color:var(--color-text);font-family:var(--font-body);text-wrap:pretty}a{color:var(--color-text)}a:hover{color:var(--color-accent-700)}</style>
+</helmet>
+<section id="1" style="padding:64px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px;max-width:900px">
+<span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Turn 1 · One direction · Modernist</span>
+<h1 style="font-family:var(--font-heading);font-weight:800;font-size:48px;line-height:1.05;letter-spacing:-0.02em;margin:0">Graye Market: key screens</h1>
+<p style="margin:0;font-size:17px;line-height:28px;color:var(--color-neutral-900);max-width:70ch">Desktop at 1280, mobile at 390. Region-level location, verification shown as badge plus details, no buyer subscription. Photo cells are placeholders for real equipment photography.</p>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start">
+
+<div id="1a" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1a</span><span style="font-weight:700">01 Home / landing</span></div>
+<div data-screen-label="01 Home" style="width:1280px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<nav class="nav" style="padding-inline:72px;gap:28px">
+<span class="nav-brand" style="font-size:22px;letter-spacing:-0.01em">Gray<span style="color:var(--color-accent)">e</span> Market</span>
+<a>Browse</a><a>How it works</a><a>Pricing</a><a>Sell equipment</a><a>Sign in</a>
+<button type="button" class="btn btn-primary">List equipment</button>
+</nav>
+<div style="padding:0 72px">
+<div style="display:grid;grid-template-columns:7fr 5fr;gap:56px;padding:88px 0 72px;align-items:end">
+<div>
+<h2 style="font-family:var(--font-heading);font-weight:800;font-size:80px;line-height:1.04;letter-spacing:-0.025em;margin:0 0 0 -4px"><span style="display:block">Browse free.</span><span style="display:block">Unlock verified sellers.</span></h2>
+<p style="font-size:18px;line-height:28px;max-width:52ch;margin:32px 0 0;color:var(--color-neutral-900)">A private marketplace for heavy equipment. Every seller is checked as the owner and ready to sell. Pay one flat fee to get their contact, then deal directly. No commission on the sale.</p>
+</div>
+<div class="grayscale" style="aspect-ratio:4/5;background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 12px,var(--color-neutral-200) 12px 24px);display:flex;align-items:flex-end;padding:16px;box-sizing:border-box"><span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-bg);padding:3px 8px">Photo · Hero machine, black and white</span></div>
+</div>
+<div style="display:grid;grid-template-columns:220px 1fr 180px auto;border:2px solid var(--color-text);background:var(--color-neutral-100)">
+<div style="padding:12px 16px;border-right:2px solid var(--color-text)"><span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Category</span><span style="display:block;font-weight:700;margin-top:2px">All equipment</span></div>
+<div style="padding:12px 16px;border-right:2px solid var(--color-text)"><span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Make or model</span><span style="display:block;margin-top:2px;color:var(--color-neutral-700)">e.g. Caterpillar 336, Liebherr LTM</span></div>
+<div style="padding:12px 16px;border-right:2px solid var(--color-text)"><span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Region</span><span style="display:block;font-weight:700;margin-top:2px">Anywhere</span></div>
+<button type="button" class="btn btn-primary" style="min-width:160px;display:flex;gap:10px;align-items:center;justify-content:flex-start;height:auto"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button>
+</div>
+<p style="margin:14px 0 0;font-size:14px;color:var(--color-neutral-800)">1,284 verified listings · Excavators · Cranes · Dozers · Loaders · Haul trucks · Drills</p>
+</div>
+<hr class="hr" style="margin:72px 0 0"></hr>
+<div style="padding:0 72px;display:grid;grid-template-columns:repeat(3,1fr)">
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+<div style="padding:40px 40px 48px 0;border-right:2px solid var(--color-divider);margin-right:40px">
+<p style="margin:0;font-weight:800;font-size:15px;color:var(--color-accent-700);font-feature-settings:'tnum' 1">{{ s.n }}</p>
+<h3 style="font-family:var(--font-heading);font-weight:800;font-size:26px;line-height:30px;margin:14px 0 0;letter-spacing:-0.01em">{{ s.t }}</h3>
+<p style="margin:12px 0 0;font-size:16px;line-height:26px;color:var(--color-neutral-900)">{{ s.d }}</p>
+</div>
+</sc-for>
+</div>
+<hr class="hr" style="margin:0"></hr>
+<div style="padding:56px 72px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px"><h3 style="font-family:var(--font-heading);font-weight:800;font-size:32px;margin:0;letter-spacing:-0.015em">Recently listed</h3><a style="font-weight:700">All 1,284 listings →</a></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+<sc-for list="{{ cards3 }}" as="l" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;background:var(--color-surface);border-top:2px solid var(--color-text)">
+<div class="grayscale" style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 10px,var(--color-neutral-200) 10px 20px);display:flex;align-items:flex-end;padding:12px;box-sizing:border-box"><span style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-bg);padding:2px 6px">Photo · {{ l.cat }}</span></div>
+<div style="padding:16px 16px 20px;display:flex;flex-direction:column;gap:6px">
+<span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">{{ l.cat }} · {{ l.region }}</span>
+<span style="font-family:var(--font-heading);font-weight:800;font-size:20px;line-height:24px">{{ l.title }}</span>
+<span style="font-size:14px;color:var(--color-neutral-900)">{{ l.year }} · {{ l.hours }}</span>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:12px;border-top:2px solid var(--color-divider)"><span style="font-weight:800;font-size:19px;font-feature-settings:'tnum' 1">{{ l.price }}</span><span class="tag tag-accent">✓ Verified seller</span></div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+<hr class="hr" style="margin:0"></hr>
+<div style="padding:56px 72px 72px;display:grid;grid-template-columns:5fr 7fr;gap:64px">
+<div>
+<h3 style="font-family:var(--font-heading);font-weight:800;font-size:32px;margin:0;letter-spacing:-0.015em">One flat fee per seller</h3>
+<p style="margin:16px 0 0;font-size:16px;line-height:26px;color:var(--color-neutral-900);max-width:42ch">Scaled to the asking price and paid once. If the seller doesn't reply within 72 hours, the fee is refunded automatically.</p>
+</div>
+<table class="table" style="width:100%"><thead><tr><th style="text-align:left">Listing price</th><th style="text-align:left">Unlock fee</th></tr></thead><tbody><sc-for list="{{ tiers }}" as="t" hint-placeholder-count="4"><tr><td>{{ t.range }}</td><td style="font-weight:800;font-feature-settings:'tnum' 1">{{ t.fee }}</td></tr></sc-for></tbody></table>
+</div>
+<div style="background:var(--color-accent);color:var(--color-bg);padding:72px">
+<h3 style="font-family:var(--font-heading);font-weight:800;font-size:56px;line-height:1.05;letter-spacing:-0.02em;margin:0;max-width:16ch">Sell without broadcasting your fleet.</h3>
+<div style="display:flex;gap:12px;margin-top:36px"><button type="button" class="btn btn-ghost" style="color:var(--color-bg);border-color:var(--color-bg)">List equipment free</button></div>
+</div>
+<div style="padding:28px 72px;display:flex;justify-content:space-between;font-size:13px;color:var(--color-neutral-800)"><span>graye.market · Introductions only. Sales happen directly between buyer and seller.</span><span>Terms · Privacy · Refund policy</span></div>
+</div>
+</div>
+
+<div id="1b" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1b</span><span style="font-weight:700">02 Search and results</span></div>
+<div data-screen-label="02 Results" style="width:1280px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<nav class="nav" style="padding-inline:72px;gap:28px">
+<span class="nav-brand" style="font-size:22px;letter-spacing:-0.01em">Gray<span style="color:var(--color-accent)">e</span> Market</span>
+<a style="color:var(--color-accent-700)">Browse</a><a>How it works</a><a>Pricing</a><a>Sell equipment</a><a>Sign in</a>
+<button type="button" class="btn btn-primary">List equipment</button>
+</nav>
+<div style="padding:40px 72px 0;display:flex;justify-content:space-between;align-items:end;gap:24px">
+<div><span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Excavators</span><h2 style="font-family:var(--font-heading);font-weight:800;font-size:48px;margin:6px 0 0;letter-spacing:-0.02em">214 verified listings</h2></div>
+<div style="display:flex;gap:12px"><button type="button" class="btn btn-secondary">Save this search</button><button type="button" class="btn btn-ghost">Sort: Newest</button></div>
+</div>
+<div style="padding:24px 72px 0;display:flex;gap:8px;flex-wrap:wrap"><span class="tag tag-neutral">Excavators ×</span><span class="tag tag-neutral">2018 or newer ×</span><span class="tag tag-neutral">Under 8,000 hrs ×</span><span class="tag tag-neutral">Midwest ×</span></div>
+<hr class="hr" style="margin:24px 72px 0"></hr>
+<div style="padding:0 72px 72px;display:grid;grid-template-columns:240px 1fr;gap:40px">
+<div style="display:flex;flex-direction:column;gap:22px;padding:28px 32px 0 0;border-right:2px solid var(--color-divider)">
+<div class="field"><label>Category</label><select class="input"><option>Excavators</option></select></div>
+<div class="field"><label>Make</label><select class="input"><option>Any make</option></select></div>
+<div class="field"><label>Model</label><input class="input" placeholder="e.g. 336, PC360"></input></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div class="field"><label>Year from</label><input class="input" value="2018"></input></div><div class="field"><label>to</label><input class="input" placeholder="Any"></input></div></div>
+<div class="field"><label>Max hours</label><input class="input" value="8,000"></input></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div class="field"><label>Price min</label><input class="input" placeholder="$"></input></div><div class="field"><label>max</label><input class="input" placeholder="$"></input></div></div>
+<div class="field"><label>Region</label><select class="input"><option>Midwest</option></select></div>
+<button type="button" class="btn btn-primary btn-block">Show 214 results</button>
+</div>
+<div style="padding-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+<sc-for list="{{ cards6 }}" as="l" hint-placeholder-count="6">
+<div style="display:flex;flex-direction:column;background:var(--color-surface);border-top:2px solid var(--color-text)">
+<div class="grayscale" style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 10px,var(--color-neutral-200) 10px 20px);display:flex;align-items:flex-end;padding:12px;box-sizing:border-box"><span style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-bg);padding:2px 6px">Photo · {{ l.cat }}</span></div>
+<div style="padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px">
+<span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">{{ l.cat }} · {{ l.region }}</span>
+<span style="font-family:var(--font-heading);font-weight:800;font-size:19px;line-height:23px">{{ l.title }}</span>
+<span style="font-size:14px;color:var(--color-neutral-900)">{{ l.year }} · {{ l.hours }}</span>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:12px;border-top:2px solid var(--color-divider)"><span style="font-weight:800;font-size:18px;font-feature-settings:'tnum' 1">{{ l.price }}</span><span class="tag tag-accent">✓ Verified</span></div>
+<span style="font-size:13px;color:var(--color-neutral-800)">Seller contact · {{ l.fee }} to unlock</span>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+
+<div id="1c" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1c</span><span style="font-weight:700">03 Listing detail, seller locked</span></div>
+<div data-screen-label="03 Listing detail" style="width:1280px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<nav class="nav" style="padding-inline:72px;gap:28px">
+<span class="nav-brand" style="font-size:22px;letter-spacing:-0.01em">Gray<span style="color:var(--color-accent)">e</span> Market</span>
+<a style="color:var(--color-accent-700)">Browse</a><a>How it works</a><a>Pricing</a><a>Sell equipment</a><a>Sign in</a>
+<button type="button" class="btn btn-primary">List equipment</button>
+</nav>
+<div style="padding:24px 72px 0;font-size:14px;color:var(--color-neutral-800)">Browse / Excavators / Listing GM-40218</div>
+<div style="padding:20px 72px 72px;display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:start">
+<div>
+<div class="grayscale" style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 12px,var(--color-neutral-200) 12px 24px);display:flex;align-items:flex-end;padding:14px;box-sizing:border-box"><span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-bg);padding:3px 8px">Photo 1 of 14 · Left side</span></div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px">
+<sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="5"><div class="grayscale" style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 8px,var(--color-neutral-200) 8px 16px);outline:{{ t.outline }};outline-offset:-2px"></div></sc-for>
+</div>
+<h3 style="font-family:var(--font-heading);font-weight:800;font-size:24px;margin:48px 0 0;letter-spacing:-0.01em">Specifications</h3>
+<table class="table" style="width:100%;margin-top:16px"><tbody><sc-for list="{{ specs }}" as="s" hint-placeholder-count="8"><tr><td style="width:40%;color:var(--color-neutral-800)">{{ s.k }}</td><td style="font-weight:600">{{ s.v }}</td></tr></sc-for></tbody></table>
+<h3 style="font-family:var(--font-heading);font-weight:800;font-size:24px;margin:40px 0 0;letter-spacing:-0.01em">Condition</h3>
+<p style="margin:12px 0 0;font-size:16px;line-height:26px;max-width:62ch">Single owner since new, dealer-serviced at 500-hour intervals with records. Undercarriage at roughly 70%. New bucket teeth in March. Minor cosmetic wear on the counterweight. No known leaks. Available for inspection by appointment after contact.</p>
+</div>
+<div style="position:sticky;top:0;display:flex;flex-direction:column;gap:0">
+<span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Excavator · Midwest region</span>
+<h2 style="font-family:var(--font-heading);font-weight:800;font-size:40px;line-height:1.06;margin:8px 0 0;letter-spacing:-0.02em">2021 Caterpillar 336 Next Gen</h2>
+<p style="margin:12px 0 0;font-size:16px;color:var(--color-neutral-900)">4,120 hours · Listed Sep 18</p>
+<p style="margin:24px 0 0;font-family:var(--font-heading);font-weight:800;font-size:44px;font-feature-settings:'tnum' 1;letter-spacing:-0.02em">$318,500</p>
+<div style="margin-top:28px;border:2px solid var(--color-text)">
+<div style="padding:20px 24px;display:flex;gap:12px;align-items:center;border-bottom:2px solid var(--color-divider)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span style="font-weight:800;font-size:18px">Seller contact locked</span></div>
+<div style="padding:20px 24px;display:grid;grid-template-columns:110px 1fr;gap:12px 16px;align-items:center;font-size:14px;color:var(--color-neutral-800)">
+<span>Name</span><span style="height:14px;background:var(--color-neutral-400);width:70%"></span>
+<span>Company</span><span style="height:14px;background:var(--color-neutral-400);width:85%"></span>
+<span>Phone</span><span style="height:14px;background:var(--color-neutral-400);width:55%"></span>
+<span>Email</span><span style="height:14px;background:var(--color-neutral-400);width:78%"></span>
+</div>
+<div style="padding:0 24px 24px">
+<button type="button" class="btn btn-primary btn-block" style="min-height:52px;font-size:17px;display:flex;justify-content:space-between;align-items:center"><span>Unlock seller contact</span><span>$249</span></button>
+<p style="margin:14px 0 0;font-size:14px;line-height:22px;color:var(--color-neutral-900)">One-time fee for this listing. If the seller doesn't reply within 72 hours, you're refunded automatically.</p>
+</div>
+</div>
+<div style="margin-top:24px;background:var(--color-surface);padding:20px 24px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:800;font-size:17px">Verified seller</span><span class="tag tag-accent">✓ Verified Sep 16</span></div>
+<div style="display:flex;flex-direction:column;margin-top:12px">
+<sc-for list="{{ checks }}" as="c" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:24px 1fr;gap:8px;padding:10px 0;border-top:2px solid var(--color-divider);font-size:14px;line-height:20px"><span style="color:var(--color-accent-700);font-weight:800">✓</span><span><strong>{{ c.t }}</strong> <span style="color:var(--color-neutral-800)">{{ c.d }}</span></span></div></sc-for>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="1d" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1d</span><span style="font-weight:700">04 Unlock checkout</span></div>
+<div data-screen-label="04 Checkout" style="width:1280px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<nav class="nav" style="padding-inline:72px;gap:28px"><span class="nav-brand" style="font-size:22px;letter-spacing:-0.01em">Gray<span style="color:var(--color-accent)">e</span> Market</span><span style="margin-left:auto;font-size:14px;color:var(--color-neutral-800)">Secure checkout</span></nav>
+<div style="padding:56px 72px 88px;display:grid;grid-template-columns:6fr 5fr;gap:72px">
+<div>
+<span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Step 1 of 2 · Confirm</span>
+<h2 style="font-family:var(--font-heading);font-weight:800;font-size:48px;line-height:1.05;margin:10px 0 0;letter-spacing:-0.02em">Unlock this seller</h2>
+<div style="display:grid;grid-template-columns:160px 1fr;gap:20px;margin-top:36px;padding:20px 0;border-top:2px solid var(--color-text);border-bottom:2px solid var(--color-divider)">
+<div class="grayscale" style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 8px,var(--color-neutral-200) 8px 16px)"></div>
+<div><span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">GM-40218 · Midwest</span><p style="margin:6px 0 0;font-weight:800;font-size:20px">2021 Caterpillar 336 Next Gen</p><p style="margin:6px 0 0;font-size:15px">4,120 hrs · $318,500 asking</p></div>
+</div>
+<h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;margin:36px 0 0">What you get</h3>
+<div style="display:flex;flex-direction:column;margin-top:12px">
+<sc-for list="{{ gets }}" as="g" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:28px 1fr;padding:12px 0;border-top:2px solid var(--color-divider);font-size:16px;line-height:24px"><span style="font-weight:800;color:var(--color-accent-700)">{{ g.n }}</span><span>{{ g.t }}</span></div></sc-for>
+</div>
+</div>
+<div style="background:var(--color-surface);padding:32px;align-self:start;border-top:2px solid var(--color-text)">
+<div style="display:flex;justify-content:space-between;font-size:16px;padding-bottom:14px;border-bottom:2px solid var(--color-divider)"><span>Unlock fee · $100K–$500K tier</span><span style="font-weight:700">$249.00</span></div>
+<div style="display:flex;justify-content:space-between;font-size:16px;padding:14px 0;border-bottom:2px solid var(--color-divider)"><span>Commission on sale</span><span style="font-weight:700">None</span></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 0"><span style="font-weight:800;font-size:18px">Due today</span><span style="font-family:var(--font-heading);font-weight:800;font-size:36px;font-feature-settings:'tnum' 1">$249.00</span></div>
+<div style="margin-top:24px;padding:18px 20px;background:var(--color-accent-100);color:var(--color-accent-900)">
+<p style="margin:0;font-weight:800;font-size:16px">72-hour response guarantee</p>
+<p style="margin:6px 0 0;font-size:14px;line-height:22px">The seller is notified the moment you pay. If they don't respond within 72 hours, we refund the full $249 to your card. No request needed.</p>
+</div>
+<label class="radio" style="margin-top:20px;display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:21px"><input type="checkbox" checked></input><span>I understand Graye Market makes the introduction only. Price, inspection and payment are agreed directly with the seller.</span></label>
+<button type="button" class="btn btn-primary btn-block" style="margin-top:20px;min-height:52px;font-size:17px;display:flex;justify-content:space-between;align-items:center"><span>Continue to payment</span><span>→</span></button>
+<p style="margin:12px 0 0;font-size:13px;color:var(--color-neutral-800)">Card payment is handled by Stripe. We never see your card number.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="1e" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1e</span><span style="font-weight:700">05 Unlocked listing</span></div>
+<div data-screen-label="05 Unlocked" style="width:1280px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<nav class="nav" style="padding-inline:72px;gap:28px">
+<span class="nav-brand" style="font-size:22px;letter-spacing:-0.01em">Gray<span style="color:var(--color-accent)">e</span> Market</span>
+<a>Browse</a><a>How it works</a><a>Pricing</a><a style="color:var(--color-accent-700)">My unlocks</a><a>Account</a>
+<button type="button" class="btn btn-secondary">List equipment</button>
+</nav>
+<div style="padding:48px 72px 88px;display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:start">
+<div>
+<span class="tag tag-accent">Unlocked Sep 23, 10:14 AM</span>
+<h2 style="font-family:var(--font-heading);font-weight:800;font-size:48px;line-height:1.05;margin:16px 0 0;letter-spacing:-0.02em">2021 Caterpillar 336 Next Gen</h2>
+<p style="margin:10px 0 0;font-size:16px">GM-40218 · 4,120 hrs · Midwest · $318,500</p>
+<div style="margin-top:36px;border:2px solid var(--color-text)">
+<div style="padding:20px 24px;border-bottom:2px solid var(--color-divider);display:flex;justify-content:space-between;align-items:center"><span style="font-weight:800;font-size:18px">Seller contact</span><span class="tag tag-accent">✓ Verified owner</span></div>
+<div style="display:grid;grid-template-columns:140px 1fr;">
+<sc-for list="{{ contact }}" as="c" hint-placeholder-count="5"><span style="padding:14px 24px;border-bottom:2px solid var(--color-divider);color:var(--color-neutral-800);font-size:14px">{{ c.k }}</span><span style="padding:14px 24px 14px 0;border-bottom:2px solid var(--color-divider);font-weight:700;font-size:17px">{{ c.v }}</span></sc-for>
+</div>
+<div style="padding:20px 24px;display:flex;gap:12px"><button type="button" class="btn btn-primary">Call seller</button><button type="button" class="btn btn-secondary">Email seller</button><button type="button" class="btn btn-ghost">Copy details</button></div>
+</div>
+</div>
+<div style="background:var(--color-surface);padding:28px;border-top:2px solid var(--color-text)">
+<span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Response status</span>
+<p style="margin:8px 0 0;font-family:var(--font-heading);font-weight:800;font-size:28px;line-height:1.1">Waiting for seller</p>
+<p style="margin:8px 0 0;font-size:15px;line-height:23px">61 hours left before an automatic $249 refund.</p>
+<div style="height:8px;background:var(--color-neutral-300);margin-top:16px"><div style="height:8px;width:15%;background:var(--color-accent)"></div></div>
+<div style="display:flex;flex-direction:column;margin-top:24px">
+<sc-for list="{{ timeline }}" as="t" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:14px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:2px solid var(--color-divider);font-size:14px"><span style="width:10px;height:10px;background:{{ t.dot }}"></span><span style="font-weight:{{ t.w }}">{{ t.t }}</span><span style="color:var(--color-neutral-800)">{{ t.when }}</span></div></sc-for>
+</div>
+<p style="margin:20px 0 0;font-size:13px;line-height:20px;color:var(--color-neutral-800)">Mark the seller as responded once you've spoken, or report a problem if the details don't work.</p>
+<div style="display:flex;gap:10px;margin-top:14px"><button type="button" class="btn btn-secondary">Seller responded</button><button type="button" class="btn btn-ghost">Report a problem</button></div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="1f" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1f</span><span style="font-weight:700">06 Seller verification</span></div>
+<div data-screen-label="06 Seller verification" style="width:1280px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<nav class="nav" style="padding-inline:72px;gap:28px"><span class="nav-brand" style="font-size:22px;letter-spacing:-0.01em">Gray<span style="color:var(--color-accent)">e</span> Market</span><span style="margin-left:auto;font-size:14px;color:var(--color-neutral-800)">Seller setup</span></nav>
+<div style="padding:56px 72px 88px;display:grid;grid-template-columns:4fr 8fr;gap:64px">
+<div>
+<h2 style="font-family:var(--font-heading);font-weight:800;font-size:40px;line-height:1.06;margin:0;letter-spacing:-0.02em">Get verified to sell</h2>
+<p style="margin:14px 0 0;font-size:16px;line-height:26px">Buyers pay to reach you, so we confirm you own what you list. Documents stay private. Buyers see only that each check passed.</p>
+<div style="display:flex;flex-direction:column;margin-top:32px">
+<sc-for list="{{ vsteps }}" as="v" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center;padding:16px 0;border-top:2px solid var(--color-divider)"><span style="font-weight:800;color:{{ v.c }}">{{ v.n }}</span><span style="font-weight:{{ v.w }}">{{ v.t }}</span><span class="{{ v.tag }}">{{ v.s }}</span></div></sc-for>
+</div>
+</div>
+<div style="border-top:2px solid var(--color-text);padding-top:28px">
+<span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Step 03</span>
+<h3 style="font-family:var(--font-heading);font-weight:800;font-size:28px;margin:8px 0 0">Proof of ownership</h3>
+<p style="margin:10px 0 0;font-size:16px;line-height:26px;max-width:60ch">Upload one document per machine showing you or your company as owner. Serial numbers on these are for our check only and never appear on a listing.</p>
+<div class="seg" style="margin-top:24px"><span class="seg-opt" aria-pressed="true">Bill of sale</span><span class="seg-opt">Title or registration</span><span class="seg-opt">Dealer invoice</span><span class="seg-opt">Lien release</span></div>
+<div style="margin-top:20px;border:2px dashed var(--color-divider);padding:36px;display:flex;gap:20px;align-items:center">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m17 8-5-5-5 5"></path><path d="M12 3v12"></path></svg>
+<div><p style="margin:0;font-weight:700;font-size:16px">Drop a PDF or photo, or browse</p><p style="margin:4px 0 0;font-size:14px;color:var(--color-neutral-800)">Up to 20 MB · Encrypted at rest</p></div>
+</div>
+<div style="margin-top:12px;display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;padding:14px 16px;background:var(--color-surface)"><span style="font-weight:600">Bill_of_sale_CAT336_2021.pdf</span><span style="font-size:14px;color:var(--color-neutral-800)">1.8 MB</span><span class="tag tag-neutral">Uploaded</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px">
+<div class="field"><label>Name on document</label><input class="input" value="Ridgeline Earthworks LLC"></input></div>
+<div class="field"><label>Machine make and model</label><input class="input" value="Caterpillar 336"></input></div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:20px;border-top:2px solid var(--color-divider)">
+<span style="font-size:14px;color:var(--color-neutral-800)">Most reviews finish within one business day.</span>
+<div style="display:flex;gap:12px"><button type="button" class="btn btn-ghost">Back</button><button type="button" class="btn btn-primary">Submit for review</button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="1g" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1g</span><span style="font-weight:700">07 Create listing, photos step</span></div>
+<div data-screen-label="07 Create listing" style="width:1280px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<nav class="nav" style="padding-inline:72px;gap:28px"><span class="nav-brand" style="font-size:22px;letter-spacing:-0.01em">Gray<span style="color:var(--color-accent)">e</span> Market</span><span style="margin-left:auto;font-size:14px;color:var(--color-neutral-800)">New listing · Draft saved</span></nav>
+<div style="padding:0 72px;display:grid;grid-template-columns:repeat(5,1fr);border-bottom:2px solid var(--color-divider)">
+<sc-for list="{{ lsteps }}" as="s" hint-placeholder-count="5"><div style="padding:16px 0;border-bottom:4px solid {{ s.b }};margin-bottom:-2px;font-size:14px;font-weight:{{ s.w }}">{{ s.t }}</div></sc-for>
+</div>
+<div style="padding:40px 72px 88px;display:grid;grid-template-columns:7fr 4fr;gap:56px">
+<div>
+<h2 style="font-family:var(--font-heading);font-weight:800;font-size:36px;margin:0;letter-spacing:-0.02em">Photos</h2>
+<div style="margin-top:20px;padding:18px 20px;background:var(--color-accent-100);color:var(--color-accent-900)">
+<p style="margin:0;font-weight:800;font-size:16px">Keep photos anonymous</p>
+<p style="margin:6px 0 0;font-size:14px;line-height:22px">Before uploading, check each shot for anything that identifies you: company decals or signage, licence and fleet plates, serial and PIN plates, yard buildings, and phone numbers on the machine.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px">
+<sc-for list="{{ uploads }}" as="u" hint-placeholder-count="7">
+<div style="display:flex;flex-direction:column;gap:6px">
+<div class="grayscale" style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 8px,var(--color-neutral-200) 8px 16px);outline:{{ u.o }};outline-offset:-2px"></div>
+<span style="font-size:12px;line-height:16px;color:{{ u.c }};font-weight:{{ u.w }}">{{ u.t }}</span>
+</div>
+</sc-for>
+<div style="aspect-ratio:4/3;border:2px dashed var(--color-divider);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">+ Add photos</div>
+</div>
+<div style="margin-top:24px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:16px 20px;border:2px solid var(--color-accent)">
+<span style="font-size:14px;line-height:21px;color:var(--color-accent-900)"><strong>Photo 3 may show a fleet number</strong> on the boom. Crop or blur it, or remove the photo.</span>
+<div style="display:flex;gap:8px"><button type="button" class="btn btn-secondary">Blur area</button><button type="button" class="btn btn-ghost">It's fine</button></div>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:12px;margin-top:32px;padding-top:20px;border-top:2px solid var(--color-divider)"><button type="button" class="btn btn-ghost">Back to specs</button><button type="button" class="btn btn-primary">Continue to price</button></div>
+</div>
+<div>
+<span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Public preview · What buyers see</span>
+<div style="margin-top:12px;display:flex;flex-direction:column;background:var(--color-surface);border-top:2px solid var(--color-text)">
+<div class="grayscale" style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 10px,var(--color-neutral-200) 10px 20px)"></div>
+<div style="padding:16px 16px 20px;display:flex;flex-direction:column;gap:6px">
+<span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Excavator · Midwest</span>
+<span style="font-family:var(--font-heading);font-weight:800;font-size:20px;line-height:24px">2021 Caterpillar 336 Next Gen</span>
+<span style="font-size:14px">2021 · 4,120 hrs</span>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:12px;border-top:2px solid var(--color-divider)"><span style="font-weight:800;font-size:18px">$318,500</span><span class="tag tag-accent">✓ Verified seller</span></div>
+</div>
+</div>
+<div style="margin-top:20px;display:flex;flex-direction:column">
+<sc-for list="{{ hidden }}" as="h" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;padding:10px 0;border-top:2px solid var(--color-divider);font-size:14px"><span>{{ h.k }}</span><span style="font-weight:700">{{ h.v }}</span></div></sc-for>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="1h" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1h</span><span style="font-weight:700">08 Buyer dashboard</span></div>
+<div data-screen-label="08 Buyer dashboard" style="width:1280px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<nav class="nav" style="padding-inline:72px;gap:28px">
+<span class="nav-brand" style="font-size:22px;letter-spacing:-0.01em">Gray<span style="color:var(--color-accent)">e</span> Market</span>
+<a>Browse</a><a>How it works</a><a>Pricing</a><a style="color:var(--color-accent-700)">My unlocks</a><a>Account</a>
+<button type="button" class="btn btn-secondary">List equipment</button>
+</nav>
+<div style="padding:48px 72px 0"><h2 style="font-family:var(--font-heading);font-weight:800;font-size:48px;margin:0;letter-spacing:-0.02em">My unlocks</h2></div>
+<div style="padding:32px 72px 0;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid var(--color-divider)">
+<sc-for list="{{ stats }}" as="s" hint-placeholder-count="4"><div style="padding:0 0 24px;border-right:2px solid var(--color-divider);margin-right:32px"><p style="margin:0;font-family:var(--font-heading);font-weight:800;font-size:40px;font-feature-settings:'tnum' 1">{{ s.v }}</p><p style="margin:4px 0 0;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">{{ s.k }}</p></div></sc-for>
+</div>
+<div style="padding:32px 72px 0"><table class="table" style="width:100%"><thead><tr><th style="text-align:left">Listing</th><th style="text-align:left">Unlocked</th><th style="text-align:left">Fee</th><th style="text-align:left">Seller status</th><th style="text-align:left"></th></tr></thead><tbody>
+<sc-for list="{{ unlocks }}" as="u" hint-placeholder-count="5"><tr><td><strong>{{ u.t }}</strong><br></br><span style="font-size:13px;color:var(--color-neutral-800)">{{ u.id }} · {{ u.r }}</span></td><td>{{ u.d }}</td><td style="font-feature-settings:'tnum' 1">{{ u.f }}</td><td><span class="{{ u.tag }}">{{ u.s }}</span></td><td><a style="font-weight:700">View contact</a></td></tr></sc-for>
+</tbody></table></div>
+<div style="padding:48px 72px 88px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><h3 style="font-family:var(--font-heading);font-weight:800;font-size:28px;margin:0">Saved searches</h3><button type="button" class="btn btn-ghost">New saved search</button></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:20px">
+<sc-for list="{{ saved }}" as="s" hint-placeholder-count="3"><div class="card" style="border-top:2px solid var(--color-text)"><p class="card-kicker">{{ s.k }}</p><p class="card-title">{{ s.t }}</p><p class="card-meta">{{ s.m }}</p></div></sc-for>
+</div>
+</div>
+</div>
+</div>
+
+<div id="1i" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1i</span><span style="font-weight:700">Mobile · Home</span></div>
+<div data-screen-label="M1 Home" style="width:390px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<div style="height:44px;display:flex;align-items:center;padding:0 20px;font-size:14px;font-weight:700">9:41</div>
+<nav class="nav" style="padding-inline:20px;justify-content:space-between"><span class="nav-brand" style="font-size:20px">Gray<span style="color:var(--color-accent)">e</span> Market</span><button type="button" class="btn btn-icon" aria-label="Menu" style="width:44px;height:44px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button></nav>
+<div style="padding:40px 20px 0">
+<h2 style="font-family:var(--font-heading);font-weight:800;font-size:44px;line-height:1.04;letter-spacing:-0.025em;margin:0"><span style="display:block">Browse free.</span><span style="display:block">Unlock verified sellers.</span></h2>
+<p style="margin:20px 0 0;font-size:16px;line-height:25px">Heavy equipment from checked owners. One flat fee for the seller's contact. No commission.</p>
+<div style="margin-top:24px;border:2px solid var(--color-text)">
+<div style="padding:12px 14px;border-bottom:2px solid var(--color-text);color:var(--color-neutral-800);min-height:24px">Make, model or keyword</div>
+<div style="display:grid;grid-template-columns:1fr 1fr"><div style="padding:12px 14px;border-right:2px solid var(--color-text);font-weight:700">All equipment</div><div style="padding:12px 14px;font-weight:700">Anywhere</div></div>
+</div>
+<button type="button" class="btn btn-primary btn-block" style="margin-top:12px;min-height:52px">Search 1,284 listings</button>
+</div>
+<hr class="hr" style="margin:40px 0 0"></hr>
+<div style="padding:0 20px">
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="3"><div style="display:grid;grid-template-columns:36px 1fr;padding:20px 0;border-bottom:2px solid var(--color-divider)"><span style="font-weight:800;color:var(--color-accent-700)">{{ s.n }}</span><div><p style="margin:0;font-weight:800;font-size:18px">{{ s.t }}</p><p style="margin:6px 0 0;font-size:14px;line-height:21px">{{ s.d }}</p></div></div></sc-for>
+</div>
+<div style="padding:32px 20px 40px">
+<h3 style="font-family:var(--font-heading);font-weight:800;font-size:24px;margin:0">Recently listed</h3>
+<div style="display:flex;flex-direction:column;gap:16px;margin-top:16px">
+<sc-for list="{{ cards2 }}" as="l" hint-placeholder-count="2">
+<div style="display:grid;grid-template-columns:120px 1fr;background:var(--color-surface);border-top:2px solid var(--color-text)">
+<div class="grayscale" style="background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 8px,var(--color-neutral-200) 8px 16px);min-height:120px"></div>
+<div style="padding:12px 14px;display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">{{ l.region }}</span><span style="font-weight:800;font-size:16px;line-height:20px">{{ l.title }}</span><span style="font-size:13px">{{ l.year }} · {{ l.hours }}</span><span style="font-weight:800;font-size:16px;margin-top:auto">{{ l.price }}</span></div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+
+<div id="1j" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1j</span><span style="font-weight:700">Mobile · Results</span></div>
+<div data-screen-label="M2 Results" style="width:390px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<div style="height:44px;display:flex;align-items:center;padding:0 20px;font-size:14px;font-weight:700">9:41</div>
+<nav class="nav" style="padding-inline:20px;justify-content:space-between"><span class="nav-brand" style="font-size:20px">Gray<span style="color:var(--color-accent)">e</span> Market</span><button type="button" class="btn btn-icon" aria-label="Menu" style="width:44px;height:44px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button></nav>
+<div style="padding:24px 20px 0"><span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Excavators · Midwest</span><h2 style="font-family:var(--font-heading);font-weight:800;font-size:32px;margin:4px 0 0;letter-spacing:-0.02em">214 listings</h2></div>
+<div style="padding:16px 20px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px"><button type="button" class="btn btn-secondary" style="min-height:44px">Filters · 4</button><button type="button" class="btn btn-ghost" style="min-height:44px;border:2px solid var(--color-divider)">Sort: Newest</button></div>
+<div style="padding:12px 20px 0;display:flex;gap:6px;flex-wrap:wrap"><span class="tag tag-neutral">2018+</span><span class="tag tag-neutral">&lt; 8,000 hrs</span><span class="tag tag-neutral">Midwest</span></div>
+<div style="padding:20px 20px 40px;display:flex;flex-direction:column;gap:20px">
+<sc-for list="{{ cards2 }}" as="l" hint-placeholder-count="2">
+<div style="display:flex;flex-direction:column;background:var(--color-surface);border-top:2px solid var(--color-text)">
+<div class="grayscale" style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 10px,var(--color-neutral-200) 10px 20px)"></div>
+<div style="padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px">
+<span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">{{ l.cat }} · {{ l.region }}</span>
+<span style="font-family:var(--font-heading);font-weight:800;font-size:19px;line-height:23px">{{ l.title }}</span>
+<span style="font-size:14px">{{ l.year }} · {{ l.hours }}</span>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:12px;border-top:2px solid var(--color-divider)"><span style="font-weight:800;font-size:18px">{{ l.price }}</span><span class="tag tag-accent">✓ Verified</span></div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div id="1k" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1k</span><span style="font-weight:700">Mobile · Listing, locked</span></div>
+<div data-screen-label="M3 Listing locked" style="width:390px;background:var(--color-bg);box-shadow:var(--shadow-lg);position:relative">
+<div style="height:44px;display:flex;align-items:center;padding:0 20px;font-size:14px;font-weight:700">9:41</div>
+<div class="grayscale" style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--color-neutral-300) 0 12px,var(--color-neutral-200) 12px 24px);display:flex;align-items:flex-end;justify-content:space-between;padding:12px;box-sizing:border-box"><span style="font-size:12px;background:var(--color-bg);padding:2px 8px">← Results</span><span style="font-size:12px;background:var(--color-bg);padding:2px 8px">1 / 14</span></div>
+<div style="padding:20px 20px 0">
+<span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-800)">Excavator · Midwest</span>
+<h2 style="font-family:var(--font-heading);font-weight:800;font-size:28px;line-height:1.08;margin:6px 0 0;letter-spacing:-0.02em">2021 Caterpillar 336 Next Gen</h2>
+<p style="margin:8px 0 0;font-size:15px">4,120 hrs · Listed Sep 18</p>
+<p style="margin:14px 0 0;font-family:var(--font-heading);font-weight:800;font-size:32px">$318,500</p>
+</div>
+<div style="margin:20px 20px 0;border:2px solid var(--color-text)">
+<div style="padding:14px 16px;display:flex;gap:10px;align-items:center;border-bottom:2px solid var(--color-divider)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span style="font-weight:800">Seller contact locked</span></div>
+<div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px"><span style="height:12px;background:var(--color-neutral-400);width:60%"></span><span style="height:12px;background:var(--color-neutral-400);width:80%"></span><span style="height:12px;background:var(--color-neutral-400);width:50%"></span></div>
+</div>
+<div style="margin:16px 20px 0;background:var(--color-surface);padding:14px 16px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:800">Verified seller</span><span class="tag tag-accent">✓ Sep 16</span></div>
+<sc-for list="{{ checks }}" as="c" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:20px 1fr;padding:8px 0;border-top:2px solid var(--color-divider);margin-top:8px;font-size:13px;line-height:18px"><span style="color:var(--color-accent-700);font-weight:800">✓</span><span>{{ c.t }}</span></div></sc-for>
+</div>
+<div style="padding:20px 20px 120px">
+<h3 style="font-weight:800;font-size:18px;margin:0">Key specs</h3>
+<sc-for list="{{ specsShort }}" as="s" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:2px solid var(--color-divider);font-size:14px"><span style="color:var(--color-neutral-800)">{{ s.k }}</span><span style="font-weight:700">{{ s.v }}</span></div></sc-for>
+</div>
+<div style="position:absolute;left:0;right:0;bottom:0;background:var(--color-bg);border-top:2px solid var(--color-text);padding:12px 20px 28px">
+<button type="button" class="btn btn-primary btn-block" style="min-height:52px;display:flex;justify-content:space-between;align-items:center;font-size:17px"><span>Unlock seller</span><span>$249</span></button>
+<p style="margin:8px 0 0;font-size:12px;color:var(--color-neutral-900)">Refunded automatically if no reply in 72 hours.</p>
+</div>
+</div>
+</div>
+
+<div id="1l" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:center"><span class="tag tag-accent">1l</span><span style="font-weight:700">Mobile · Unlocked</span></div>
+<div data-screen-label="M4 Unlocked" style="width:390px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+<div style="height:44px;display:flex;align-items:center;padding:0 20px;font-size:14px;font-weight:700">9:41</div>
+<nav class="nav" style="padding-inline:20px;justify-content:space-between"><span class="nav-brand" style="font-size:20px">Gray<span style="color:var(--color-accent)">e</span> Market</span><button type="button" class="btn btn-icon" aria-label="Menu" style="width:44px;height:44px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button></nav>
+<div style="padding:24px 20px 0"><span class="tag tag-accent">Unlocked · Sep 23</span><h2 style="font-family:var(--font-heading);font-weight:800;font-size:26px;line-height:1.1;margin:12px 0 0">2021 Caterpillar 336 Next Gen</h2><p style="margin:6px 0 0;font-size:14px">GM-40218 · $318,500</p></div>
+<div style="margin:20px 20px 0;border:2px solid var(--color-text)">
+<sc-for list="{{ contact }}" as="c" hint-placeholder-count="5"><div style="padding:12px 16px;border-bottom:2px solid var(--color-divider)"><span style="display:block;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-800)">{{ c.k }}</span><span style="display:block;font-weight:700;font-size:16px;margin-top:2px">{{ c.v }}</span></div></sc-for>
+<div style="padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px"><button type="button" class="btn btn-primary" style="min-height:48px">Call</button><button type="button" class="btn btn-secondary" style="min-height:48px">Email</button></div>
+</div>
+<div style="margin:16px 20px 40px;background:var(--color-surface);padding:16px;border-top:2px solid var(--color-text)">
+<p style="margin:0;font-weight:800;font-size:18px">Waiting for seller</p>
+<p style="margin:4px 0 0;font-size:14px">61 hours left before an automatic refund.</p>
+<div style="height:8px;background:var(--color-neutral-300);margin-top:12px"><div style="height:8px;width:15%;background:var(--color-accent)"></div></div>
+<button type="button" class="btn btn-ghost" style="margin-top:12px;padding-left:0">Seller responded</button>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const L = [
+      { cat: 'Excavator', region: 'Midwest', title: '2021 Caterpillar 336 Next Gen', year: '2021', hours: '4,120 hrs', price: '$318,500', fee: '$249' },
+      { cat: 'Excavator', region: 'Midwest', title: '2019 Komatsu PC360LC-11', year: '2019', hours: '6,880 hrs', price: '$214,000', fee: '$249' },
+      { cat: 'Excavator', region: 'Midwest', title: '2022 John Deere 470G LC', year: '2022', hours: '2,310 hrs', price: '$389,900', fee: '$249' },
+      { cat: 'Excavator', region: 'Midwest', title: '2020 Volvo EC220E', year: '2020', hours: '5,540 hrs', price: '$142,500', fee: '$249' },
+      { cat: 'Excavator', region: 'Midwest', title: '2018 Hitachi ZX890LC-6', year: '2018', hours: '7,960 hrs', price: '$612,000', fee: '$499' },
+      { cat: 'Excavator', region: 'Midwest', title: '2023 Caterpillar 320 GC', year: '2023', hours: '980 hrs', price: '$96,000', fee: '$99' },
+    ];
+    const home = [
+      L[0],
+      { cat: 'Crawler crane', region: 'Gulf Coast', title: '2017 Liebherr LR 1300', year: '2017', hours: '9,400 hrs', price: '$2,450,000' },
+      { cat: 'Wheel loader', region: 'Mountain West', title: '2020 Caterpillar 988K', year: '2020', hours: '11,200 hrs', price: '$685,000' },
+    ];
+    const muted = 'var(--color-neutral-800)', red = 'var(--color-accent-700)';
+    return {
+      steps: [
+        { n: '01', t: 'Browse anonymized listings', d: 'Full specs, photos, condition, price and region. No seller name or contact until you unlock.' },
+        { n: '02', t: 'Unlock a verified seller', d: 'Pay one flat fee to see the owner\u2019s contact. Refunded if they don\u2019t reply within 72 hours.' },
+        { n: '03', t: 'Deal directly', d: 'Inspect, negotiate and pay the seller your way. We don\u2019t touch the sale or take a cut.' },
+      ],
+      cards3: home, cards6: L, cards2: [L[0], L[2]],
+      tiers: [
+        { range: 'Under $100K', fee: '$99' }, { range: '$100K\u2013$500K', fee: '$249' },
+        { range: '$500K\u2013$2M', fee: '$499' }, { range: '$2M and above', fee: '$999' },
+      ],
+      thumbs: [0, 1, 2, 3, 4].map(i => ({ outline: i === 0 ? '2px solid var(--color-text)' : 'none' })),
+      specs: [
+        { k: 'Make', v: 'Caterpillar' }, { k: 'Model', v: '336 Next Gen' }, { k: 'Year', v: '2021' },
+        { k: 'Hours', v: '4,120' }, { k: 'Operating weight', v: '80,500 lb' }, { k: 'Engine', v: 'Cat C9.3B, 311 hp' },
+        { k: 'Bucket', v: '2.4 yd\u00b3 GP, quick coupler' }, { k: 'Undercarriage', v: '31.5 in triple grouser, ~70%' },
+        { k: 'Tech', v: 'Cat Grade with 2D, Payload' }, { k: 'Location', v: 'Midwest region' },
+      ],
+      specsShort: [{ k: 'Hours', v: '4,120' }, { k: 'Weight', v: '80,500 lb' }, { k: 'Engine', v: '311 hp' }, { k: 'Undercarriage', v: '~70%' }],
+      checks: [
+        { t: 'Ownership confirmed', d: 'Bill of sale matched to this machine' },
+        { t: 'Identity checked', d: 'Business registration and ID' },
+        { t: 'Ready to sell', d: 'Seller confirmed availability Sep 16' },
+        { t: 'Response record', d: 'Replied to 9 of 9 unlocks, median 5 hrs' },
+      ],
+      gets: [
+        { n: '1', t: 'Seller name, company, phone and email, shown immediately' },
+        { n: '2', t: 'The seller is notified that a paying buyer wants to talk' },
+        { n: '3', t: 'Full refund if they don\u2019t respond within 72 hours' },
+        { n: '4', t: 'The contact stays in My unlocks for future reference' },
+      ],
+      contact: [
+        { k: 'Name', v: 'Dale Morrow' }, { k: 'Company', v: 'Ridgeline Earthworks LLC' },
+        { k: 'Phone', v: '(563) 555-0148' }, { k: 'Email', v: 'dale@ridgeline-ew.com' }, { k: 'Best time', v: 'Weekdays 6\u20139 AM CT' },
+      ],
+      timeline: [
+        { t: 'Unlock paid', when: 'Sep 23, 10:14', dot: 'var(--color-text)', w: 400 },
+        { t: 'Seller notified by email and SMS', when: 'Sep 23, 10:14', dot: 'var(--color-text)', w: 400 },
+        { t: 'Waiting for seller reply', when: 'Now', dot: 'var(--color-accent)', w: 700 },
+        { t: 'Refund if no reply', when: 'Sep 26, 10:14', dot: 'var(--color-neutral-400)', w: 400 },
+      ],
+      vsteps: [
+        { n: '01', t: 'Account', s: 'Done', tag: 'tag tag-neutral', c: muted, w: 400 },
+        { n: '02', t: 'Business and identity', s: 'Done', tag: 'tag tag-neutral', c: muted, w: 400 },
+        { n: '03', t: 'Proof of ownership', s: 'In progress', tag: 'tag tag-accent', c: red, w: 800 },
+        { n: '04', t: 'Review by Graye', s: 'Up next', tag: 'tag tag-outline', c: muted, w: 400 },
+      ],
+      lsteps: ['01 Machine', '02 Specs', '03 Photos', '04 Price', '05 Preview'].map((t, i) => ({
+        t, w: i === 2 ? 800 : 400, b: i === 2 ? 'var(--color-accent)' : (i < 2 ? 'var(--color-text)' : 'transparent'),
+      })),
+      uploads: ['Left side', 'Right side', 'Boom and arm', 'Cab interior', 'Undercarriage', 'Hour meter', 'Engine bay'].map((t, i) => ({
+        t: i === 2 ? 'Check: fleet number' : t,
+        o: i === 2 ? '3px solid var(--color-accent)' : 'none',
+        c: i === 2 ? red : 'var(--color-text)', w: i === 2 ? 700 : 400,
+      })),
+      hidden: [{ k: 'Seller name', v: 'Hidden' }, { k: 'Company', v: 'Hidden' }, { k: 'Exact location', v: 'Shown as region' }, { k: 'Serial / PIN', v: 'Hidden' }],
+      stats: [{ v: '7', k: 'Unlocks this year' }, { v: '5', k: 'Sellers responded' }, { v: '1', k: 'Awaiting reply' }, { v: '$249', k: 'Refunded' }],
+      unlocks: [
+        { t: '2021 Caterpillar 336 Next Gen', id: 'GM-40218', r: 'Midwest', d: 'Sep 23', f: '$249', s: 'Awaiting reply \u00b7 61h', tag: 'tag tag-accent' },
+        { t: '2017 Liebherr LR 1300', id: 'GM-39870', r: 'Gulf Coast', d: 'Sep 11', f: '$999', s: 'Responded', tag: 'tag tag-neutral' },
+        { t: '2020 Caterpillar 988K', id: 'GM-39502', r: 'Mountain West', d: 'Aug 30', f: '$499', s: 'Responded', tag: 'tag tag-neutral' },
+        { t: '2019 Komatsu PC360LC-11', id: 'GM-38814', r: 'Midwest', d: 'Aug 12', f: '$249', s: 'Refunded \u00b7 no reply', tag: 'tag tag-outline' },
+        { t: '2022 John Deere 470G LC', id: 'GM-38120', r: 'Midwest', d: 'Jul 28', f: '$249', s: 'Responded', tag: 'tag tag-neutral' },
+      ],
+      saved: [
+        { k: 'Excavators \u00b7 Midwest', t: '2018+, under 8,000 hrs', m: '3 new this week \u00b7 Email daily' },
+        { k: 'Crawler cranes', t: '250 t and up, any region', m: '1 new this week \u00b7 Email instantly' },
+        { k: 'Articulated haulers', t: 'Under $400K, Southeast', m: 'No new listings \u00b7 Email weekly' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

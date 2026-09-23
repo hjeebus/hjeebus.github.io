@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create listing — Photos · Graye Market</title>
+  <meta name="description" content="Create or edit a listing — photos step. Keep photos anonymous: no decals, plates, serial numbers or identifying details.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<div class="frame">
+
+  <nav class="nav gutter" aria-label="New listing">
+    <a class="nav-brand" href="index.html">Gray<span class="brand-e">e</span> Market</a>
+    <span style="font-size:14px;color:var(--color-neutral-800)">New listing · Draft saved</span>
+  </nav>
+
+  <div class="gutter">
+    <div class="tabs" role="tablist" aria-label="Listing steps">
+      <a class="tab tab-done" href="#" style="text-decoration:none">01 Machine</a>
+      <a class="tab tab-done" href="#" style="text-decoration:none">02 Specs</a>
+      <a class="tab tab-active" href="#" style="text-decoration:none" aria-current="step">03 Photos</a>
+      <a class="tab" href="#" style="text-decoration:none">04 Price</a>
+      <a class="tab" href="#" style="text-decoration:none">05 Preview</a>
+    </div>
+  </div>
+
+  <div class="gutter">
+    <div class="nx-grid">
+
+      <div>
+        <h2 class="d-36" style="margin:0">Photos</h2>
+
+        <div class="privacy">
+          <p style="font-weight:800;font-size:16px">Keep photos anonymous</p>
+          <p>Before uploading, check each shot for anything that identifies you: company decals or signage, licence and fleet plates, serial and PIN plates, yard buildings, and phone numbers on the machine.</p>
+        </div>
+
+        <div class="uploads">
+          <div class="upload">
+            <div class="grayscale ph ph-43 ph-sm"></div>
+            <span class="upload-cap">Left side</span>
+          </div>
+          <div class="upload">
+            <div class="grayscale ph ph-43 ph-sm"></div>
+            <span class="upload-cap">Right side</span>
+          </div>
+          <div class="upload">
+            <div class="grayscale ph ph-43 ph-sm upload-flag"></div>
+            <span class="upload-cap upload-cap-flag">Check: fleet number</span>
+          </div>
+          <div class="upload">
+            <div class="grayscale ph ph-43 ph-sm"></div>
+            <span class="upload-cap">Cab interior</span>
+          </div>
+          <div class="upload">
+            <div class="grayscale ph ph-43 ph-sm"></div>
+            <span class="upload-cap">Undercarriage</span>
+          </div>
+          <div class="upload">
+            <div class="grayscale ph ph-43 ph-sm"></div>
+            <span class="upload-cap">Hour meter</span>
+          </div>
+          <div class="upload">
+            <div class="grayscale ph ph-43 ph-sm"></div>
+            <span class="upload-cap">Engine bay</span>
+          </div>
+          <div class="add-photos">+ Add photos</div>
+        </div>
+
+        <div class="warn-row">
+          <p><strong>Photo 3 may show a fleet number</strong> on the boom. Crop or blur it, or remove the photo.</p>
+          <div class="warn-row-actions">
+            <button type="button" class="btn btn-secondary">Blur area</button>
+            <button type="button" class="btn btn-ghost">It's fine</button>
+          </div>
+        </div>
+
+        <div class="nl-footer">
+          <button type="button" class="btn btn-ghost">Back to specs</button>
+          <button type="button" class="btn btn-primary">Continue to price</button>
+        </div>
+      </div>
+
+      <div>
+        <span class="kicker preview-label">Public preview · What buyers see</span>
+        <div style="margin-top:12px" class="lcard">
+          <div class="grayscale ph ph-43"></div>
+          <div class="lcard-body">
+            <span class="lcard-meta">Excavator · Midwest</span>
+            <span class="lcard-title">2021 Caterpillar 336 Next Gen</span>
+            <span class="lcard-sub">2021 · 4,120 hrs</span>
+            <div class="lcard-foot">
+              <span class="lcard-price">$318,500</span>
+              <span class="tag tag-accent">✓ Verified seller</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden-list">
+          <div class="hidden-row"><span>Seller name</span><span style="font-weight:700">Hidden</span></div>
+          <div class="hidden-row"><span>Company</span><span style="font-weight:700">Hidden</span></div>
+          <div class="hidden-row"><span>Exact location</span><span style="font-weight:700">Shown as region</span></div>
+          <div class="hidden-row"><span>Serial / PIN</span><span style="font-weight:700">Hidden</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

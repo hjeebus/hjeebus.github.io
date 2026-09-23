@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get verified to sell · Graye Market</title>
+  <meta name="description" content="Seller onboarding and verification. Confirm ownership of the equipment you list — documents stay private, buyers only see that each check passed.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<div class="frame">
+
+  <nav class="nav gutter" aria-label="Seller setup">
+    <a class="nav-brand" href="index.html">Gray<span class="brand-e">e</span> Market</a>
+    <span style="font-size:14px;color:var(--color-neutral-800)">Seller setup</span>
+  </nav>
+
+  <div class="gutter">
+    <div class="vf-grid">
+
+      <div>
+        <h2 class="d-40" style="margin:0">Get verified to sell</h2>
+        <p class="vf-intro">Buyers pay to reach you, so we confirm you own what you list. Documents stay private. Buyers see only that each check passed.</p>
+        <div class="vsteps">
+          <div class="vstep">
+            <span class="vstep-n" style="color:var(--color-neutral-800)">01</span>
+            <span class="vstep-t">Account</span>
+            <span class="tag tag-neutral">Done</span>
+          </div>
+          <div class="vstep">
+            <span class="vstep-n" style="color:var(--color-neutral-800)">02</span>
+            <span class="vstep-t">Business and identity</span>
+            <span class="tag tag-neutral">Done</span>
+          </div>
+          <div class="vstep">
+            <span class="vstep-n" style="color:var(--color-accent-700)">03</span>
+            <span class="vstep-t vstep-t-active">Proof of ownership</span>
+            <span class="tag tag-accent">In progress</span>
+          </div>
+          <div class="vstep">
+            <span class="vstep-n" style="color:var(--color-neutral-800)">04</span>
+            <span class="vstep-t">Review by Graye</span>
+            <span class="tag tag-outline">Up next</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vf-main">
+        <span class="kicker">Step 03</span>
+        <h3 class="d-28" style="margin:8px 0 0">Proof of ownership</h3>
+        <p class="vf-copy">Upload one document per machine showing you or your company as owner. Serial numbers on these are for our check only and never appear on a listing.</p>
+
+        <div class="seg" role="group" aria-label="Document type">
+          <button type="button" class="seg-opt" aria-pressed="true">Bill of sale</button>
+          <button type="button" class="seg-opt" aria-pressed="false">Title or registration</button>
+          <button type="button" class="seg-opt" aria-pressed="false">Dealer invoice</button>
+          <button type="button" class="seg-opt" aria-pressed="false">Lien release</button>
+        </div>
+
+        <div class="dropzone">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>
+          <div>
+            <p style="font-weight:700;font-size:16px">Drop a PDF or photo, or browse</p>
+            <p>Up to 20 MB · Encrypted at rest</p>
+          </div>
+        </div>
+
+        <div class="file-row">
+          <span class="file-name">Bill_of_sale_CAT336_2021.pdf</span>
+          <span class="file-size">1.8 MB</span>
+          <span class="tag tag-neutral">Uploaded</span>
+        </div>
+
+        <div class="vf-fields">
+          <div class="field">
+            <label for="v-name">Name on document</label>
+            <input class="input" id="v-name" value="Ridgeline Earthworks LLC">
+          </div>
+          <div class="field">
+            <label for="v-machine">Machine make and model</label>
+            <input class="input" id="v-machine" value="Caterpillar 336">
+          </div>
+        </div>
+
+        <div class="vf-footer">
+          <span class="vf-footer-note">Most reviews finish within one business day.</span>
+          <div style="display:flex;gap:12px">
+            <button type="button" class="btn btn-ghost">Back</button>
+            <button type="button" class="btn btn-primary">Submit for review</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
