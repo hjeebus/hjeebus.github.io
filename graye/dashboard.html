@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My unlocks · Graye Market</title>
+  <meta name="description" content="Buyer dashboard — unlock history, seller response status and saved searches.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<div class="frame">
+
+  <nav class="nav gutter" aria-label="Main">
+    <a class="nav-brand" href="index.html">Gray<span class="brand-e">e</span> Market</a>
+    <div class="nav-links" id="navLinks">
+      <a href="browse.html">Browse</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="dashboard.html" aria-current="page">My unlocks</a>
+      <a href="#">Account</a>
+    </div>
+    <a class="btn btn-secondary nav-cta" href="new-listing.html">List equipment</a>
+    <button type="button" class="btn btn-icon nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+
+  <div class="gutter" style="padding-top:48px">
+    <h2 class="d-48" style="margin:0">My unlocks</h2>
+  </div>
+
+  <div class="gutter">
+    <div class="stats">
+      <div class="stat"><p class="stat-v">7</p><p class="stat-k">Unlocks this year</p></div>
+      <div class="stat"><p class="stat-v">5</p><p class="stat-k">Sellers responded</p></div>
+      <div class="stat"><p class="stat-v">1</p><p class="stat-k">Awaiting reply</p></div>
+      <div class="stat"><p class="stat-v">$249</p><p class="stat-k">Refunded</p></div>
+    </div>
+  </div>
+
+  <div class="gutter">
+    <div class="dash-table-wrap">
+      <table class="table">
+        <thead>
+          <tr><th>Listing</th><th>Unlocked</th><th>Fee</th><th>Seller status</th><th><span class="visually-hidden">Actions</span></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>2021 Caterpillar 336 Next Gen</strong><br><span style="font-size:13px;color:var(--color-neutral-800)">GM-40218 · Midwest</span></td>
+            <td>Sep 23</td>
+            <td class="tnum">$249</td>
+            <td><span class="tag tag-accent">Awaiting reply · 61h</span></td>
+            <td><a href="unlocked.html" style="font-weight:700">View contact</a></td>
+          </tr>
+          <tr>
+            <td><strong>2017 Liebherr LR 1300</strong><br><span style="font-size:13px;color:var(--color-neutral-800)">GM-39870 · Gulf Coast</span></td>
+            <td>Sep 11</td>
+            <td class="tnum">$999</td>
+            <td><span class="tag tag-neutral">Responded</span></td>
+            <td><a href="unlocked.html" style="font-weight:700">View contact</a></td>
+          </tr>
+          <tr>
+            <td><strong>2020 Caterpillar 988K</strong><br><span style="font-size:13px;color:var(--color-neutral-800)">GM-39502 · Mountain West</span></td>
+            <td>Aug 30</td>
+            <td class="tnum">$499</td>
+            <td><span class="tag tag-neutral">Responded</span></td>
+            <td><a href="unlocked.html" style="font-weight:700">View contact</a></td>
+          </tr>
+          <tr>
+            <td><strong>2019 Komatsu PC360LC-11</strong><br><span style="font-size:13px;color:var(--color-neutral-800)">GM-38814 · Midwest</span></td>
+            <td>Aug 12</td>
+            <td class="tnum">$249</td>
+            <td><span class="tag tag-outline">Refunded · no reply</span></td>
+            <td><a href="unlocked.html" style="font-weight:700">View contact</a></td>
+          </tr>
+          <tr>
+            <td><strong>2022 John Deere 470G LC</strong><br><span style="font-size:13px;color:var(--color-neutral-800)">GM-38120 · Midwest</span></td>
+            <td>Jul 28</td>
+            <td class="tnum">$249</td>
+            <td><span class="tag tag-neutral">Responded</span></td>
+            <td><a href="unlocked.html" style="font-weight:700">View contact</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="gutter" style="padding:48px 0 88px">
+    <div class="saved-head">
+      <h3 class="d-28" style="margin:0">Saved searches</h3>
+      <button type="button" class="btn btn-ghost">New saved search</button>
+    </div>
+    <div class="saved">
+      <div class="card">
+        <p class="card-kicker">Excavators · Midwest</p>
+        <p class="card-title">2018+, under 8,000 hrs</p>
+        <p class="card-meta">3 new this week · Email daily</p>
+      </div>
+      <div class="card">
+        <p class="card-kicker">Crawler cranes</p>
+        <p class="card-title">250 t and up, any region</p>
+        <p class="card-meta">1 new this week · Email instantly</p>
+      </div>
+      <div class="card">
+        <p class="card-kicker">Articulated haulers</p>
+        <p class="card-title">Under $400K, Southeast</p>
+        <p class="card-meta">No new listings · Email weekly</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
