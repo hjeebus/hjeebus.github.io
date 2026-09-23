@@ -262,6 +262,7 @@ button { font: inherit; color: inherit; }
 /* — home pricing — */
 .pricing { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; padding: 56px 0 72px; }
 .pricing-copy { margin: 16px 0 0; font-size: 16px; line-height: 26px; color: var(--color-neutral-900); max-width: 42ch; }
+.pricing .table th:last-child, .pricing .table td:last-child { text-align: right; }
 
 /* — red band + footer — */
 .redband { background: var(--color-accent); color: var(--color-bg); padding: clamp(40px, 5.6vw, 72px); }
@@ -505,8 +506,8 @@ button { font: inherit; color: inherit; }
   .sb-cell { border-bottom: 2px solid var(--color-text); }
   .sb-cell:nth-child(2n) { border-right: 0; }
   .searchbar .btn-primary { grid-column: 1 / -1; justify-content: center; min-height: 52px; }
-  .home-recent .lcard { display: grid; grid-template-columns: 120px 1fr; }
-  .home-recent .lcard .ph { min-height: 120px; height: 100%; }
+  .home-recent .lcard { display: grid; grid-template-columns: 120px minmax(0, 1fr); }
+  .home-recent .lcard .ph { width: 100%; height: 100%; min-height: 120px; }
   .home-recent .lcard-body { padding: 12px 14px; gap: 4px; }
   .home-recent .lcard-title { font-size: 16px; line-height: 20px; }
   .home-recent .lcard-price { font-size: 16px; margin-top: auto; }
