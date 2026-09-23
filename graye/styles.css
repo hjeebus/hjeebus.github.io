@@ -258,13 +258,13 @@ button { font: inherit; color: inherit; }
 .step p { margin: 12px 0 0; font-size: 16px; line-height: 26px; color: var(--color-neutral-900); }
 
 /* — home pricing — */
-.pricing { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; padding: 56px 0 72px; }
+.pricing { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; padding: 56px 0 72px; align-items: center; }
 .pricing-copy { margin: 16px 0 0; font-size: 16px; line-height: 26px; color: var(--color-neutral-900); max-width: 42ch; }
 .pricing .table th:last-child, .pricing .table td:last-child { text-align: right; }
 
 /* — red band + footer — */
-.redband { background: var(--color-accent); color: var(--color-bg); padding: clamp(40px, 5.6vw, 72px); }
-.redband .d-56 { max-width: 16ch; margin: 0; }
+.redband { background: var(--color-accent); color: var(--color-bg); padding: clamp(40px, 5.6vw, 72px); text-align: center; }
+.redband .d-56 { max-width: 16ch; margin: 0 auto; }
 .redband .btn { margin-top: 36px; }
 .footer {
   display: flex; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap;
