@@ -232,9 +232,9 @@ button { font: inherit; color: inherit; }
 .card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 /* — home hero — */
-.hero { padding: 88px 0 72px; }
-.hero .d-hero { max-width: 12ch; }
-.hero-sub { font-size: 18px; line-height: 28px; max-width: 52ch; margin: 32px 0 0; color: var(--color-neutral-900); }
+.hero { padding: 56px 0 48px; text-align: center; }
+.hero .d-hero { max-width: 12ch; margin-inline: auto; }
+.hero-sub { font-size: 18px; line-height: 28px; max-width: 52ch; margin: 20px auto 0; color: var(--color-neutral-900); }
 
 /* — home search bar — */
 .searchbar {
@@ -443,7 +443,7 @@ button { font: inherit; color: inherit; }
 
 @media (max-width: 980px) {
   .detail-grid, .un-grid, .co-grid, .vf-grid, .nx-grid, .pricing { grid-template-columns: 1fr; gap: 40px; }
-  .hero { padding: 40px 0 0; }
+  .hero { padding: 32px 0 0; }
   .card-grid-3 { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: 1fr; }
   .step {
