@@ -232,10 +232,8 @@ button { font: inherit; color: inherit; }
 .card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 /* — home hero — */
-.hero-grid {
-  display: grid; grid-template-columns: 7fr 5fr; gap: 56px;
-  padding: 88px 0 72px; align-items: end;
-}
+.hero { padding: 88px 0 72px; }
+.hero .d-hero { max-width: 12ch; }
 .hero-sub { font-size: 18px; line-height: 28px; max-width: 52ch; margin: 32px 0 0; color: var(--color-neutral-900); }
 
 /* — home search bar — */
@@ -444,9 +442,8 @@ button { font: inherit; color: inherit; }
    ══════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 980px) {
-  .hero-grid, .detail-grid, .un-grid, .co-grid, .vf-grid, .nx-grid, .pricing { grid-template-columns: 1fr; gap: 40px; }
-  .hero-grid { padding: 40px 0 0; gap: 32px; }
-  .hero-photo { display: none; }
+  .detail-grid, .un-grid, .co-grid, .vf-grid, .nx-grid, .pricing { grid-template-columns: 1fr; gap: 40px; }
+  .hero { padding: 40px 0 0; }
   .card-grid-3 { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: 1fr; }
   .step {
