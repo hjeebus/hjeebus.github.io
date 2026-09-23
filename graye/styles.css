@@ -233,7 +233,7 @@ button { font: inherit; color: inherit; }
 
 /* — home hero — */
 .hero { padding: 56px 0 48px; text-align: center; }
-.hero .d-hero { max-width: 12ch; margin-inline: auto; }
+.hero .d-hero { margin-inline: auto; }
 .hero-sub { font-size: 18px; line-height: 28px; max-width: 52ch; margin: 20px auto 0; color: var(--color-neutral-900); }
 
 /* — home search bar — */
