@@ -262,44 +262,42 @@ function commonDims(){
   // ---- walls ----
   s += L(0,WL,68,WL,'ext');                                             // wet line
   s += both(m => L(m(16),0,m(16),WL) + L(m(22),WL,m(22),BD));           // bedroom wall, suite/core wall
-  s += both(m => L(m(16),WL,m(16),30) + L(m(16),24,m(22),24) + L(m(16),30,m(22),30)); // pantry / link
+  s += both(m => L(m(16),WL,m(16),30) + L(m(16),30,m(22),30));          // hall (bath side) 
   s += both(m => L(m(0),27,m(16),27));                                  // bath / closet
-  s += both(m => L(m(25),WL,m(25),24) + L(m(31),WL,m(31),24));          // WCs + vestibule
+  s += both(m => L(m(28),WL,m(28),24));                                 // WC | pantry
   s += L(22,24,46,24) + L(22,32,46,32) + L(30,32,30,BD) + L(38,32,38,BD); // laundry, mech, sauna
   // ---- openings ----
   s += both(m => gap(m(16),10,m(16),13));                               // bedroom doors off great room
   s += both(m => gap(m(5),WL,m(9),WL));                                 // bedroom → bath (4′ cased)
   s += both(m => gap(m(5),27,m(9),27));                                 // bath → closet (4′ cased)
-  s += both(m => gap(m(16),24.5,m(16),27));                             // bath → link
-  s += both(m => gap(m(22),25,m(22),28));                               // link → laundry
+  s += both(m => gap(m(16),24.5,m(16),27) + L(m(16),27,m(18.5),24.5,'thin')); // bath → hall (door)
+  s += both(m => gap(m(22),25,m(22),28));                               // hall → laundry
+  s += both(m => gap(m(22),19.5,m(22),22.5) + L(m(22),22.5,m(24.5),20,'thin')); // hall → WC
+  s += both(m => gap(m(17),WL,m(20),WL));                               // kitchen → hall
   s += both(m => gap(m(16),30,m(16),33) );                              // link/closet: closet alcove
-  s += both(m => gap(m(17),WL,m(20),WL));                               // pantry from kitchen
-  s += gap(31.5,WL,36.5,WL);                                            // vestibule from kitchen
-  s += both(m => gap(m(31),19.5,m(31),22.5));                           // WC doors off vestibule
-  s += gap(32.5,24,35.5,24) + gap(32.5,32,35.5,32);                     // laundry, sauna doors
-  s += both(m => gap(m(22.5),24,m(24.5),24));                           // linen / cleaning closets open off laundry
-  s += both(m => T(m(23.5),20.4,'linen','s') + T(m(23.5),21.6,'clean','s'));
+  s += gap(32.5,WL,35.5,WL);                                            // pantry from kitchen
+  s += gap(32.5,32,35.5,32);                                            // sauna door from laundry
   s += both(m => gap(m(24),32,m(27),32));                               // mechanical doors
   // ---- rooms ----
   s += both(m => room(lo(m,0,16),0,16,WL,'Bedroom',`16′ × ${WL}′ · walk-out wall`));
   s += both(m => room(lo(m,0,16),WL,16,9,'Bath','16′ × 9′ · shower + vanity only'));
   s += both(m => room(lo(m,0,16),27,16,13,'Walk-in closet','16′ × 13′ + alcove · most buried'));
-  s += both(m => room(lo(m,16,22),WL,6,6,'Pantry',''));
-  s += both(m => room(lo(m,16,22),24,6,6,'Link','to laundry'));
+  s += both(m => room(lo(m,16,22),WL,6,12,'Hall','kitchen · bath · WC · laundry'));
   s += both(m => T(m(19),35,'closet','s') + T(m(19),36.2,'alcove','s'));
   s += room(16,4,36,10,'Living · kitchen','36′ × 14′ great room · 504 sf · opens to patio both sides of stair');
-  s += both(m => room(lo(m,25,31),WL,6,6,'WC','6′ × 6′'));
-  s += room(31,WL,6,6,'Vestibule','');
-  s += room(22,24,24,8,'Laundry','24′ × 8′ · reached from vestibule and from both baths');
+  s += both(m => room(lo(m,22,28),WL,6,6,'WC','6′ × 6′'));
+  s += room(28,WL,12,6,'Pantry','12′ × 6′ · walk-in, off kitchen');
+  s += R(28.3,22,11.4,1.6,'thin') + R(28.3,WL+.4,1.6,3.4,'thin') + R(38.1,WL+.4,1.6,3.4,'thin') + T(34,23.2,'shelving three sides','s');
+  s += room(22,24,24,8,'Laundry','24′ × 8′ · reached from both halls');
   s += both(m => room(lo(m,22,30),32,8,8,'Mech','8′ × 8′'));
   s += hatchRect(30,32,8,8) + T(34,35.6,'Sauna','g') + T(34,36.9,'8′ × 8′','s');
   // ---- fixtures ----
-  // bath: vanity on the exterior side wall, shower in the corner beside the pantry
+  // bath: vanity on the exterior side wall, shower in the corner beside the hall
   s += both(m => { const x = lo(m,0,16), ex = (m(0)===0); const vx = ex? x+.2 : x+16-2.2; const sx = ex? x+12 : x;
     return R(vx,WL+1.5,2,6,'thin') + R(vx+.4,WL+2.3,1.2,1.4,'thin') + R(vx+.4,WL+5.3,1.2,1.4,'thin') + T(ex?x+4.4:x+11.6,WL+4.9,'double vanity','s')
          + R(sx,WL+.2,4,4,'thin') + L(sx,WL+.2,sx+4,WL+4.2,'thin') + T(sx+2,WL+2.6,'shower','s'); });
   s += both(m => { const x = lo(m,0,16); return R(x+.3,27.3,2,12.4,'thin') + R(x+13.7,27.3,2,12.4,'thin') + R(x+5.5,31.5,5,3,'thin') + T(x+8,33.4,'island','s'); });
-  s += both(m => { const x = lo(m,25,31); return R(x+2.2,WL+.4,1.6,1.3,'thin') + R(x+4.5,WL+.3,1.2,1.4,'thin'); });
+  s += both(m => { const x = lo(m,22,28); return R(x+2.2,WL+.4,1.6,1.3,'thin') + R(x+4.5,WL+.3,1.2,1.4,'thin'); });
   s += R(23,24.2,2.4,2.4,'dash') + R(25.6,24.2,2.4,2.4,'dash') + T(25.5,28.2,'W · D','s') + R(29,24.2,4,2,'thin') + T(31,28.2,'utility sink','s') + R(36,24.2,9,2,'thin') + T(40.5,28.2,'folding counter','s');
   s += R(22.5,15.3,4,1.6,'thin') + T(24.5,14.8,'sink','s') + R(26.5,15.3,2,1.6,'thin') + T(27.5,14.8,'DW','s') + R(39.5,15.3,3,1.6,'thin') + T(41,14.8,'range','s') + R(41.5,15.3,4,1.6,'thin') + T(43.5,14.8,'fridge','s') + R(28,10.5,12,2.4,'thin') + T(34,12.1,'island','s');
   // ---- walk-out openings ----
@@ -310,7 +308,7 @@ function commonDims(){
   [0,17,34,51,68].forEach(x=>s+=R(x-.5,-OVR+.1,1,1,'w'));
   s += L(34,-OVR,34,BD,'dash') + T(34,BD+1.4,'axis of symmetry','s');
   s += T(-3,BD+2,'← front wall buried in hill','s','start');
-  sheet('A-101','Basement plan — walk-out living', planFrame(s, dimH(0,BW,-13) + dimV(0,BD,-4.5) + dimH(0,16,BD+5) + dimH(16,22,BD+5,'6′') + dimH(22,46,BD+5) + dimH(46,52,BD+5,'6′') + dimH(52,68,BD+5) + dimV(0,WL,BW+5) + dimV(WL,27,BW+5,'9′') + dimV(27,40,BW+5)), {note:'Mirror-symmetric. Each side: bedroom → 16′ × 9′ bath (double vanity on the exterior side wall, shower in the corner beside the pantry) → walk-in closet deepest in the hill. A 6′ link off each bath opens into the laundry, so either suite reaches the laundry and the two toilet rooms without crossing the great room; the same core is reached from the kitchen through the vestibule. Sauna is back, centred behind the laundry between two mechanical rooms.'});
+  sheet('A-101','Basement plan — walk-out living', planFrame(s, dimH(0,BW,-13) + dimV(0,BD,-4.5) + dimH(0,16,BD+5) + dimH(16,22,BD+5,'6′') + dimH(22,46,BD+5) + dimH(46,52,BD+5,'6′') + dimH(52,68,BD+5) + dimV(0,WL,BW+5) + dimV(WL,27,BW+5,'9′') + dimV(27,40,BW+5)), {note:'Mirror-symmetric. Each side: bedroom → 16′ × 9′ bath (double vanity on the exterior side wall, shower in the corner beside the hall) → walk-in closet deepest in the hill. A 6′ × 12′ hall on each side is the hub: it opens off the kitchen, and from it you reach that side’s bedroom bath, a toilet room and the laundry. So the toilets and laundry are equally reachable from the great room and from either suite, with the bath door as the only privacy line. The single pantry is a 12′ × 6′ walk-in centred on the kitchen wall; linen and cleaning storage moves into the laundry, which has room to spare. Sauna is back, centred behind the laundry between two mechanical rooms.'});
 })();
 
 /* A-102 first floor */
