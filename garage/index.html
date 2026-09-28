@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Garage · Gym · Office — Drawing Set</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@400;500;600;700&family=Saira+Semi+Condensed:wght@500;600;700&display=swap">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --page:#dfe3e8; --ink:#1a2333; --ink2:#4d5a6d; --rule:#b8c0ca; --panel:#f4f6f8;
+  --blue:#1c3a6e; --blue2:#16305c; --bp:#eaf0fa; --bp2:rgba(234,240,250,.55); --bp3:rgba(234,240,250,.28);
+  --sky1:#dbe7f3; --sky2:#f1f5f9;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--page:#14181f;--ink:#e6e9ee;--ink2:#a5adba;--rule:#2b323d;--panel:#1c222b;--sky1:#2a3647;--sky2:#1c222b;}
+}
+:root[data-theme="dark"]{--page:#14181f;--ink:#e6e9ee;--ink2:#a5adba;--rule:#2b323d;--panel:#1c222b;--sky1:#2a3647;--sky2:#1c222b;}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 56px);}
+*{box-sizing:inherit}
+body{margin:0;background:var(--page);color:var(--ink);font-family:"Saira",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.45}
+header{padding:28px 18px 10px;max-width:1080px;margin:0 auto}
+h1{font-family:"Saira Semi Condensed","Saira",sans-serif;font-weight:700;font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0 0 8px;letter-spacing:-.01em}
+.lede{color:var(--ink2);margin:0;max-width:60ch;font-size:15px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--page);border-bottom:1px solid var(--rule);padding:8px 0}
+nav .row{display:flex;gap:6px;overflow-x:auto;padding:0 18px;max-width:1080px;margin:0 auto;scrollbar-width:none}
+nav a{white-space:nowrap;font-family:"Saira Semi Condensed",sans-serif;font-weight:600;font-size:13px;color:var(--ink);text-decoration:none;padding:6px 10px;border:1px solid var(--rule);border-radius:4px;background:var(--panel)}
+nav a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+main{max-width:1080px;margin:0 auto;padding:10px 18px 60px}
+section.sheet{margin:26px 0}
+section.sheet h2{font-family:"Saira Semi Condensed",sans-serif;font-weight:600;font-size:18px;margin:0 0 6px;display:flex;gap:10px;align-items:baseline}
+section.sheet h2 span{color:var(--ink2);font-weight:500;font-size:14px}
+.frame{overflow-x:auto;border:1px solid var(--rule);background:var(--panel);border-radius:3px}
+.frame svg{display:block;min-width:760px;width:100%;height:auto}
+.note{font-size:13px;color:var(--ink2);margin:8px 0 0;max-width:72ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:18px 0 4px}
+.facts div{background:var(--panel);padding:10px 12px}
+.facts b{display:block;font-family:"Saira Semi Condensed",sans-serif;font-size:22px;font-weight:600;line-height:1.1}
+.facts small{color:var(--ink2);font-size:12px}
+.qs{background:var(--panel);border:1px solid var(--rule);padding:12px 16px;margin-top:26px}
+.qs h3{margin:0 0 6px;font-family:"Saira Semi Condensed",sans-serif;font-size:17px}
+.qs ul{margin:0;padding-left:18px;font-size:14px}
+.qs li{margin:4px 0}
+@media (prefers-reduced-motion:no-preference){nav .row{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Garage · Gym · Office</h1>
+  <p class="lede">Drawing set worked up from the hand sketch: three-bay garage with a gym, centre office above, lofts over the door bays, a walk-out basement fitted out as living space, and a solar mono-pitch roof with a 4′ front overhang and a 10′ covered area at the walk-out. All dimensions are assumed to make the sketch buildable and are flagged for review.</p>
+  <div class="facts">
+    <div><b>68′ × 40′</b><small>footprint (assumed)</small></div>
+    <div><b>≈ 6,500 sf</b><small>gross · full basement, first floor, 16′ upper band</small></div>
+    <div><b>3 bays</b><small>gym · daily · working (lift)</small></div>
+    <div><b>4:12</b><small>roof 24′ front → 10′-8″ rear, faces south</small></div>
+    <div><b>Walk-out</b><small>basement, grade drops 9′ to rear</small></div>
+    <div><b>≈ 3,500 sf</b><small>solar roof area</small></div>
+  </div>
+</header>
+<nav><div class="row" id="nav"></div></nav>
+<main id="main"></main>
+
+<script>
+/* ---------- drawing helpers (feet in, px out) ---------- */
+const S = 9; // px per foot
+const ft = n => n * S;
+const fmt = n => { const f = Math.floor(n), i = Math.round((n - f) * 12); return i ? `${f}′-${i}″` : `${f}′-0″`; };
+const num = n => Math.round(n * 100) / 100;
+
+const sheets = [];
+function sheet(no, title, body, opts = {}) {
+  const W = 1000, H = 700;
+  const plate = opts.plate; // render plate (light) vs blueprint
+  const bg = plate ? `<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sky1)"/><stop offset="1" stop-color="var(--sky2)"/></linearGradient></defs><rect width="${W}" height="${H}" fill="url(#sky)"/>`
+                   : `<rect width="${W}" height="${H}" fill="var(--blue)"/>`;
+  const ink = plate ? 'var(--ink)' : 'var(--bp)';
+  const tb = `
+   <g font-family="Saira Semi Condensed, Saira, sans-serif" fill="${ink}">
+    <rect x="18" y="18" width="${W-36}" height="${H-36}" fill="none" stroke="${ink}" stroke-width="1.5"/>
+    <rect x="24" y="24" width="${W-48}" height="${H-48}" fill="none" stroke="${ink}" stroke-width=".6" opacity=".6"/>
+    <g transform="translate(${W-336},${H-92})">
+      <rect width="312" height="68" fill="none" stroke="${ink}" stroke-width="1"/>
+      <line x1="200" y1="0" x2="200" y2="68" stroke="${ink}" stroke-width="1"/>
+      <line x1="0" y1="34" x2="200" y2="34" stroke="${ink}" stroke-width="1"/>
+      <text x="8" y="14" font-size="10" opacity=".75">PROJECT</text>
+      <text x="8" y="28" font-size="13" font-weight="600">Garage · Gym · Office</text>
+      <text x="8" y="48" font-size="10" opacity=".75">SHEET</text>
+      <text x="8" y="62" font-size="13" font-weight="600">${title}</text>
+      <text x="208" y="14" font-size="10" opacity=".75">NO.</text>
+      <text x="208" y="36" font-size="24" font-weight="700">${no}</text>
+      <text x="208" y="50" font-size="9" opacity=".8">${opts.scale || 'Scale 1/8″ = 1′-0″ (nominal)'}</text>
+      <text x="208" y="62" font-size="9" opacity=".8">28 Sep 2026 · from sketch</text>
+    </g>
+   </g>`;
+  const cls = plate ? '' : `<style>
+    .w{stroke:var(--bp);fill:none}.ext{stroke:var(--bp);stroke-width:4;fill:none;stroke-linecap:square}.int{stroke:var(--bp);stroke-width:2.2;fill:none;stroke-linecap:square}
+    .thin{stroke:var(--bp2);stroke-width:.8;fill:none}.dash{stroke:var(--bp2);stroke-width:1;fill:none;stroke-dasharray:6 4}
+    .dim{stroke:var(--bp2);stroke-width:.9;fill:none}.hatch{stroke:var(--bp3);stroke-width:.8;fill:none}
+    .t{font-family:Saira Semi Condensed,Saira,sans-serif;fill:var(--bp);font-size:13px;font-weight:600}
+    .s{font-family:Saira,sans-serif;fill:var(--bp2);font-size:10.5px}.d{font-family:Saira,sans-serif;fill:var(--bp);font-size:10.5px}
+    .g{font-family:Saira Semi Condensed,sans-serif;fill:var(--bp);font-size:11px;font-weight:600}
+  </style>`;
+  sheets.push({ no, title, svg: `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${no} ${title}">${cls}${bg}${body}${tb}</svg>`, note: opts.note || '' });
+}
+
+/* plan primitives */
+const L = (x1,y1,x2,y2,c='int') => `<line x1="${ft(x1)}" y1="${ft(y1)}" x2="${ft(x2)}" y2="${ft(y2)}" class="${c}"/>`;
+const R = (x,y,w,h,c='int') => `<rect x="${ft(x)}" y="${ft(y)}" width="${ft(w)}" height="${ft(h)}" class="${c}"/>`;
+const T = (x,y,s,c='t',a='middle') => `<text x="${ft(x)}" y="${ft(y)}" class="${c}" text-anchor="${a}">${s}</text>`;
+function room(x,y,w,h,name,sub){ return T(x+w/2,y+h/2,name) + (sub?T(x+w/2,y+h/2+1.6,sub,'s'):''); }
+function stair(x,y,w,h,dir,toFront){ // vertical run; arrow shows direction of travel for label dir
+  let s = R(x,y,w,h,'thin');
+  for (let t=1;t<h;t++) s += L(x,y+t,x+w,y+t,'thin');
+  const cx=x+w/2;
+  if (toFront){ s += L(cx,y+0.5,cx,y+h-1.2,'dim'); s += `<polygon points="${ft(cx-.5)},${ft(y+h-2)} ${ft(cx+.5)},${ft(y+h-2)} ${ft(cx)},${ft(y+h-.6)}" fill="var(--bp2)"/>`; s += T(cx,y-.8,dir,'g'); }
+  else { s += L(cx,y+h-0.5,cx,y+1.2,'dim'); s += `<polygon points="${ft(cx-.5)},${ft(y+2)} ${ft(cx+.5)},${ft(y+2)} ${ft(cx)},${ft(y+.6)}" fill="var(--bp2)"/>`; s += T(cx,y+h+1.5,dir,'g'); }
+  return s;
+}
+function hatchRect(x,y,w,h){ let s=''; for(let k=-h;k<w;k+=1.2){ const x1=Math.max(x,x+k), y1=y+(x1-(x+k)), x2=Math.min(x+w,x+k+h), y2=y+(x2-(x+k)); if(x2>x1) s+=L(x1,y1,x2,y2,'hatch'); } return s; }
+function swing(x,y,w,dirX,dirY){ // door leaf hinged at x (dirX>0) or x+w, swinging dirY (+1 = into plan)
+  const hx = dirX>0 ? x : x+w, ex = dirX>0 ? x+w : x, ey = y + dirY*w, sweep = (dirX*dirY>0)?1:0;
+  return `<path d="M${ft(hx)},${ft(y)} L${ft(hx)},${ft(ey)} A${ft(w)},${ft(w)} 0 0 ${sweep} ${ft(ex)},${ft(y)}" class="thin"/>`;
+}
+function gap(x1,y1,x2,y2){ return `<line x1="${ft(x1)}" y1="${ft(y1)}" x2="${ft(x2)}" y2="${ft(y2)}" stroke="var(--blue)" stroke-width="6"/>`; }
+function ohd(x,y,w){ return gap(x,y,x+w,y) + L(x,y,x+w,y,'w') + L(x,y-1,x+w,y-1,'dash') + T(x+w/2,y-1.6,`${w}′×10′ overhead door`,'s'); }
+function dimH(x1,x2,y,label){ const l=label||fmt(x2-x1); return L(x1,y,x2,y,'dim')+L(x1-.4,y+.4,x1+.4,y-.4,'dim')+L(x2-.4,y+.4,x2+.4,y-.4,'dim')+T((x1+x2)/2,y-.5,l,'d'); }
+function dimV(y1,y2,x,label){ const l=label||fmt(y2-y1); return L(x,y1,x,y2,'dim')+L(x-.4,y1+.4,x+.4,y1-.4,'dim')+L(x-.4,y2+.4,x+.4,y2-.4,'dim')+`<text x="${ft(x)-4}" y="${ft((y1+y2)/2)}" class="d" text-anchor="middle" transform="rotate(-90 ${ft(x)-4} ${ft((y1+y2)/2)})">${l}</text>`; }
+function north(x,y){ return `<g transform="translate(${x},${y})"><circle r="16" class="thin"/><polygon points="0,14 5,-6 0,-2 -5,-6" fill="var(--bp)"/><text y="30" class="s" text-anchor="middle">N (front)</text></g>`; }
+const wrap = (tx,ty,inner) => `<g transform="translate(${tx},${ty})">${inner}</g>`;
+
+/* ---------- building parameters (assumed) ---------- */
+const BD_ = 40, BW = 68, BD = 40, HF = 24, HR = 24 - BD_/3, OV = 4, OS = 2, OVR = 10, FLR2 = 12, BSMT = 9;
+const DOORS = [{x:2,w:12},{x:22,w:24},{x:54,w:12}]; // gym · daily (double) · working
+
+/* ---------- render plates ---------- */
+function renderPlate(view){ // 'front' = front-right aerial, 'rear' = rear-left aerial (walk-out side)
+  const K = view==='front'?7.6:6.4, OX = view==='front'?380:400, OY = view==='front'?200:250;
+  const rear = view==='rear';
+  const zr = y => HR + (y / BD) * (HF - HR);
+  // model coords: x across (0..BW), y depth (0 rear .. BD front), z up. Screen transform flips for rear view.
+  const P = (x,y,z) => { const xx = rear? BW - x : x, yy = rear? BD - y : y; return [ (xx - yy) * 0.866 * K + OX, (xx + yy) * 0.5 * K - z * K + OY ]; };
+  const poly = (pts, fill, extra='') => `<polygon points="${pts.map(p=>p.map(num).join(',')).join(' ')}" fill="${fill}" ${extra}/>`;
+  const q = (a,b,c,d,fill,extra) => poly([a,b,c,d].map(v=>P(...v)),fill,extra);
+  const ln = (a,b,stroke,w=.8) => { const [ax,ay]=P(...a),[bx,by]=P(...b); return `<line x1="${num(ax)}" y1="${num(ay)}" x2="${num(bx)}" y2="${num(by)}" stroke="${stroke}" stroke-width="${w}"/>`; };
+  const grade = y => -BSMT * (1 - y / BD); // hill: 0 at front, -9 at rear
+  let s = `<defs>
+    <linearGradient id="gFront${view}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9b6ae"/><stop offset="1" stop-color="#a09d95"/></linearGradient>
+    <linearGradient id="gSide${view}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7d7a73"/><stop offset="1" stop-color="#66635d"/></linearGradient>
+    <linearGradient id="gRoof${view}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4a4a"/><stop offset="1" stop-color="#2e2e2e"/></linearGradient>
+    <linearGradient id="gPanel${view}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3d6b"/><stop offset=".5" stop-color="#1c2a4c"/><stop offset="1" stop-color="#233658"/></linearGradient>
+    <linearGradient id="gGlass${view}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb7c9"/><stop offset="1" stop-color="#5d7b93"/></linearGradient>
+    <radialGradient id="gGround${view}" cx=".45" cy=".55" r=".7"><stop offset="0" stop-color="#8c9a86"/><stop offset="1" stop-color="#6f7d6b"/></radialGradient>
+  </defs>`;
+  const F=`url(#gFront${view})`, SD=`url(#gSide${view})`, RF=`url(#gRoof${view})`, PN=`url(#gPanel${view})`, GL=`url(#gGlass${view})`;
+  if (!rear){
+    s += poly([P(-30,-20,0),P(BW+40,-20,0),P(BW+40,BD+40,0),P(-30,BD+40,0)],`url(#gGround${view})`);
+    s += q([0,BD,0],[BW,BD,0],[BW+6,BD+30,0],[-6,BD+30,0],'#9a9a96');
+    s += q([-2,BD-0.2,0],[BW+2,BD-0.2,0],[BW+2,BD+3,0],[-2,BD+3,0],'#8d8d89');
+    // hill falls away to the rear on the right side: ground at grade(y)
+    s += poly([P(BW,BD,0),P(BW+40,BD,0),P(BW+40,-20,-BSMT),P(BW,-OVR,-BSMT)],'#7a8873');
+    s += poly([P(BW,0,0),P(BW+8,4,0),P(BW+8,BD+2,0),P(BW,BD,0)],'rgba(0,0,0,.18)');
+    // side face x=BW, foundation exposed as grade drops
+    s += q([BW,0,-BSMT],[BW,BD,0],[BW,BD,HF],[BW,0,HR],SD);
+    s += poly([P(BW,0,-BSMT),P(BW,0,grade(0)),P(BW,BD,grade(BD))],'#6e6a62'); // exposed concrete band (visual)
+    for (let z=1;z<HR;z+=1) s += ln([BW,0,z],[BW,BD,z],'rgba(0,0,0,.08)');
+    [[10,14],[26,30]].forEach(([y1,y2])=>{ if (y1>20) s += q([BW,y1,15],[BW,y2,15],[BW,y2,19],[BW,y1,19],GL,'stroke="#2b2b2b" stroke-width="1"'); s += q([BW,y1,4],[BW,y2,4],[BW,y2,8],[BW,y1,8],GL,'stroke="#2b2b2b" stroke-width="1"'); });
+    s += q([BW,4,-7],[BW,8,-7],[BW,8,-3],[BW,4,-3],GL,'stroke="#2b2b2b" stroke-width="1"'); // basement window on side
+    // rear overhang posts on side
+    [[BW, -OVR],[BW,-OVR/2]].forEach(([x,y])=>{ s += q([x-.6,y-.6,-BSMT],[x+.6,y-.6,-BSMT],[x+.6,y-.6,zr(y)-1.5],[x-.6,y-.6,zr(y)-1.5],'#5a5750'); });
+    // front face
+    s += q([0,BD,0],[BW,BD,0],[BW,BD,HF],[0,BD,HF],F);
+    for (let z=1;z<HF;z+=1) s += ln([0,BD,z],[BW,BD,z],'rgba(0,0,0,.07)');
+    s += q([0,BD,0],[BW,BD,0],[BW,BD,1.2],[0,BD,1.2],'#6a675f');
+    DOORS.forEach(({x:x0,w},i)=>{
+      const lites = i===0;
+      s += q([x0-.4,BD,0],[x0+w+.4,BD,0],[x0+w+.4,BD,10.4],[x0-.4,BD,10.4],'#3a3a38');
+      s += q([x0,BD,0],[x0+w,BD,0],[x0+w,BD,10],[x0,BD,10],lites?'#2f3a44':'#2d2f33');
+      if (lites){ // full-view glass door: 4 panels x 5 lites
+        for (let k=0;k<5;k++) for (let r=0;r<4;r++){ const a=x0+.5+k*(w-1)/5, b=a+(w-1)/5-.35, z0=.5+r*2.4, z1=z0+2.0; s += q([a,BD,z0],[b,BD,z0],[b,BD,z1],[a,BD,z1],GL); }
+      } else { for (let z=2;z<10;z+=2) s += ln([x0,BD,z],[x0+w,BD,z],'#1a1b1e',1.2); }
+      // window above, same width as door
+      s += q([x0-.2,BD,14.8],[x0+w+.2,BD,14.8],[x0+w+.2,BD,19.2],[x0-.2,BD,19.2],'#2b2b2b');
+      s += q([x0,BD,15],[x0+w,BD,15],[x0+w,BD,19],[x0,BD,19],GL);
+      for (let k=1;k<w/3;k++) s += ln([x0+k*3,BD,15],[x0+k*3,BD,19],'#2b2b2b',1);
+    });
+    const zf = zr(BD+OV);
+    s += q([0,BD,HF],[BW,BD,HF],[BW+OS,BD+OV,zf-1.2],[-OS,BD+OV,zf-1.2],'#5a5750');
+    s += q([BW,-OVR,zr(-OVR)],[BW,BD,HF],[BW+OS,BD+OV,zf-1.2],[BW+OS,-OVR,zr(-OVR)-1.2],'#4a4741');
+    s += q([-OS,BD+OV,zf-1.2],[BW+OS,BD+OV,zf-1.2],[BW+OS,BD+OV,zf],[-OS,BD+OV,zf],'#d9d6cf');
+    s += q([BW+OS,-OVR,zr(-OVR)-1.2],[BW+OS,BD+OV,zf-1.2],[BW+OS,BD+OV,zf],[BW+OS,-OVR,zr(-OVR)],'#bfbcb5');
+    s += q([-OS,-OVR,zr(-OVR)],[BW+OS,-OVR,zr(-OVR)],[BW+OS,BD+OV,zf],[-OS,BD+OV,zf],RF);
+  } else {
+    // rear-left aerial. Near face is the rear wall (y=0); side face is x=0 (west). Ground at -9 near, rising to 0 at front.
+    s += poly([P(-40,-30,-BSMT),P(BW+30,-30,-BSMT),P(BW+30,BD+20,-BSMT),P(-40,BD+20,-BSMT)],`url(#gGround${view})`);
+    // hill wedge on west side
+    s += poly([P(0,0,-BSMT),P(-40,0,-BSMT),P(-40,BD,0),P(0,BD,0)],'#7a8873');
+    s += poly([P(-40,BD,0),P(0,BD,0),P(0,BD+30,0),P(-40,BD+30,0)],'#75836f');
+    // patio slab under overhang
+    s += q([-2,-OVR-1,-BSMT],[BW+2,-OVR-1,-BSMT],[BW+2,0,-BSMT],[-2,0,-BSMT],'#9a9a96');
+    // west side face (x=0) from -9 up to roof
+    s += q([0,0,-BSMT],[0,BD,-BSMT],[0,BD,HF],[0,0,HR],SD);
+    s += poly([P(0,0,-BSMT),P(0,BD,0),P(0,BD,-BSMT)],'#6e6a62');
+    for (let z=1;z<HR;z+=1) s += ln([0,0,z],[0,BD,z],'rgba(0,0,0,.08)');
+    [[10,14],[26,30]].forEach(([y1,y2])=>{ if (y1>20) s += q([0,y1,15],[0,y2,15],[0,y2,19],[0,y1,19],GL,'stroke="#2b2b2b" stroke-width="1"'); s += q([0,y1,4],[0,y2,4],[0,y2,8],[0,y1,8],GL,'stroke="#2b2b2b" stroke-width="1"'); });
+    s += q([0,4,-7],[0,8,-7],[0,8,-3],[0,4,-3],GL,'stroke="#2b2b2b" stroke-width="1"');
+    // rear face (y=0), basement + two storeys
+    s += q([0,0,-BSMT],[BW,0,-BSMT],[BW,0,HR],[0,0,HR],F);
+    s += q([0,0,-BSMT],[BW,0,-BSMT],[BW,0,0],[0,0,0],'#8e8b83'); // concrete/board basement storey
+    for (let z=1;z<HR;z+=1) s += ln([0,0,z],[BW,0,z],'rgba(0,0,0,.07)');
+    // basement walk-out: glazed double door + windows
+    [[20,26],[42,48]].forEach(([a,b])=>{ s += q([a-.2,0,-BSMT],[b+.2,0,-BSMT],[b+.2,0,-1.8],[a-.2,0,-1.8],'#2b2b2b'); s += q([a,0,-BSMT],[b,0,-BSMT],[b,0,-2],[a,0,-2],GL); s += ln([(a+b)/2,0,-BSMT],[(a+b)/2,0,-2],'#2b2b2b',1.2); });
+    [[3,8],[11,16],[52,57],[60,65]].forEach(([a,b])=>{ s += q([a,0,-6.5],[b,0,-6.5],[b,0,-2.5],[a,0,-2.5],'#2b2b2b'); s += q([a+.2,0,-6.3],[b-.2,0,-6.3],[b-.2,0,-2.7],[a+.2,0,-2.7],GL); });
+    // first-floor rear entry + upper small windows
+        [[6,12],[22,28],[30,38],[40,46],[56,62]].forEach(([a,b])=>{ s += q([a,0,3],[b,0,3],[b,0,7],[a,0,7],GL,'stroke="#2b2b2b" stroke-width="1"'); });
+    [[16,19],[49,52]].forEach(([a,b])=>{ s += q([a,0,5.5],[b,0,5.5],[b,0,7.5],[a,0,7.5],GL,'stroke="#2b2b2b" stroke-width="1"'); });
+    // roof: soffit under the rear overhang, fascia, deck, posts
+    const zb = zr(-OVR)-1.2;
+    s += q([0,0,HR],[BW,0,HR],[BW+OS,-OVR,zb],[-OS,-OVR,zb],'#5a5750');
+    s += q([0,0,HR],[0,BD,HF],[-OS,BD+OV,zr(BD+OV)-1.2],[-OS,-OVR,zb],'#4a4741');
+    [0,17,34,51,68].forEach(x=>{ s += q([x-.5,-OVR+.6,-BSMT],[x+.5,-OVR+.6,-BSMT],[x+.5,-OVR+.6,zb],[x-.5,-OVR+.6,zb],'#5a5750'); });
+    s += q([-OS,-OVR,zb],[BW+OS,-OVR,zb],[BW+OS,-OVR,zr(-OVR)],[-OS,-OVR,zr(-OVR)],'#d9d6cf');
+    s += q([-OS,-OVR,zb],[-OS,BD+OV,zr(BD+OV)-1.2],[-OS,BD+OV,zr(BD+OV)],[-OS,-OVR,zr(-OVR)],'#bfbcb5');
+    s += q([-OS,-OVR,zr(-OVR)],[BW+OS,-OVR,zr(-OVR)],[BW+OS,BD+OV,zr(BD+OV)],[-OS,BD+OV,zr(BD+OV)],RF);
+  }
+  const cols=8, rows=5, px=(BW-2)/cols, py=(BD-4)/rows;
+  for (let i=0;i<cols;i++) for (let j=0;j<rows;j++){
+    const x0=1+i*px+.25, x1=1+(i+1)*px-.25, y0=2+j*py+.3, y1=2+(j+1)*py-.3;
+    s += q([x0,y0,zr(y0)+.3],[x1,y0,zr(y0)+.3],[x1,y1,zr(y1)+.3],[x0,y1,zr(y1)+.3],PN,'stroke="#8fa3c9" stroke-width=".6"');
+  }
+  // extra panel rows on the rear overhang
+  for (let i=0;i<cols;i++){ const x0=1+i*px+.25, x1=1+(i+1)*px-.25; s += q([x0,-OVR+1,zr(-OVR+1)+.3],[x1,-OVR+1,zr(-OVR+1)+.3],[x1,-1,zr(-1)+.3],[x0,-1,zr(-1)+.3],PN,'stroke="#8fa3c9" stroke-width=".6"'); }
+  const head = rear ? ['Rear-left aerial view — walk-out side','Rear wall is 10′-8″ over a 9′ exposed basement; walk-out patio under a 10′ roof extension','Posts at 17′ centres carry the extended solar roof over the patio']
+                    : ['Front-right aerial view','4:12 solar roof facing south, 24′ front eave · 12′ doors either side of a 24′ double door, full-view glass at the gym','Full-width windows over each door light the lofts and office; roof drops to the rear'];
+  s += `<g font-family="Saira, sans-serif" fill="var(--ink)" font-size="12">
+    <text x="48" y="60" font-family="Saira Semi Condensed, sans-serif" font-size="22" font-weight="600">${head[0]}</text>
+    <text x="48" y="80" opacity=".75">${head[1]}</text><text x="48" y="96" opacity=".75">${head[2]}</text></g>`;
+  return s;
+}
+sheet('A-000','Rendering — front-right aerial', renderPlate('front'), {plate:true, scale:'Not to scale · illustrative', note:'Illustrative massing view at the same assumed dimensions as the plans. Materials are placeholders.'});
+sheet('A-001','Rendering — rear-left aerial (walk-out)', renderPlate('rear'), {plate:true, scale:'Not to scale · illustrative', note:'Shows the hill dropping to the rear, the exposed basement storey with its glazed walk-out, and the roof carried 10′ past the rear wall on posts to make the covered area.'});
+
+/* ---------- plan sheets ---------- */
+const OXp = 130, OYp = 100;
+function planFrame(inner, dims){
+  return wrap(OXp,OYp, R(0,0,BW,BD,'ext') + inner + dims) + north(920,120);
+}
+function commonDims(){
+  return dimH(0,BW,-4.5) + dimV(0,BD,-4.5) + dimH(0,16,BD+5) + dimH(16,20,BD+5,'4′') + dimH(20,48,BD+5) + dimH(48,52,BD+5,'4′') + dimH(52,68,BD+5);
+}
+
+/* A-101 basement — symmetric: bed → bath → closet, baths linked to laundry */
+(function(){
+  let s = '';
+  const WL = 18; // wet line
+  s += R(28,0,12,4,'thin'); for (let t=1;t<12;t++) s += L(28+t,0,28+t,4,'thin');
+  s += L(28.5,2,39,2,'dim') + `<polygon points="${ft(38.5)},${ft(1.4)} ${ft(38.5)},${ft(2.6)} ${ft(39.6)},${ft(2)}" fill="var(--bp2)"/>` + T(34,5.4,'UP','g');
+  const M = x => 68 - x;
+  const both = f => f(x=>x) + f(M);
+  const lo = (m,a,b) => Math.min(m(a),m(b));
+  // ---- walls ----
+  s += L(0,WL,68,WL,'ext');                                             // wet line
+  s += both(m => L(m(16),0,m(16),WL) + L(m(22),WL,m(22),BD));           // bedroom wall, suite/core wall
+  s += both(m => L(m(16),WL,m(16),30) + L(m(16),24,m(22),24) + L(m(16),30,m(22),30)); // pantry / link
+  s += both(m => L(m(0),27,m(16),27));                                  // bath / closet
+  s += both(m => L(m(25),WL,m(25),24) + L(m(31),WL,m(31),24));          // WCs + vestibule
+  s += L(22,24,46,24) + L(22,32,46,32) + L(30,32,30,BD) + L(38,32,38,BD); // laundry, mech, sauna
+  // ---- openings ----
+  s += both(m => gap(m(16),10,m(16),13));                               // bedroom doors off great room
+  s += both(m => gap(m(5),WL,m(9),WL));                                 // bedroom → bath (4′ cased)
+  s += both(m => gap(m(5),27,m(9),27));                                 // bath → closet (4′ cased)
+  s += both(m => gap(m(16),24.5,m(16),27));                             // bath → link
+  s += both(m => gap(m(22),25,m(22),28));                               // link → laundry
+  s += both(m => gap(m(16),30,m(16),33) );                              // link/closet: closet alcove
+  s += both(m => gap(m(17),WL,m(20),WL));                               // pantry from kitchen
+  s += gap(31.5,WL,36.5,WL);                                            // vestibule from kitchen
+  s += both(m => gap(m(31),19.5,m(31),22.5));                           // WC doors off vestibule
+  s += gap(32.5,24,35.5,24) + gap(32.5,32,35.5,32);                     // laundry, sauna doors
+  s += both(m => gap(m(22.5),24,m(24.5),24));                           // linen / cleaning closets open off laundry
+  s += both(m => T(m(23.5),20.4,'linen','s') + T(m(23.5),21.6,'clean','s'));
+  s += both(m => gap(m(24),32,m(27),32));                               // mechanical doors
+  // ---- rooms ----
+  s += both(m => room(lo(m,0,16),0,16,WL,'Bedroom',`16′ × ${WL}′ · walk-out wall`));
+  s += both(m => room(lo(m,0,16),WL,16,9,'Bath','16′ × 9′ · shower + vanity only'));
+  s += both(m => room(lo(m,0,16),27,16,13,'Walk-in closet','16′ × 13′ + alcove · most buried'));
+  s += both(m => room(lo(m,16,22),WL,6,6,'Pantry',''));
+  s += both(m => room(lo(m,16,22),24,6,6,'Link','to laundry'));
+  s += both(m => T(m(19),35,'closet','s') + T(m(19),36.2,'alcove','s'));
+  s += room(16,4,36,10,'Living · kitchen','36′ × 14′ great room · 504 sf · opens to patio both sides of stair');
+  s += both(m => room(lo(m,25,31),WL,6,6,'WC','6′ × 6′'));
+  s += room(31,WL,6,6,'Vestibule','');
+  s += room(22,24,24,8,'Laundry','24′ × 8′ · reached from vestibule and from both baths');
+  s += both(m => room(lo(m,22,30),32,8,8,'Mech','8′ × 8′'));
+  s += hatchRect(30,32,8,8) + T(34,35.6,'Sauna','g') + T(34,36.9,'8′ × 8′','s');
+  // ---- fixtures ----
+  // bath: vanity on the exterior side wall, shower in the corner beside the pantry
+  s += both(m => { const x = lo(m,0,16), ex = (m(0)===0); const vx = ex? x+.2 : x+16-2.2; const sx = ex? x+12 : x;
+    return R(vx,WL+1.5,2,6,'thin') + R(vx+.4,WL+2.3,1.2,1.4,'thin') + R(vx+.4,WL+5.3,1.2,1.4,'thin') + T(ex?x+4.4:x+11.6,WL+4.9,'double vanity','s')
+         + R(sx,WL+.2,4,4,'thin') + L(sx,WL+.2,sx+4,WL+4.2,'thin') + T(sx+2,WL+2.6,'shower','s'); });
+  s += both(m => { const x = lo(m,0,16); return R(x+.3,27.3,2,12.4,'thin') + R(x+13.7,27.3,2,12.4,'thin') + R(x+5.5,31.5,5,3,'thin') + T(x+8,33.4,'island','s'); });
+  s += both(m => { const x = lo(m,25,31); return R(x+2.2,WL+.4,1.6,1.3,'thin') + R(x+4.5,WL+.3,1.2,1.4,'thin'); });
+  s += R(23,24.2,2.4,2.4,'dash') + R(25.6,24.2,2.4,2.4,'dash') + T(25.5,28.2,'W · D','s') + R(29,24.2,4,2,'thin') + T(31,28.2,'utility sink','s') + R(36,24.2,9,2,'thin') + T(40.5,28.2,'folding counter','s');
+  s += R(22.5,15.3,4,1.6,'thin') + T(24.5,14.8,'sink','s') + R(26.5,15.3,2,1.6,'thin') + T(27.5,14.8,'DW','s') + R(39.5,15.3,3,1.6,'thin') + T(41,14.8,'range','s') + R(41.5,15.3,4,1.6,'thin') + T(43.5,14.8,'fridge','s') + R(28,10.5,12,2.4,'thin') + T(34,12.1,'island','s');
+  // ---- walk-out openings ----
+  s += both(m => { const a = lo(m,20,26); return gap(a,0,a+6,0) + L(a,0,a+6,0,'thin') + L(a,.3,a+6,.3,'thin') + T(a+3,-1,'6′ glazed door','s'); });
+  [[3,8],[10,15],[53,58],[60,65]].forEach(([a,b])=>{ s += gap(a,0,b,0) + L(a,0,b,0,'thin') + L(a,.3,b,.3,'thin'); });
+  s += T(9,-1,'egress windows','s') + T(59,-1,'egress windows','s');
+  s += R(-OS,-OVR,BW+2*OS,OVR,'dash') + T(34,-OVR/2,'Covered patio · 10′ roof extension on posts','t') + T(34,-OVR/2+1.6,'grade here 9′ below first floor','s');
+  [0,17,34,51,68].forEach(x=>s+=R(x-.5,-OVR+.1,1,1,'w'));
+  s += L(34,-OVR,34,BD,'dash') + T(34,BD+1.4,'axis of symmetry','s');
+  s += T(-3,BD+2,'← front wall buried in hill','s','start');
+  sheet('A-101','Basement plan — walk-out living', planFrame(s, dimH(0,BW,-13) + dimV(0,BD,-4.5) + dimH(0,16,BD+5) + dimH(16,22,BD+5,'6′') + dimH(22,46,BD+5) + dimH(46,52,BD+5,'6′') + dimH(52,68,BD+5) + dimV(0,WL,BW+5) + dimV(WL,27,BW+5,'9′') + dimV(27,40,BW+5)), {note:'Mirror-symmetric. Each side: bedroom → 16′ × 9′ bath (double vanity on the exterior side wall, shower in the corner beside the pantry) → walk-in closet deepest in the hill. A 6′ link off each bath opens into the laundry, so either suite reaches the laundry and the two toilet rooms without crossing the great room; the same core is reached from the kitchen through the vestibule. Sauna is back, centred behind the laundry between two mechanical rooms.'});
+})();
+
+/* A-102 first floor */
+(function(){
+  let s = '';
+  [[16,20],[48,52]].forEach(([a,b])=>{ s += L(a,20,a,BD) + L(b,20,b,BD); });
+  s += L(20,0,20,20) + L(48,0,48,20);                       // full bay walls on the daily-garage side of the stairs: stairs belong to gym / working garage
+  s += gap(20,10,20,13) + L(20,13,22.8,10.5,'thin') + gap(48,10,48,13) + L(48,13,45.2,10.5,'thin'); // man doors from daily garage
+  s += stair(16.5,22,3,14,'UP',true) + stair(48.5,22,3,14,'UP',true);
+  s += T(18,20.2,'up toward doors','s') + T(50,20.2,'up toward doors','s');
+  s += room(0,0,16,BD,'Gym','16′ × 40′ · vaulted ceiling');
+  s += room(20,0,28,BD,'Daily garage','28′ × 40′ · two cars side by side');
+  s += room(52,0,16,BD,'Working garage','16′ × 40′ · vaulted · lift bay');
+  s += L(0,24,16,24,'dash') + L(52,36,68,36,'dash') + T(8,25.4,'loft edge above','s') + T(60,35,'catwalk above','s');
+  // two-post lift: posts + arms, centred on the door
+  s += R(55.5,23,1.2,1.2,'w') + R(63.3,23,1.2,1.2,'w') + L(56.7,23.6,58.5,20.5,'thin') + L(56.7,23.6,58.5,26.7,'thin') + L(63.3,23.6,61.5,20.5,'thin') + L(63.3,23.6,61.5,26.7,'thin');
+  s += R(57.5,14,5,18,'dash') + T(60,12.6,'2-post lift · ≥18′ clear here','s');
+  // basement stair along rear wall, horizontal run
+  s += R(28,0,12,4,'thin'); for (let t=1;t<12;t++) s += L(28+t,0,28+t,4,'thin');
+  s += L(39.5,2,29,2,'dim') + `<polygon points="${ft(29.5)},${ft(1.4)} ${ft(29.5)},${ft(2.6)} ${ft(28.4)},${ft(2)}" fill="var(--bp2)"/>` + T(34,5.4,'DN','g');
+  DOORS.forEach(({x,w})=>{ s += ohd(x,BD,w); });
+  s += T(8,BD-2.6,'full-view glass door','s') + T(34,BD-2.6,'double-wide door','s');
+  // two mirrored half baths in the rear corners of the gym and working garage, stacks in the x=16 / x=52 walls
+  [[15,20],[48,53]].forEach(([a,b])=>{ s += R(a,0,b-a,6) + gap(a+1,6,a+3.5,6) + L(a+1,6,a+3.4,8.4,'thin') + R(a+.4,.4,1.3,1.6,'thin') + R(b-2.2,.4,1.8,1.2,'thin') + T((a+b)/2,3.8,'½ bath','g') + T((a+b)/2,4.9,'5′ × 6′','s'); });
+  s += T(34,-1,'no rear door at this level — grade is 9′ below; exit via basement stair','s');
+  s += R(-OS,-OVR,BW+2*OS,OVR,'dash') + T(32,-OVR/2-.5,'covered patio below (basement level)','s');
+  sheet('A-102','First floor plan', planFrame(s, commonDims()), {note:'12′ doors at the gym and working garage, a 24′ double-wide door at the daily garage. The gym and working garage are open to the roof except under the lofts at the front; the stairs climb toward the garage doors and land at the front wall, with doors into the loft/catwalk and the office. The working garage keeps a full-height bay for a two-post lift: the roof underside is about 18′ at the lift position and the only overhead structure is a 4′ catwalk at the window wall. Basement stair runs along the rear wall. There is no rear door on this level, since grade is 9′ below — a window takes its place. Two mirrored 5′ × 6′ half baths sit in the rear corners of the gym and working garage, tight against the bay walls; their stacks drop through the basement bedroom/great-room walls to the wet line.'});
+})();
+
+/* A-103 second floor */
+(function(){
+  let s = '';
+  [[16,20],[48,52]].forEach(([a,b])=>{ s += L(a,20,a,BD) + L(b,20,b,BD); });
+  s += stair(16.5,22,3,14,'DN',true) + stair(48.5,22,3,14,'DN',true);
+  s += gap(20,36.5,20,39.5) + gap(16,36.5,16,39.5) + gap(48,36.5,48,39.5) + gap(52,36.5,52,39.5); // doors at landings
+  s += L(20,36.5,17.2,37.5,'thin') + L(16,36.5,18.8,37.5,'thin') + L(48,36.5,50.8,37.5,'thin') + L(52,36.5,49.2,37.5,'thin');
+  s += T(18,41.5,'landing · doors to loft + office','s') + T(50,41.5,'landing · doors to loft + office','s');
+  s += L(20,24,48,24) + gap(30,24,38,24) + L(30,24,38,24,'dash');
+  s += hatchRect(20,4,28,20) + L(20,4,48,4,'dash') + L(0,4,68,4,'dash');
+  s += room(20,4,28,20,'Attic storage','sloped ceiling · 7′ at front edge to ~1′ at rear');
+  s += T(34,3,'no second floor beyond here — roof meets floor','s');
+  s += room(20,24,28,16,'Office','28′ × 16′ · 448 sf · ceiling 7′ → 12′');
+  s += L(0,24,16,24,'ext') + L(52,36,68,36,'ext');
+  s += room(0,24,16,16,'Gym loft','16′ × 16′ · over door bay');
+  s += T(60,38.4,'Catwalk · 4′ wide · window access','g');
+  s += hatchRect(0,0,16,24) + hatchRect(52,0,16,36);
+  s += room(0,0,16,24,'Open to gym below','vaulted');
+  s += room(52,0,16,36,'Open to working garage below','vaulted · lift bay');
+  s += T(8,23,'guardrail','s') + T(60,35,'guardrail','s');
+  DOORS.forEach(({x,w})=>{ s += gap(x,BD,x+w,BD) + L(x,BD,x+w,BD,'thin') + L(x,BD-.3,x+w,BD-.3,'thin') + T(x+w/2,BD+2.4,`${w}′×4′ window`,'s'); });
+    sheet('A-103','Second floor plan', planFrame(s, commonDims()), {note:'With the rear lowered to 10′-8″, the 4:12 roof meets the second-floor level 4′ in from the rear wall, so the second floor is a 16′-deep front band: gym loft, office, and a 4′ catwalk over the working garage so the lift bay stays clear. Each is behind a walled stair landing with a door. Behind the office is sloped attic storage; behind the loft and catwalk is open to below.'});
+})();
+
+/* A-104 roof plan */
+(function(){
+  let s = '';
+  s += R(-OS,-OVR,BW+2*OS,BD+OVR+OV,'w') + R(0,0,BW,BD,'dash');
+  [0,17,34,51,68].forEach(x=>s+=R(x-.5,-OVR+.1,1,1,'w')); s += T(34,-OVR-1.2,'10′ rear extension over walk-out patio, posts at 17′ o.c.','s');
+  const cols=8, rows=5, px=(BW-2)/cols, py=(BD-4)/rows;
+  for (let i=0;i<cols;i++) for (let j=0;j<rows;j++) s += R(1+i*px+.25, 2+j*py+.3, px-.5, py-.6,'thin');
+  for (let i=0;i<cols;i++) s += R(1+i*px+.25,-OVR+1,px-.5,8,'thin');
+  s += T(34,BD/2,'Solar array · 48 modules shown (8 × 6)','t');
+  s += T(34,BD/2+1.6,'≈ 3,500 sf roof incl. rear extension · high side at the front (north) so panels face south','s');
+  // slope arrow
+  s += L(60,34,60,6,'dim') + `<polygon points="${ft(59.3)},${ft(7.5)} ${ft(60.7)},${ft(7.5)} ${ft(60)},${ft(5.5)}" fill="var(--bp)"/>` + T(60,36,'slope 4:12 (≈18.4°) down to rear = south','s');
+  // overhang dims
+  s += dimH(-OS,0,-13,'2′') + dimH(BW,BW+OS,-13,'2′') + dimV(BD,BD+OV,BW+6,'4′ overhang') + dimV(-OVR,0,BW+6,'10′ extension');
+  s += dimH(0,BW,-13);
+  sheet('A-104','Roof plan', planFrame(s,''), {note:'Array covers the full slope including the 10′ rear extension over the walk-out patio. Panel count is placeholder.'});
+})();
+
+/* ---------- elevations ---------- */
+function elev(inner, x0, x1, ztop){
+  // x in feet across, z up; origin at grade
+  const ox = 150, oy = 560;
+  const E = (x,z) => `${ft(x)+ox},${oy-ft(z)}`;
+  const EL = (x1,z1,x2,z2,c='int') => `<line x1="${ft(x1)+ox}" y1="${oy-ft(z1)}" x2="${ft(x2)+ox}" y2="${oy-ft(z2)}" class="${c}"/>`;
+  const ER = (x,z,w,h,c='int') => `<rect x="${ft(x)+ox}" y="${oy-ft(z+h)}" width="${ft(w)}" height="${ft(h)}" class="${c}"/>`;
+  const ET = (x,z,s,c='s',a='middle') => `<text x="${ft(x)+ox}" y="${oy-ft(z)}" class="${c}" text-anchor="${a}">${s}</text>`;
+  return inner({E,EL,ER,ET,ox,oy});
+}
+/* A-201 front */
+(function(){
+  const s = elev(({EL,ER,ET,E})=>{
+    let o = '';
+    o += EL(-14,0,BW+14,0,'ext'); // grade
+    o += ER(-8,-9,BW+16,9,'dash') + ET(BW/2,-5,'basement (dashed)','s');
+    o += ER(0,0,BW,HF,'ext'); // wall
+    o += EL(0,FLR2,BW,FLR2,'dash') + ET(BW+1,FLR2+.4,'2nd floor 12′-0″','s','start');
+    // roof edge: fascia band at HF + overhang beyond both sides
+    o += ER(-OS,HF,BW+2*OS,1.5,'ext') + ET(-OS-.6,HF+.5,'overhang','s','end');
+    for (let x=-OS+1;x<BW+OS;x+=4) o += EL(x,HF+1.5,x,HF+2.2,'w'); // rafter tail ticks from sketch
+    // doors
+    DOORS.forEach(({x,w},i)=>{ const l=i===0;
+      o += ER(x,0,w,10,'ext');
+      if (l){ for(let k=0;k<5;k++) for(let r=0;r<4;r++){ const a=x+.5+k*(w-1)/5; o += ER(a,.5+r*2.4,(w-1)/5-.35,2,'thin'); } o += ET(x+w/2,-2,'12′×10′ full-view glass OHD','s'); }
+      else { for(let z=2;z<10;z+=2) o += EL(x,z,x+w,z,'thin'); o += ET(x+w/2,-2,`${w}′×10′ OHD`,'s'); }
+      o += ER(x,15,w,4,'ext') + EL(x,17,x+w,17,'thin'); for (let k=1;k<w/3;k++) o += EL(x+k*3,15,x+k*3,19,'thin');
+      o += ET(x+w/2,20,`${w}′ wide window`,'s');
+    });
+    // dims
+    // vertical dims on right
+    const vx = BW+OS+4;
+    o += EL(vx,0,vx,HF+1.5,'dim') + EL(vx-.4,0,vx+.4,0,'dim') + EL(vx-.4,HF+1.5,vx+.4,HF+1.5,'dim') + EL(vx-.4,10,vx+.4,10,'dim') + EL(vx-.4,FLR2,vx+.4,FLR2,'dim');
+    o += ET(vx+1,5,'10′-0″ door','d','start') + ET(vx+1,18,'25′-6″ to fascia','d','start');
+    o += EL(-OS,-2.5,BW+OS,-2.5,'dim') + ET(BW/2,-3.6,`${fmt(BW+2*OS)} overall incl. overhang`,'d');
+    o += ET(BW/2,HF+6,'Front elevation (north) — high side of roof','t');
+    return o;
+  });
+  sheet('A-201','Front elevation', s, {scale:'Scale 1/8″ = 1′-0″ (nominal)', note:'12′ doors at the gym and working garage, 24′ double-wide at the daily garage, the gym door full-view glass, and a window above each door the full width of the door. Grade is at first-floor level on this side; eave held at 24′.'});
+})();
+/* A-202 rear */
+(function(){
+  const s = elev(({EL,ER,ET})=>{
+    let o = '';
+    o += EL(-20,-BSMT,BW+20,-BSMT,'ext') + ET(-14,-BSMT-1,'grade (9′ below first floor)','s','start');
+    o += ER(0,-BSMT,BW,BSMT,'ext') + ET(-1,-4,'exposed basement wall','s','end');
+    o += ER(0,0,BW,HR,'ext');
+    o += EL(0,FLR2,BW,FLR2,'dash') + EL(0,0,BW,0,'dash') + ET(BW+1,.4,'first floor','s','start');
+    // extended roof fascia over the patio + posts
+    o += ER(-OS,HR-1.6,BW+2*OS,1.5,'ext') + ET(-OS-.6,HR-1,'10′ extension','s','end');
+    [0,17,34,51,68].forEach(x=>o+=ER(x-.5,-BSMT,1,HR-1.6+BSMT,'ext'));
+    o += ER(-OS,HR,BW+2*OS,1.5,'ext');
+    for (let x=-OS+1;x<BW+OS;x+=4) o += EL(x,HR+1.5,x,HR+2.2,'w');
+    // basement openings
+    [[20,26],[42,48]].forEach(([a,b])=>{ o += ER(a,-BSMT,6,7,'ext') + EL((a+b)/2,-BSMT,(a+b)/2,-2,'thin'); }); o += ET(34,-BSMT-2.2,'two 6′ glazed doors','s');
+    [[3,8],[11,16],[52,57],[60,65]].forEach(([a,b])=>{ o += ER(a,-6.5,b-a,4,'ext') + EL((a+b)/2,-6.5,(a+b)/2,-2.5,'thin'); });
+    // first floor door + high windows
+    o += ER(30,3,8,4,'ext') + EL(34,3,34,7,'thin');
+    [[6,12],[22,28],[40,46],[56,62]].forEach(([a,b])=>{ o += ER(a,3,b-a,4,'ext') + EL((a+b)/2,3,(a+b)/2,7,'thin'); });
+    [[16,19],[49,52]].forEach(([a,b])=>{ o += ER(a,5.5,b-a,2,'ext'); }); o += ET(34,9.6,'small high windows = half baths','s');
+    const vx = BW+OS+4;
+    o += EL(vx,-BSMT,vx,HR+1.5,'dim') + [ -BSMT,0,HR-1.6,HR+1.5 ].map(z=>EL(vx-.4,z,vx+.4,z,'dim')).join('');
+    o += ET(vx+1,-4.5,'9′-0″','d','start') + ET(vx+1,3,'≈ 14′-10″ under patio roof','d','start') + ET(vx+1,HR+.5,'21′-2″ to fascia','d','start');
+    o += EL(0,-BSMT-3,BW,-BSMT-3,'dim') + ET(BW/2,-BSMT-4.1,fmt(BW),'d');
+    o += ET(BW/2,HR+8,'Rear elevation (south) — walk-out side, panels face this way','t');
+    o += ET(BW/2,HR+5.4,'rear wall 10′-8″ · first-floor windows replace the sketch\'s high row · roof on 5 posts','s');
+    return o;
+  });
+  sheet('A-202','Rear elevation', s, {note:'The rear wall is now only 10′-8″ above the first floor, so it reads as two storeys over the lower grade. The 10′ roof extension is drawn as the fascia line in front of the wall with posts at 17′ centres; the basement wall gets the walk-out door and egress windows.'});
+})();
+
+/* A-301 section */
+(function(){
+  const s = elev(({EL,ER,ET})=>{
+    let o = ''; // looking west: rear at left (x=0), front at right (x=BD)
+    const zrx = x => HR + (x/BD)*(HF-HR);
+    // grade: hill from -9 at rear to 0 at front, level beyond
+    o += EL(-24,-BSMT,-OVR,-BSMT,'ext') + EL(-OVR,-BSMT,0,-BSMT,'ext') + EL(0,-BSMT,BD,0,'ext') + EL(BD,0,BD+16,0,'ext');
+    o += `<polygon points="${[[0,-BSMT],[BD,0],[BD+16,0],[BD+16,-14],[-24,-14],[-24,-BSMT]].map(([x,z])=>`${ft(x)+150},${560-ft(z)}`).join(' ')}" fill="none" class="hatch"/>`;
+    for (let x=-24;x<BD+16;x+=1.5){ const g = x<0?-BSMT: x>BD?0: -BSMT*(1-x/BD); o += EL(x,g,x,-14,'hatch'); }
+    o += ER(0,-BSMT,BD,BSMT,'ext') + ET(BD/2+6,-4.5,'Basement · living · 9′ clear','t') + ET(4,-6.5,'walk-out','s');
+    // one continuous shell profile above the first floor: rear wall to 10′-8″, roof to 24′ at the front
+    o += `<polygon points="${[[0,0],[0,HR],[BD,HF],[BD,0]].map(([x,z])=>`${ft(x)+150},${560-ft(z)}`).join(' ')}" class="ext"/>`;
+    o += ET(BD/2,5.5,'Daily garage · 11′ clear, ceiling follows roof at the rear','t');
+    o += ET(BD-8,15.5,'Office','t') + ET(14,13.4,'attic storage','s') + EL(24,FLR2,24,zrx(24),'dash') + EL(4,FLR2,4,zrx(4),'dash') + ET(2,10.2,'roof meets floor','s','start');
+    // front overhang
+    o += EL(BD,HF,BD+OV,zrx(BD+OV),'ext') + EL(BD+OV,zrx(BD+OV),BD+OV,zrx(BD+OV)-1.5,'ext') + EL(BD+OV,zrx(BD+OV)-1.5,BD,HF,'ext');
+    // rear 10′ extension + post
+    o += EL(-OVR,zrx(-OVR),0,HR,'ext') + EL(-OVR,zrx(-OVR),-OVR,zrx(-OVR)-1.5,'ext') + EL(-OVR,zrx(-OVR)-1.5,0,HR-1.6,'ext');
+    o += ER(-OVR+.6,-BSMT,1,zrx(-OVR)-1.5+BSMT,'ext') + ET(-OVR/2,-BSMT-2,'covered patio','s');
+    // panels
+    for (let x=-OVR+1;x<BD-3;x+=7) o += EL(x,zrx(x)+.4,x+6.4,zrx(x+6.4)+.4,'w');
+    o += EL(4,FLR2,BD,FLR2,'ext'); // second-floor deck starts where the roof clears it
+    // basement stair against rear wall (runs across section, shown as tread block)
+    o += ER(0,-BSMT,4,BSMT,'thin') + ET(2,-4.6,'stair','s');
+    const vx = BD+OV+4;
+    o += EL(vx,-BSMT,vx,zrx(BD+OV),'dim');
+    [-BSMT,0,FLR2,HF].forEach(z=>o+=EL(vx-.4,z,vx+.4,z,'dim'));
+    o += ET(vx+1,-5,'9′-0″','d','start') + ET(vx+1,5.5,'12′-0″','d','start') + ET(vx+1,17.5,'12′-0″ at front','d','start') + ET(vx+1,HF+.8,'24′-0″','d','start');
+    o += ET(BD/2-2,zrx(BD/2-2)+3,'4:12 pitch (≈18.4°)','d');
+    o += ET(-OVR-1,HR-1,'10′-8″','d','end');
+    o += EL(-OVR,-16,0,-16,'dim') + ET(-OVR/2,-17.2,'10′','d') + EL(0,-16,BD,-16,'dim') + ET(BD/2,-17.2,fmt(BD)+' depth','d');
+    o += ET(-14,-BSMT-1.2,'rear (low grade)','s') + ET(BD+8,-1.2,'front','s');
+    o += ET(BD/2,HF+9,'Building section through daily garage','t');
+    return o;
+  });
+  sheet('A-301','Building section', s, {note:'4:12 roof, front eave held at 24′ and the rear dropped to 10′-8″. The roof plane reaches second-floor level 4′ from the rear wall, so the office is a 16′ band at the front with attic storage behind it. Grade falls 9′ from front to rear so the basement walks out under the 10′ roof extension. Note the patio roof is about 16′ up at the rear wall; a lower secondary porch roof is an option if you want a cosier covered area.'});
+})();
+
+/* ---------- render page ---------- */
+const nav = document.getElementById('nav'), main = document.getElementById('main');
+sheets.forEach(sh=>{
+  const id = sh.no.toLowerCase();
+  nav.insertAdjacentHTML('beforeend', `<a href="#${id}">${sh.no}</a>`);
+  main.insertAdjacentHTML('beforeend', `<section class="sheet" id="${id}"><h2>${sh.no}<span>${sh.title}</span></h2><div class="frame">${sh.svg}</div>${sh.note?`<p class="note">${sh.note}</p>`:''}</section>`);
+});
+main.insertAdjacentHTML('beforeend', `<div class="qs"><h3>Open questions carried from the sketch</h3><ul>
+<li>Overall footprint and bay widths — 68′ × 40′ with 16 / 28 / 16 bays is assumed, sized around the 24′ double door.</li>
+<li>4:12 roof with the front held at 24′ means the rear wall is 10′-8″ and the second floor only exists in the front ~24′ (office 16′ deep plus attic). A 3:12 pitch (rear 14′) would give the office 24′ of depth if that matters more than the extra solar/snow benefit.</li>
+<li>Rear storage band: the sketch asks "knee wall?" — the section shows what a 6′ knee wall gives you.</li>
+<li>Basement: the four "?" marks are drawn as columns; confirm with a structural span check.</li>
+<li>Lift bay: the working-garage slab is also the basement ceiling, so the lift posts need a thickened slab or a beam line below.</li>
+<li>The patio roof is ~15′ above the walk-out patio; confirm you want that height or a lower porch roof.</li>
+<li>No first-floor rear door. If you want one, it needs an elevated deck under the rear overhang, roughly 9′ above the patio, with its own stair or a door out to grade at the sides.</li>
+</ul></div>`);
+</script>
+</body>
+</html>
